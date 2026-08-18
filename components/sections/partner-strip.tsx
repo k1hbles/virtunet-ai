@@ -46,23 +46,34 @@ export function PartnerStrip() {
   }, []);
 
   return (
-    <section className="border-y border-line bg-canvas py-10">
+    <section className="border-y border-line bg-canvas py-12">
       <div className="wrap overflow-clip">
         <p className="reveal text-center text-[11px] font-medium uppercase tracking-[0.3em] text-ink-muted">
           Strategic technology partnerships
         </p>
+        {/*
+          One height drives the whole row, so the logos scale together and each
+          mark's own `scale` stays a fixed proportion of it. The marks are white
+          artwork already, so nothing here recolours them.
+        */}
         <div
           ref={railRef}
-          className="reveal-group mt-8 flex items-center gap-12 overflow-x-auto pb-2 md:justify-between md:overflow-visible"
+          className="reveal-group mt-9 flex items-center gap-10 overflow-x-auto pb-2 md:justify-between md:gap-6 md:overflow-visible"
+          style={{ ["--logo-h" as string]: "clamp(2rem, 3.2vw, 2.75rem)" }}
         >
           {partners.map((p) => (
-            <div key={p.name} className="flex min-w-24 items-center justify-center" title={p.name}>
+            <div
+              key={p.name}
+              className="flex shrink-0 items-center justify-center"
+              title={`${p.name} — ${p.tier}`}
+            >
               <Image
                 src={p.logo}
                 alt={`${p.name} logo`}
-                width={96}
-                height={32}
-                className="h-7 max-w-24 object-contain opacity-60 grayscale transition-opacity hover:opacity-100 md:h-8"
+                width={Math.round(120 * p.aspect)}
+                height={120}
+                className="w-auto opacity-70 transition-opacity duration-300 hover:opacity-100"
+                style={{ height: `calc(var(--logo-h) * ${p.scale})` }}
               />
             </div>
           ))}

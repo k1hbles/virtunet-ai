@@ -56,13 +56,37 @@ export const hero = {
   },
 } as const;
 
+/**
+ * Strategic technology partnerships, taken from virtu.net/about/partnerships/
+ * together with the tier that page names for each one.
+ *
+ * NVIDIA used to be listed here and has been removed: it does not appear on
+ * that page, so this site cannot stand behind the claim.
+ *
+ * `aspect` is the mark's true width over height, measured after each viewBox
+ * was cropped to its artwork — the marks previously sat letterboxed inside a
+ * 24x24 square, which is why an emblem and a wordmark rendered at wildly
+ * different optical sizes. `scale` is optical rather than arithmetic: a
+ * wordmark set to an emblem's height reads as much larger than it, so the
+ * wordmarks are held back until the row looks even.
+ *
+ * Lenovo is a special case: its mark is the wordmark inside a solid box, so
+ * on black the box inverted into a white slab. The artwork here is the same
+ * official path with the box masked away, leaving the letterforms alone.
+ *
+ * Google is the wordmark rather than the 'G' glyph, recoloured to white from
+ * the official artwork. Its `scale` is set against cap height rather than
+ * overall height, because the descender on the 'g' makes the mark taller
+ * than it looks next to marks that have none.
+ */
 export const partners = [
-  { name: "HP", logo: "/logos/hp.svg" },
-  { name: "Lenovo", logo: "/logos/lenovo.svg" },
-  { name: "Cisco", logo: "/logos/cisco.svg" },
-  { name: "Dell", logo: "/logos/dell.svg" },
-  { name: "Apple", logo: "/logos/apple.svg" },
-  { name: "NVIDIA", logo: "/logos/nvidia.svg" },
+  { name: "Microsoft", tier: "Silver Partner", logo: "/logos/microsoft.svg", aspect: 1, scale: 0.86 },
+  { name: "HP", tier: "Power Partner", logo: "/logos/hp.svg", aspect: 1, scale: 1 },
+  { name: "Lenovo", tier: "Platinum Partner", logo: "/logos/lenovo.svg", aspect: 4.828, scale: 0.45 },
+  { name: "Dell", tier: "Gold Partner", logo: "/logos/dell.svg", aspect: 1, scale: 1 },
+  { name: "Cisco", tier: "Select Partner", logo: "/logos/cisco.svg", aspect: 1.897, scale: 0.74 },
+  { name: "Apple", tier: "Authorised Reseller", logo: "/logos/apple.svg", aspect: 0.815, scale: 0.94 },
+  { name: "Google", tier: "Partner", logo: "/logos/google.svg", aspect: 3.039, scale: 0.6 },
 ] as const;
 
 export const aiServices = {
