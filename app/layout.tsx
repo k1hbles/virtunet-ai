@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/img/hero-ai-ready-device.webp",
-        width: 2048,
-        height: 868,
-        alt: "AI-ready laptop illuminated by Virtu blue, green and yellow light",
+        url: "/img/hero-ai-unit.webp",
+        width: 1672,
+        height: 941,
+        alt: "A brushed aluminium AI compute unit with airflow traced around it",
       },
     ],
   },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: ["/img/hero-ai-ready-device.webp"],
+    images: ["/img/hero-ai-unit.webp"],
   },
 };
 

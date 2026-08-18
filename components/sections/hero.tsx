@@ -4,11 +4,11 @@ import { PillButton } from "@/components/ui/pill-button";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[820px] items-start overflow-clip bg-canvas pt-36 md:min-h-[900px] md:pt-44">
+    <section className="relative flex min-h-[100svh] items-start overflow-clip bg-canvas pt-28 md:pt-32">
       {/*
-        The artwork ships in full colour; the platinum reading is applied
-        here in CSS, so reverting is a one-line change and the source file
-        is never touched.
+        No grayscale here, unlike the previous hero: this artwork is already
+        brushed platinum on black, and desaturating it would remove the single
+        blue LED that is the only colour in the frame.
       */}
       <Image
         src={hero.image.src}
@@ -16,7 +16,7 @@ export function Hero() {
         fill
         priority
         sizes="100vw"
-        className="hero-image object-cover object-center grayscale contrast-[1.08] brightness-[0.92]"
+        className="hero-image object-cover object-center contrast-[1.04]"
       />
 
       {/* cool silver light, drifting slowly so the frame is never quite static */}
@@ -39,11 +39,17 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
+          /*
+            Retuned for this artwork. The previous hero image was bright and
+            needed suppressing; this one is already dark brushed metal on
+            black, so the old scrim simply buried it. Darkening is now
+            concentrated in the upper third where the type sits, and the lower
+            half is left almost clear so the unit and its airflow read.
+          */
           background:
-            "radial-gradient(54% 44% at 50% 43%, oklch(0% 0 0 / 0.68), transparent 76%)," +
-            "linear-gradient(to bottom, oklch(0% 0 0 / 0.58) 0%, oklch(0% 0 0 / 0.14) 32%," +
-            "oklch(0% 0 0 / 0.38) 64%, oklch(0% 0 0) 100%)," +
-            "radial-gradient(125% 82% at 50% 44%, transparent 38%, oklch(0% 0 0 / 0.68) 100%)",
+            "radial-gradient(58% 34% at 50% 26%, oklch(0% 0 0 / 0.58), transparent 76%)," +
+            "linear-gradient(to bottom, oklch(0% 0 0 / 0.52) 0%, oklch(0% 0 0 / 0.10) 42%," +
+            "transparent 72%, oklch(0% 0 0 / 0.30) 100%)",
         }}
       />
 

@@ -124,7 +124,9 @@
    ============================================================ */
 @keyframes hero-image-in {
   from { opacity: 0; transform: scale(1.04); }
-  to   { opacity: 0.5; transform: scale(1); }
+  /* 0.92, not the 0.5 the previous hero used: this artwork is already dark
+     brushed metal on black and needs to be seen, not suppressed. */
+  to   { opacity: 0.92; transform: scale(1); }
 }
 
 @keyframes hero-rise {

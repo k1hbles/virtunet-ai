@@ -41,10 +41,10 @@ export const hero = {
     "From procurement and licensing to deployment and lifecycle, Virtu makes modern technology work for your organisation.",
   cta: { label: "Speak to our specialists", href: routes.contact },
   image: {
-    src: "/img/hero-ai-ready-device.webp",
-    alt: "AI-ready laptop illuminated by Virtu blue, green and yellow light",
-    width: 2048,
-    height: 868,
+    src: "/img/hero-ai-unit.webp",
+    alt: "A brushed aluminium AI compute unit with airflow traced around it",
+    width: 1672,
+    height: 941,
   },
 } as const;
 
