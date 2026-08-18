@@ -46,7 +46,7 @@ export const navLinks = [
 export const hero = {
   title: "The technology partner for an AI-native future.",
   subtitle:
-    "Procurement, licensing, deployment and lifecycle, handled by one Australian partner — and now built to carry the AI running on top of all of it.",
+    "From procurement and licensing to deployment and lifecycle, Virtu makes modern technology work for your organisation.",
   cta: { label: "Speak to our specialists", href: routes.contact },
   image: {
     src: "/img/hero-ai-edge.webp",
@@ -84,20 +84,20 @@ export const aiServices = {
   beats: [
     {
       title: "Adopt AI with confidence.",
-      body: "Strategy, security and implementation from the same team — so what gets assessed is what gets built, and what gets built is what gets supported.",
+      body: "Virtu brings together strategy, security and hands-on implementation, turning early AI assessments into governed agents running in production.",
     },
     {
       title: "Every layer accounted for.",
       body: "Data, security, skills and process are examined before anything ships. You see what is inside the stack, not just what runs on top of it.",
     },
     {
-      title: "One team, one delivery model.",
+      title: "One delivery model across every service.",
       body: "Strategy through to enablement, delivered by the people who scoped it. Start anywhere, stop after any stage.",
     },
   ],
   title: "Adopt AI with confidence.",
   intro:
-    "Strategy, security and implementation from the same team — so what gets assessed is what gets built, and what gets built is what gets supported.",
+    "Virtu brings together strategy, security and hands-on implementation, turning early AI assessments into governed agents running in production.",
   /**
    * `group` clusters these nine into three, so the section reads as three areas
    * rather than nine equal cards. It shows a selection, not the full thirteen
@@ -136,7 +136,7 @@ export const capabilities: {
 } = {
   title: "Technology, made to work.",
   intro:
-    "The decisions compound. What gets bought shapes what can be deployed, what can be secured, and what it costs to replace.",
+    "Virtu works across the full technology lifecycle, helping organisations choose the right products and licences, then deploy, secure and sustain them.",
   cta: { label: "Explore all solutions", href: routes.solutions },
   /** `feature: true` spans the full grid width and carries artwork. */
   items: [
@@ -150,7 +150,7 @@ export const capabilities: {
 
 export const aiWorkplace = {
   title: "Prepare your workplace for AI.",
-  body: "AI readiness is more than a device refresh. The licences, cloud, security and workplace foundations underneath have to be ready too — that is usually where a rollout stalls.",
+  body: "AI readiness is more than a device upgrade. Virtu helps align the products, licences, cloud, security and workplace foundations your people need to move forward with confidence.",
   cta: { label: "Explore digital workplace", href: routes.workplace },
   image: {
     src: "/img/ai-ready-workplace.webp",
@@ -161,7 +161,7 @@ export const aiWorkplace = {
 export const sustainability = {
   title: "Progress that lasts beyond deployment.",
   intro:
-    "Sustainability is settled at procurement, not at disposal — in what gets chosen, how long it is kept running, and what happens to it after that.",
+    "Virtu brings sustainability into every stage of the technology lifecycle, across product selection, resilient infrastructure and responsible end-of-life asset management.",
   cta: { label: "Our sustainability commitment", href: routes.sustainability },
   image: {
     src: "/img/sustainable-lifecycle.webp",
