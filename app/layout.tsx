@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/content";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://virtu.net";
@@ -40,7 +43,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-AU">
-      <body>{children}</body>
+      <body>
+        <div className="min-h-screen overflow-x-clip bg-canvas">
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <SmoothScroll />
+        </div>
+      </body>
     </html>
   );
 }

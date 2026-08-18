@@ -1,5 +1,6 @@
 import { footer, site } from "@/lib/content";
 import { PillButton } from "@/components/ui/pill-button";
+import { SmartLink } from "@/components/ui/smart-link";
 import { Logo } from "@/components/ui/logo";
 import { SplitWords } from "@/components/ui/split-words";
 
@@ -27,13 +28,13 @@ export function Footer() {
               </p>
               <div className="mt-5 flex flex-col gap-3">
                 {col.links.map((l) => (
-                  <a
+                  <SmartLink
                     key={l.label}
                     href={l.href}
                     className="text-sm text-ink transition-colors hover:text-accent"
                   >
                     {l.label}
-                  </a>
+                  </SmartLink>
                 ))}
               </div>
             </div>

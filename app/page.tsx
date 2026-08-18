@@ -1,6 +1,3 @@
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { SmoothScroll } from "@/components/smooth-scroll";
 
 import { Hero } from "@/components/sections/hero";
 import { PartnerStrip } from "@/components/sections/partner-strip";
@@ -12,9 +9,7 @@ import { Insights } from "@/components/sections/insights";
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-clip bg-canvas">
-      <Navbar />
-      <main>
+    <>
         <Hero />
         <PartnerStrip />
         <AiServices />
@@ -22,9 +17,6 @@ export default function Home() {
         <AiWorkplace />
         <Sustainability />
         <Insights />
-      </main>
-      <Footer />
-      <SmoothScroll />
-    </div>
+    </>
   );
 }

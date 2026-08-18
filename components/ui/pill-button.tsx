@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { SmartLink } from "@/components/ui/smart-link";
 
 type Tone = "accent" | "platinum";
 
@@ -26,13 +27,13 @@ export function PillButton({
   const Icon = icon === "right" ? ArrowRight : ArrowUpRight;
   const dims = size === "sm" ? "px-5 py-2.5 text-sm" : "px-7 py-3.5 text-base";
   return (
-    <a
+    <SmartLink
       href={href}
       className={`inline-flex shrink-0 items-center gap-2 rounded-full font-medium transition-opacity hover:opacity-90 ${TONE[tone]} ${dims} ${className}`}
     >
       {children}
       <Icon size={size === "sm" ? 15 : 17} aria-hidden />
-    </a>
+    </SmartLink>
   );
 }
 
@@ -48,12 +49,12 @@ export function TextLink({
 }) {
   const hoverClass = hover === "green" ? "hover:text-accent-green" : "hover:text-accent";
   return (
-    <a
+    <SmartLink
       href={href}
       className={`inline-flex w-fit items-center gap-2 text-sm font-medium text-ink transition-colors ${hoverClass}`}
     >
       {children}
       <ArrowRight size={15} aria-hidden />
-    </a>
+    </SmartLink>
   );
 }

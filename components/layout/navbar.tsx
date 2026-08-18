@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { navLinks, routes } from "@/lib/content";
 import { PillButton } from "@/components/ui/pill-button";
 import { Logo } from "@/components/ui/logo";
+import { SmartLink } from "@/components/ui/smart-link";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -35,19 +36,19 @@ export function Navbar() {
       <div className="wrap-wide flex h-20 max-w-[1440px] items-center justify-between">
         {/* the link already carries the accessible name, so the image is
             decorative here and must not announce "Virtu" a second time */}
-        <a href={routes.home} className="inline-flex items-center" aria-label="Virtu home">
+        <SmartLink href={routes.home} className="inline-flex items-center" aria-label="Virtu home">
           <Logo height={26} alt="" priority />
-        </a>
+        </SmartLink>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {navLinks.map((l) => (
-            <a
+            <SmartLink
               key={l.label}
               href={l.href}
               className="text-sm text-ink-muted transition-colors hover:text-ink"
             >
               {l.label}
-            </a>
+            </SmartLink>
           ))}
         </nav>
 
@@ -78,14 +79,14 @@ export function Navbar() {
       >
         <div className="flex flex-col">
           {navLinks.map((l) => (
-            <a
+            <SmartLink
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
               className="border-b border-line py-4 text-lg text-ink"
             >
               {l.label}
-            </a>
+            </SmartLink>
           ))}
         </div>
         <div className="mt-7">

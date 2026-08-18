@@ -18,21 +18,29 @@ export const site = {
 
 export const routes = {
   home: "/",
-  contact: "https://virtu.net/contact/",
+  services: "/services",
+  industries: "/industries",
+  outcomes: "/client-outcomes",
+  insights: "/insights",
+  about: "/about",
+  contact: "/contact",
+  /**
+   * virtu.net remains the parent site for the non-AI practice — modern
+   * workplace, procurement, lifecycle. Those links stay external on purpose;
+   * this site replaces virtunet.ai, not virtu.net.
+   */
   solutions: "https://virtu.net/solutions/",
   products: "https://virtu.net/corp-buying-guide/",
-  industries: "https://virtu.net/industries/",
-  insights: "https://virtu.net/insights/",
   sustainability: "https://virtu.net/about/sustainability/",
   workplace: "https://virtu.net/modern-workplace-solution/",
 } as const;
 
 export const navLinks = [
-  { label: "Solutions", href: routes.solutions },
-  { label: "Products", href: routes.products },
+  { label: "Services", href: routes.services },
   { label: "Industries", href: routes.industries },
+  { label: "Client outcomes", href: routes.outcomes },
   { label: "Insights", href: routes.insights },
-  { label: "Sustainability", href: routes.sustainability },
+  { label: "About", href: routes.about },
 ] as const;
 
 export const hero = {
@@ -97,15 +105,15 @@ export const aiServices = {
    */
   groupOrder: ["Assess & govern", "Build & automate", "Secure & operate"],
   items: [
-    { kicker: "Strategy", title: "AI Readiness Assessment", group: "Assess & govern", body: "Benchmark your strategy, data, security, skills and governance before you invest.", href: "https://virtunet.ai/ai-readiness-assessment/" },
-    { kicker: "Microsoft 365", title: "Microsoft Copilot Adoption", group: "Build & automate", body: "Turn Microsoft 365 Copilot licences into secure, measurable productivity.", href: "https://virtunet.ai/microsoft-copilot-adoption/" },
-    { kicker: "Governance", title: "AI Governance & Security", group: "Assess & govern", body: "Put policies, data boundaries and practical guardrails around AI adoption.", href: "https://virtunet.ai/ai-governance/" },
-    { kicker: "Automation", title: "AI Workflow Automation", group: "Build & automate", body: "Remove repetitive work across document, approval and service workflows.", href: "https://virtunet.ai/ai-workflow-automation/" },
-    { kicker: "Agentic AI", title: "AI Agents", group: "Build & automate", body: "Design, deploy and govern agents that handle real work across your organisation.", href: "https://virtunet.ai/ai-agents/" },
-    { kicker: "Service Desk", title: "AI-Powered Service Desk", group: "Secure & operate", body: "Improve triage, self-service and assisted resolution across IT support.", href: "https://virtunet.ai/ai-service-desk/" },
-    { kicker: "Security", title: "AI for Cybersecurity", group: "Secure & operate", body: "Strengthen threat detection, response and security operations at machine speed.", href: "https://virtunet.ai/ai-cybersecurity/" },
-    { kicker: "Physical Security", title: "AI Physical Security", group: "Secure & operate", body: "Use intelligent video search and access control to find incidents in seconds.", href: "https://virtunet.ai/ai-physical-security/" },
-    { kicker: "Enablement", title: "AI Training & Enablement", group: "Assess & govern", body: "Build practical capability and lasting adoption across your teams.", href: "https://virtunet.ai/ai-training-enablement/" },
+    { kicker: "Strategy", title: "AI Readiness Assessment", group: "Assess & govern", body: "Benchmark your strategy, data, security, skills and governance before you invest.", href: "/services/ai-readiness-assessment" },
+    { kicker: "Microsoft 365", title: "Microsoft Copilot Adoption", group: "Build & automate", body: "Turn Microsoft 365 Copilot licences into secure, measurable productivity.", href: "/services/microsoft-copilot-adoption" },
+    { kicker: "Governance", title: "AI Governance & Security", group: "Assess & govern", body: "Put policies, data boundaries and practical guardrails around AI adoption.", href: "/services/ai-governance" },
+    { kicker: "Automation", title: "AI Workflow Automation", group: "Build & automate", body: "Remove repetitive work across document, approval and service workflows.", href: "/services/ai-workflow-automation" },
+    { kicker: "Agentic AI", title: "AI Agents", group: "Build & automate", body: "Design, deploy and govern agents that handle real work across your organisation.", href: "/services/ai-agents" },
+    { kicker: "Service Desk", title: "AI-Powered Service Desk", group: "Secure & operate", body: "Improve triage, self-service and assisted resolution across IT support.", href: "/services/ai-service-desk" },
+    { kicker: "Security", title: "AI for Cybersecurity", group: "Secure & operate", body: "Strengthen threat detection, response and security operations at machine speed.", href: "/services/ai-cybersecurity" },
+    { kicker: "Physical Security", title: "AI Physical Security", group: "Secure & operate", body: "Use intelligent video search and access control to find incidents in seconds.", href: "/services/ai-physical-security" },
+    { kicker: "Enablement", title: "AI Training & Enablement", group: "Assess & govern", body: "Build practical capability and lasting adoption across your teams.", href: "/services/ai-training-enablement" },
   ],
 } as const;
 
@@ -180,20 +188,20 @@ export const footer = {
   cta: { title: "Ready to build what comes next?", label: "Speak to our specialists", href: routes.contact },
   columns: [
     {
-      heading: "Explore",
+      heading: "Services",
       links: [
-        { label: "Solutions", href: routes.solutions },
-        { label: "Products", href: routes.products },
+        { label: "All AI services", href: routes.services },
         { label: "Industries", href: routes.industries },
+        { label: "Client outcomes", href: routes.outcomes },
         { label: "Insights", href: routes.insights },
       ],
     },
     {
       heading: "Virtu",
       links: [
-        { label: "About", href: "https://virtu.net/about/" },
+        { label: "About", href: routes.about },
+        { label: "Contact", href: routes.contact },
         { label: "Sustainability", href: routes.sustainability },
-        { label: "Success stories", href: "https://virtu.net/client-success-stories/" },
         { label: "Careers", href: "https://virtu.net/careers/" },
       ],
     },
