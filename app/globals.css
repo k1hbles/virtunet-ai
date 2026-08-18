@@ -191,14 +191,24 @@
       to   { transform: translateY(22px); }
     }
 
+    /* the glyphs travel their own full height, so they clear the mask edge
+       completely rather than fading through it */
     @keyframes word-in {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: none; }
+      from { transform: translateY(110%); }
+      to   { transform: translateY(0); }
     }
 
     @keyframes image-settle {
       from { opacity: 0; transform: scale(1.04); }
       to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* The hero used to freeze once its intro finished, so leaving it was a
+       hard cut. This ties the departure to scroll: the content lifts and
+       fades as the hero leaves, and the artwork settles back the other way. */
+    @keyframes hero-depart {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to   { opacity: 0; transform: translateY(-72px) scale(0.97); }
     }
 
     @keyframes rule-wipe {
@@ -230,6 +240,13 @@
       animation-range: cover 0% cover 100%;
     }
 
+    .hero-depart {
+      animation: hero-depart linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 85%;
+      will-change: opacity, transform;
+    }
+
     .counter-drift {
       animation: counter-drift linear both;
       animation-timeline: view();
@@ -239,7 +256,7 @@
     /* Each word carries its own index, so the stagger is a calc() on the
        range start rather than a delay — delays do not apply to a scroll
        timeline, only the range does. */
-    .word {
+    .word-inner {
       display: inline-block;
       animation: word-in linear both;
       animation-timeline: view();
@@ -248,6 +265,7 @@
          30% window against a 6% step gives visible succession without any
          word feeling detached from its neighbours. */
       animation-range: cover calc(var(--i) * 4%) cover calc(15% + (var(--i) * 4%));
+      will-change: transform;
     }
 
     .settle {
@@ -284,3 +302,20 @@ html.lenis body {
 [data-mode="sequence"] .ai-sequence { display: block; }
 [data-mode="sequence"] .ai-grid { display: none; }
 [data-mode="grid"] .ai-sequence { display: none; }
+
+/* Word masks.
+
+   Outside the motion guard on purpose: the mask box has to keep its layout
+   role even where the animation never runs, so that browsers without
+   scroll-driven animations, and readers with reduced motion, get identical
+   line-breaking to everyone else. Without the animation the inner span simply
+   sits at its resting position, fully visible. */
+.word {
+  display: inline-block;
+  overflow: clip;
+  /* the mask needs room for descenders and for the clip edge to sit below
+     the baseline, and the negative margin gives that room back to the line */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  vertical-align: bottom;
+}

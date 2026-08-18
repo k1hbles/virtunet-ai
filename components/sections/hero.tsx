@@ -47,7 +47,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center">
+      <div className="hero-depart relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center">
         <h1 className="hero-rise hero-rise-1 max-w-5xl text-balance text-[clamp(3.2rem,7.2vw,7rem)] font-medium leading-[0.93] tracking-[-0.05em] text-ink">
           {hero.title}
         </h1>
