@@ -179,9 +179,12 @@
     /* Headings drift as a block while their words fade in individually,
        so the parent owns transform and the spans own opacity — neither
        animation ever competes for the same property. */
+    /* Amplitude is capped by collision, not taste: transform reserves no
+       space, so a heading that drifts too far overlaps the paragraph beneath
+       it. 58px put 14px of the heading into its own copy; 40 clears it. */
     @keyframes title-drift {
-      from { transform: translateY(58px); }
-      to   { transform: translateY(-58px); }
+      from { transform: translateY(40px); }
+      to   { transform: translateY(-40px); }
     }
 
     /* the counter-drift: artwork travels the other way, so foreground

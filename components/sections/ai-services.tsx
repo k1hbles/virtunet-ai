@@ -6,7 +6,7 @@ import { aiServices } from "@/lib/content";
 import { SplitWords } from "@/components/ui/split-words";
 
 /** Scroll length of the pinned stage, as a fraction of viewport height. */
-const STAGE_VH = 300;
+const STAGE_VH = 240;
 /** Share of each beat's slice spent crossfading rather than holding still. */
 const FADE = 0.14;
 
@@ -185,36 +185,32 @@ export function AiServices() {
         </div>
       </div>
 
-      {/* ---- the nine, scannable ---- */}
+      {/* ---- the nine, quietly ---- */}
       <div className="wrap pb-24 md:pb-32">
-        <div className="reveal-group grid border-t border-line md:grid-cols-2 lg:grid-cols-3">
-          {items.map((s, i) => (
-            <a
-              key={s.title}
-              href={s.href}
-              className={[
-                "group flex min-h-[17rem] flex-col justify-between border-b border-line py-9 transition-colors hover:bg-surface md:px-8",
-                i % 2 === 1 ? "md:border-l" : "",
-                i % 3 === 0 ? "lg:border-l-0" : "lg:border-l",
-              ].join(" ")}
-            >
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-ink-muted">
-                  {s.kicker}
-                </span>
-                <ArrowUpRight
-                  size={18}
-                  aria-hidden
-                  className="text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-                />
-              </div>
-              <div>
-                <h3 className="text-balance text-[1.7rem] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
-                  {s.title}
-                </h3>
-                <p className="mt-4 max-w-sm text-[0.95rem] leading-6 text-ink-muted">{s.body}</p>
-              </div>
-            </a>
+        <div className="grid gap-x-14 gap-y-12 border-t border-line pt-12 md:grid-cols-3">
+          {aiServices.groupOrder.map((group) => (
+            <div key={group} className="reveal">
+              <p className="eyebrow text-ink-muted">{group}</p>
+              <ul className="mt-5">
+                {items
+                  .filter((s) => s.group === group)
+                  .map((s) => (
+                    <li key={s.title}>
+                      <a
+                        href={s.href}
+                        className="group flex items-baseline justify-between gap-4 border-b border-line py-4 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
+                      >
+                        {s.title}
+                        <ArrowUpRight
+                          size={15}
+                          aria-hidden
+                          className="shrink-0 translate-y-0.5 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0 group-hover:text-accent"
+                        />
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>

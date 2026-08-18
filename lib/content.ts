@@ -90,16 +90,22 @@ export const aiServices = {
   title: "Adopt AI with confidence.",
   intro:
     "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
+  /**
+   * `group` clusters the nine into three, so the section reads as three areas
+   * rather than nine equal cards. The grouping is editorial, not taken from
+   * virtunet.ai — change the strings here and the section regroups itself.
+   */
+  groupOrder: ["Assess & govern", "Build & automate", "Secure & operate"],
   items: [
-    { kicker: "Strategy", title: "AI Readiness Assessment", body: "Benchmark your strategy, data, security, skills and governance before you invest.", href: "https://virtunet.ai/ai-readiness-assessment/" },
-    { kicker: "Microsoft 365", title: "Microsoft Copilot Adoption", body: "Turn Microsoft 365 Copilot licences into secure, measurable productivity.", href: "https://virtunet.ai/microsoft-copilot-adoption/" },
-    { kicker: "Governance", title: "AI Governance & Security", body: "Put policies, data boundaries and practical guardrails around AI adoption.", href: "https://virtunet.ai/ai-governance/" },
-    { kicker: "Automation", title: "AI Workflow Automation", body: "Remove repetitive work across document, approval and service workflows.", href: "https://virtunet.ai/ai-workflow-automation/" },
-    { kicker: "Agentic AI", title: "AI Agents", body: "Design, deploy and govern agents that handle real work across your organisation.", href: "https://virtunet.ai/ai-agents/" },
-    { kicker: "Service Desk", title: "AI-Powered Service Desk", body: "Improve triage, self-service and assisted resolution across IT support.", href: "https://virtunet.ai/ai-service-desk/" },
-    { kicker: "Security", title: "AI for Cybersecurity", body: "Strengthen threat detection, response and security operations at machine speed.", href: "https://virtunet.ai/ai-cybersecurity/" },
-    { kicker: "Physical Security", title: "AI Physical Security", body: "Use intelligent video search and access control to find incidents in seconds.", href: "https://virtunet.ai/ai-physical-security/" },
-    { kicker: "Enablement", title: "AI Training & Enablement", body: "Build practical capability and lasting adoption across your teams.", href: "https://virtunet.ai/ai-training-enablement/" },
+    { kicker: "Strategy", title: "AI Readiness Assessment", group: "Assess & govern", body: "Benchmark your strategy, data, security, skills and governance before you invest.", href: "https://virtunet.ai/ai-readiness-assessment/" },
+    { kicker: "Microsoft 365", title: "Microsoft Copilot Adoption", group: "Build & automate", body: "Turn Microsoft 365 Copilot licences into secure, measurable productivity.", href: "https://virtunet.ai/microsoft-copilot-adoption/" },
+    { kicker: "Governance", title: "AI Governance & Security", group: "Assess & govern", body: "Put policies, data boundaries and practical guardrails around AI adoption.", href: "https://virtunet.ai/ai-governance/" },
+    { kicker: "Automation", title: "AI Workflow Automation", group: "Build & automate", body: "Remove repetitive work across document, approval and service workflows.", href: "https://virtunet.ai/ai-workflow-automation/" },
+    { kicker: "Agentic AI", title: "AI Agents", group: "Build & automate", body: "Design, deploy and govern agents that handle real work across your organisation.", href: "https://virtunet.ai/ai-agents/" },
+    { kicker: "Service Desk", title: "AI-Powered Service Desk", group: "Secure & operate", body: "Improve triage, self-service and assisted resolution across IT support.", href: "https://virtunet.ai/ai-service-desk/" },
+    { kicker: "Security", title: "AI for Cybersecurity", group: "Secure & operate", body: "Strengthen threat detection, response and security operations at machine speed.", href: "https://virtunet.ai/ai-cybersecurity/" },
+    { kicker: "Physical Security", title: "AI Physical Security", group: "Secure & operate", body: "Use intelligent video search and access control to find incidents in seconds.", href: "https://virtunet.ai/ai-physical-security/" },
+    { kicker: "Enablement", title: "AI Training & Enablement", group: "Assess & govern", body: "Build practical capability and lasting adoption across your teams.", href: "https://virtunet.ai/ai-training-enablement/" },
   ],
 } as const;
 
