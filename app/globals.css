@@ -277,3 +277,10 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+/* AI services: the sequence and the grid are mutually exclusive. The server
+   renders `grid`, so no-JS, narrow and reduced-motion visitors keep the plain
+   grid and never glimpse a half-built pinned stage. */
+[data-mode="sequence"] .ai-sequence { display: block; }
+[data-mode="sequence"] .ai-grid { display: none; }
+[data-mode="grid"] .ai-sequence { display: none; }

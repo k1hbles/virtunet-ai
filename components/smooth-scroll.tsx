@@ -3,38 +3,64 @@
 import { useEffect } from "react";
 
 /**
- * Opt-in smooth scrolling, for comparing the native feel against an
- * interpolated one. Off unless the URL carries `?smooth=1`, and the library
- * is dynamically imported, so a normal visit downloads none of it.
+ * Smooth scrolling, and the single scroll source the whole page shares.
  *
- * Reads the query string directly rather than via useSearchParams, which
- * would opt this page out of static prerendering.
+ * Lenis interpolates the scroll position; ScrollTrigger is driven from the
+ * same rAF tick so pinned sections and Lenis never disagree about where the
+ * page is. Everything is dynamically imported, so the libraries stay out of
+ * the initial bundle.
+ *
+ * Skipped entirely under prefers-reduced-motion. `?smooth=0` disables it for
+ * comparison; the CSS scroll-timeline motion continues to work either way,
+ * because Lenis still advances the native scroll position.
  */
+
+type LenisLike = {
+  raf: (time: number) => void;
+  destroy: () => void;
+  on: (event: "scroll", handler: () => void) => void;
+};
+
 export function SmoothScroll() {
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("smooth") !== "1") return;
+    if (new URLSearchParams(window.location.search).get("smooth") === "0") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let frame = 0;
-    let instance: { raf: (time: number) => void; destroy: () => void } | null = null;
     let cancelled = false;
+    let teardown: (() => void) | null = null;
 
-    import("lenis").then(({ default: Lenis }) => {
+    Promise.all([
+      import("lenis"),
+      import("gsap"),
+      import("gsap/ScrollTrigger"),
+    ]).then(([lenisMod, gsapMod, stMod]) => {
       if (cancelled) return;
-      instance = new Lenis({ duration: 1.15, smoothWheel: true });
-      const loop = (time: number) => {
-        instance?.raf(time);
-        frame = requestAnimationFrame(loop);
-      };
-      frame = requestAnimationFrame(loop);
+
+      const Lenis = lenisMod.default;
+      const { gsap } = gsapMod;
+      const { ScrollTrigger } = stMod;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({ duration: 1.15, smoothWheel: true }) as unknown as LenisLike;
+      lenis.on("scroll", ScrollTrigger.update);
+
+      const tick = (time: number) => lenis.raf(time * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+
       document.documentElement.dataset.smooth = "on";
+
+      teardown = () => {
+        gsap.ticker.remove(tick);
+        gsap.ticker.lagSmoothing(500, 33);
+        lenis.destroy();
+        delete document.documentElement.dataset.smooth;
+      };
     });
 
     return () => {
       cancelled = true;
-      cancelAnimationFrame(frame);
-      instance?.destroy();
-      delete document.documentElement.dataset.smooth;
+      teardown?.();
     };
   }, []);
 
