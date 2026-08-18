@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks, routes } from "@/lib/content";
 import { PillButton } from "@/components/ui/pill-button";
+import { Logo } from "@/components/ui/logo";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -32,12 +33,10 @@ export function Navbar() {
   return (
     <header className="absolute inset-x-0 top-0 z-50 border-b border-line/30 bg-canvas/55 backdrop-blur-xl">
       <div className="wrap-wide flex h-20 max-w-[1440px] items-center justify-between">
-        <a
-          href={routes.home}
-          className="text-2xl font-semibold tracking-[0.2em] text-ink"
-          aria-label="Virtu home"
-        >
-          VIRTU
+        {/* the link already carries the accessible name, so the image is
+            decorative here and must not announce "Virtu" a second time */}
+        <a href={routes.home} className="inline-flex items-center" aria-label="Virtu home">
+          <Logo height={26} alt="" priority />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">

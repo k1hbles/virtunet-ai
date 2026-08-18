@@ -1,5 +1,6 @@
 import { footer, site } from "@/lib/content";
 import { PillButton } from "@/components/ui/pill-button";
+import { Logo } from "@/components/ui/logo";
 import { SplitWords } from "@/components/ui/split-words";
 
 export function Footer() {
@@ -15,9 +16,7 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="reveal-group wrap grid gap-12 py-12 md:grid-cols-[1fr_auto_auto]">
           <div>
-            <div className="text-2xl font-semibold tracking-[0.2em] text-ink">
-              {site.name.toUpperCase()}
-            </div>
+            <Logo height={30} />
             <p className="mt-4 max-w-sm text-sm leading-6 text-ink-muted">{site.tagline}</p>
           </div>
 

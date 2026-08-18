@@ -30,6 +30,7 @@ components/
   ui/pill-button    the accent CTA pill and the quieter text link
 lib/content.ts      every string, link and image reference on the page
 public/img          section artwork      public/logos  partner marks
+public/brand        the Virtu wordmark, brand and platinum variants
 ```
 
 `app/page.tsx` is the table of contents — import order matches what you see
@@ -69,6 +70,18 @@ re-encodes and resizes the artwork rather than shipping the source file.
 
 That resizing is the point: a phone pulls **87 KB** of imagery instead of the
 572 KB the original serves to every device.
+
+## Brand mark
+
+`components/ui/logo.tsx` renders the wordmark from `public/brand`. It is a
+raster PNG trimmed to its artwork (1832 x 651, transparent), not a vector —
+fine at the sizes used here, but ask for an SVG before any large placement or
+print. `tone="platinum"` swaps to a flattened silver version for placements
+where the brand blue and green would fight the surrounding palette.
+
+Brand blue is `#0350c7`, which reads at 2.98:1 against the black canvas.
+Logotypes are exempt from WCAG contrast minimums, so this is a legibility
+judgement rather than a compliance one.
 
 ## Before launch
 
