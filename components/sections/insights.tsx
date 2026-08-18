@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { insights } from "@/lib/content";
+import { SplitWords } from "@/components/ui/split-words";
 
 const RULE: Record<string, string> = {
   accent: "bg-accent",
@@ -13,7 +14,7 @@ export function Insights() {
       <div className="wrap">
         <div className="flex items-end justify-between gap-6">
           <h2 className="drift text-balance text-4xl font-medium tracking-[-0.04em] text-ink md:text-6xl">
-            {insights.title}
+            <SplitWords text={insights.title} />
           </h2>
           <a
             href={insights.cta.href}

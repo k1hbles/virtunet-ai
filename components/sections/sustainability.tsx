@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { sustainability } from "@/lib/content";
 import { TextLink } from "@/components/ui/pill-button";
+import { SplitWords } from "@/components/ui/split-words";
 
 export function Sustainability() {
   return (
@@ -8,7 +9,7 @@ export function Sustainability() {
       <div className="wrap">
         <div className="grid items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h2 className="drift section-title text-balance">{sustainability.title}</h2>
+            <h2 className="drift section-title text-balance"><SplitWords text={sustainability.title} /></h2>
             <p className="reveal mt-7 max-w-xl text-lg leading-8 text-ink-muted">{sustainability.intro}</p>
             <div className="reveal mt-8">
               <TextLink href={sustainability.cta.href} hover="green">
@@ -18,7 +19,7 @@ export function Sustainability() {
           </div>
           {/* clip, not hidden — see ai-workplace: hidden would anchor the image's
               view() timeline to a box that never scrolls */}
-          <div className="overflow-clip rounded-2xl border border-line bg-surface">
+          <div className="counter-drift overflow-clip rounded-2xl border border-line bg-surface">
             <Image
               src={sustainability.image.src}
               alt={sustainability.image.alt}

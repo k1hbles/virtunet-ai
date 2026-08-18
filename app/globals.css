@@ -176,17 +176,24 @@
       to   { opacity: 1; transform: none; }
     }
 
-    /* opacity and transform are split across two animations so the
-       heading can fade on entry while drifting across its whole pass
-       — one timeline each, and neither fights the other for transform */
-    @keyframes title-fade {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    /* Headings drift as a block while their words fade in individually,
+       so the parent owns transform and the spans own opacity — neither
+       animation ever competes for the same property. */
+    @keyframes title-drift {
+      from { transform: translateY(58px); }
+      to   { transform: translateY(-58px); }
     }
 
-    @keyframes title-drift {
-      from { transform: translateY(26px); }
-      to   { transform: translateY(-26px); }
+    /* the counter-drift: artwork travels the other way, so foreground
+       and background separate slightly as a section passes */
+    @keyframes counter-drift {
+      from { transform: translateY(-22px); }
+      to   { transform: translateY(22px); }
+    }
+
+    @keyframes word-in {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
     }
 
     @keyframes image-settle {
@@ -199,39 +206,74 @@
       to   { transform: scaleX(1); }
     }
 
-    /* Ranges stay inside the `entry` phase on purpose. A range that ends in
-       `cover` needs the page to scroll PAST the element to finish, which the
-       last elements on the page can never do — they would sit permanently
-       part-faded. Ending on `entry` completes as the element comes into view. */
+    /* Ranges end in `cover`, not `entry`. The entry phase is scaled to the
+       ELEMENT's height — for a single word that is ~70px of scroll, far too
+       short to read as motion. The cover phase is viewport + element, so it
+       gives real distance. The trade-off is that a range ending too late in
+       cover cannot finish for elements near the page bottom, which is why
+       these end early and are verified to complete. */
     .reveal,
     .reveal-group > * {
       animation: reveal-in linear both;
       animation-timeline: view();
-      animation-range: entry 8% entry 72%;
+      animation-range: entry 0% cover 15%;
     }
 
     /* a row of cards enters together; offset the later columns so the
        eye reads across rather than everything landing at once */
-    .reveal-group > *:nth-child(3n + 2) { animation-range: entry 16% entry 80%; }
-    .reveal-group > *:nth-child(3n)     { animation-range: entry 24% entry 88%; }
+    .reveal-group > *:nth-child(3n + 2) { animation-range: cover 3% cover 18%; }
+    .reveal-group > *:nth-child(3n)     { animation-range: cover 6% cover 21%; }
 
     .drift {
-      animation: title-fade linear both, title-drift linear both;
-      animation-timeline: view(), view();
-      animation-range: entry 5% entry 75%, cover 0% cover 100%;
+      animation: title-drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    .counter-drift {
+      animation: counter-drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    /* Each word carries its own index, so the stagger is a calc() on the
+       range start rather than a delay — delays do not apply to a scroll
+       timeline, only the range does. */
+    .word {
+      display: inline-block;
+      animation: word-in linear both;
+      animation-timeline: view();
+      /* A short window per word with a wide per-word offset: overlapping
+         windows read as one block fading, separated ones read as a cascade.
+         30% window against a 6% step gives visible succession without any
+         word feeling detached from its neighbours. */
+      animation-range: cover calc(var(--i) * 4%) cover calc(15% + (var(--i) * 4%));
     }
 
     .settle {
       animation: image-settle linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 88%;
+      animation-range: entry 0% cover 20%;
     }
 
     .rule-wipe {
       transform-origin: left center;
       animation: rule-wipe linear both;
       animation-timeline: view();
-      animation-range: entry 10% entry 82%;
+      animation-range: entry 0% cover 13%;
     }
   }
+}
+
+/* Lenis is opt-in via ?smooth=1; these are its required host styles and are
+   inert unless the library actually attaches. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

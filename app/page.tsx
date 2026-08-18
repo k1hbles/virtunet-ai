@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { SmoothScroll } from "@/components/smooth-scroll";
 
 import { Hero } from "@/components/sections/hero";
 import { PartnerStrip } from "@/components/sections/partner-strip";
@@ -23,6 +24,7 @@ export default function Home() {
         <Insights />
       </main>
       <Footer />
+      <SmoothScroll />
     </div>
   );
 }

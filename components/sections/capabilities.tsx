@@ -2,13 +2,14 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { capabilities } from "@/lib/content";
 import { TextLink } from "@/components/ui/pill-button";
+import { SplitWords } from "@/components/ui/split-words";
 
 export function Capabilities() {
   return (
     <section className="bg-canvas py-24 md:py-36">
       <div className="wrap grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <h2 className="drift section-title text-balance">{capabilities.title}</h2>
+          <h2 className="drift section-title text-balance"><SplitWords text={capabilities.title} /></h2>
           <p className="reveal mt-7 max-w-md text-lg leading-8 text-ink-muted">{capabilities.intro}</p>
           <div className="reveal mt-8">
             <TextLink href={capabilities.cta.href}>{capabilities.cta.label}</TextLink>

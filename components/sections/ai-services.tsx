@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { aiServices } from "@/lib/content";
+import { SplitWords } from "@/components/ui/split-words";
 
 export function AiServices() {
   return (
@@ -8,7 +9,7 @@ export function AiServices() {
         <div className="grid gap-8 border-b border-line pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="reveal eyebrow text-accent">{aiServices.eyebrow}</p>
-            <h2 className="drift section-title mt-5 max-w-2xl">{aiServices.title}</h2>
+            <h2 className="drift section-title mt-5 max-w-2xl"><SplitWords text={aiServices.title} /></h2>
           </div>
           <p className="reveal max-w-2xl text-lg leading-8 text-ink-muted lg:justify-self-end">
             {aiServices.intro}

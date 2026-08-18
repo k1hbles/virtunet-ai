@@ -1,12 +1,13 @@
 import { footer, site } from "@/lib/content";
 import { PillButton } from "@/components/ui/pill-button";
+import { SplitWords } from "@/components/ui/split-words";
 
 export function Footer() {
   return (
     <footer className="border-t border-line bg-canvas">
       <div className="wrap flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-28">
         <h2 className="drift max-w-4xl text-balance text-5xl font-medium leading-[0.95] tracking-[-0.05em] text-ink md:text-7xl">
-          {footer.cta.title}
+          <SplitWords text={footer.cta.title} />
         </h2>
         <PillButton href={footer.cta.href}>{footer.cta.label}</PillButton>
       </div>
