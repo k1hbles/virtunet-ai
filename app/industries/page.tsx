@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { industries } from "@/lib/company";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { industryList } from "@/lib/industries";
 import { PageHero } from "@/components/page/page-hero";
 import { CtaBand } from "@/components/page/cta-band";
 
@@ -22,24 +24,28 @@ export default function IndustriesPage() {
       <section className="border-b border-line bg-canvas">
         <div className="wrap py-16 md:py-24">
           <div className="reveal-group grid border-t border-line md:grid-cols-2 lg:grid-cols-3">
-            {industries.map((ind, i) => (
-              <div
+            {industryList.map((ind, i) => (
+              <Link
                 key={ind.slug}
+                href={`/industries/${ind.slug}`}
                 className={[
-                  "flex min-h-[13rem] flex-col justify-between border-b border-line py-8 md:px-7",
+                  "group flex min-h-[14rem] flex-col justify-between border-b border-line py-8 transition-colors hover:bg-surface md:px-7",
                   i % 2 === 1 ? "md:border-l" : "",
                   i % 3 === 0 ? "lg:border-l-0" : "lg:border-l",
                 ].join(" ")}
               >
-                <h2 className="text-[1.5rem] font-medium tracking-[-0.03em] text-ink">{ind.name}</h2>
-                <p className="mt-4 max-w-sm text-[0.98rem] leading-6 text-ink-muted">{ind.body}</p>
-              </div>
+                <ArrowUpRight
+                  size={17}
+                  aria-hidden
+                  className="self-end text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                />
+                <div>
+                  <h2 className="text-[1.5rem] font-medium tracking-[-0.03em] text-ink">{ind.name}</h2>
+                  <p className="mt-3 max-w-sm text-[0.95rem] leading-6 text-ink-muted">{ind.summary}</p>
+                </div>
+              </Link>
             ))}
           </div>
-          <p className="reveal mt-10 max-w-2xl text-[0.95rem] leading-6 text-ink-muted">
-            Sector detail pages are in progress. In the meantime, tell us which one you are in and we
-            will send the relevant material directly.
-          </p>
         </div>
       </section>
 
