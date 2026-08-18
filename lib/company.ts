@@ -22,6 +22,65 @@ export const company = {
   purpose:
     "To deliver work our clients can rely on, and help them succeed through technology.",
 
+  /**
+   * Attributed speech. This is a real quotation from a named person and is
+   * reproduced exactly as published — it is the one kind of copy on this site
+   * that must never be rewritten for tone.
+   */
+  leader: {
+    name: "Martin Kosasih",
+    role: "Managing Director",
+    photo: "/people/martin-kosasih.webp",
+    quote:
+      "We're here to empower people and organisations in pushing the limits of sustainable growth — to ultimately bring lasting transformations to our planet, people and communities.",
+  },
+
+  /** The promise, and the evidence for it. */
+  track: [
+    "Enterprise clients onboarded in our earliest days — organisations of a thousand staff and more — are still with us over ten years later.",
+    "A ten-minute response time, and a habit of hand-delivering urgent work outside business hours. We look for a way rather than a reason it cannot be done.",
+  ],
+
+  /** What working with Virtu actually involves. */
+  expect: [
+    "Technology and AI aligned to the business, not to a product roadmap",
+    "Solutions that support work-life balance rather than quietly erode it",
+    "Streamlined workflow, and productivity you can point at",
+    "Support that helps busy IT teams get things done",
+    "Simple, uncomplicated solutions that do what they say",
+    "Help growing your own internal IT and AI capability",
+    "Sustainable management of your whole technology lifecycle",
+    "Making IT work for you, simply and quickly",
+  ],
+
+  /** Why organisations choose Virtu over the alternatives. */
+  differentiators: [
+    {
+      title: "Advisor first, not a reseller",
+      body: "We start with outcomes rather than products — independent advice that maps technology to your strategy, not to what we happen to sell.",
+    },
+    {
+      title: "Cybersecurity-led",
+      body: "Every engagement is built on a zero-trust foundation, so innovation never outpaces the protection underneath it.",
+    },
+    {
+      title: "A team that implements",
+      body: "Certified engineers and project managers who deliver from pilot to production, not a strategy deck and a handshake.",
+    },
+    {
+      title: "Vendor neutral, ecosystem deep",
+      body: "We work across the Microsoft, Cisco, HP, Lenovo and Dell ecosystems, and recommend what fits your goals.",
+    },
+    {
+      title: "Sustainable by default",
+      body: "Sustainability, security and scalability in every decision — including responsible device lifecycle and e-waste.",
+    },
+    {
+      title: "People-first change",
+      body: "Adoption is a people problem before it is a technology one. We bring teams along with enablement and clear communication.",
+    },
+  ],
+
   principles: [
     {
       title: "Safe by design",

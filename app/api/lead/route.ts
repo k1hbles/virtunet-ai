@@ -28,6 +28,9 @@ type Payload = {
   startedAt?: number;
   tool?: string;
   summary?: string;
+  /** General enquiries from the contact page. */
+  inquiryType?: string;
+  message?: string;
 };
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -62,6 +65,13 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
+  // the contact form is the one path where the message is the substance.
+  // This has to sit with the other input checks, above the configuration
+  // check — otherwise an unconfigured deploy reports 503 for what is really
+  // a validation error, and the visitor is told the wrong thing.
+  if (body.tool === "contact" && !(body.message ?? "").trim()) {
+    return NextResponse.json({ ok: false, error: "Please tell us what you need." }, { status: 400 });
+  }
 
   const apiKey = process.env.RESEND_API_KEY;
   const inbox = process.env.LEAD_INBOX;
@@ -75,14 +85,19 @@ export async function POST(request: Request) {
     );
   }
 
-  const tool = body.tool === "roi" ? "AI ROI Calculator" : "AI Readiness Check";
+  const source =
+    body.tool === "roi"
+      ? "AI ROI Calculator"
+      : body.tool === "contact"
+        ? `Enquiry${body.inquiryType ? ` — ${body.inquiryType}` : ""}`
+        : "AI Readiness Check";
   const lines = [
-    `Tool: ${tool}`,
+    `Source: ${source}`,
     `Name: ${name}`,
     `Email: ${email}`,
     body.organisation ? `Organisation: ${body.organisation}` : null,
     "",
-    body.summary ?? "",
+    body.message ?? body.summary ?? "",
   ].filter(Boolean);
 
   try {
@@ -92,7 +107,7 @@ export async function POST(request: Request) {
       from,
       to: [inbox],
       replyTo: email,
-      subject: `${tool} — ${name}`,
+      subject: `${source} — ${name}`,
       text: lines.join("\n"),
     });
     if (error) {

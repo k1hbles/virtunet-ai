@@ -100,6 +100,71 @@
     text-transform: uppercase;
     letter-spacing: 0.24em;
   }
+
+  /* ------------------------------------------------------------
+     The filled pill CTA.
+
+     Hover used to fade the button to 90% opacity — retreat, from the
+     one element on the page that should advance. It now lifts, casts a
+     glow in its own colour, and a sheen crosses the face once.
+
+     Both colours come from the call site as custom properties, so the
+     accent pill glows blue and the platinum one silver without this
+     rule knowing anything about tones.
+     ------------------------------------------------------------ */
+  .pill {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pill:hover,
+  .pill:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px -12px var(--pill-glow);
+  }
+
+  /* pressed reads as pressed: the lift collapses rather than deepening */
+  .pill:active {
+    transform: translateY(0) scale(0.985);
+    transition-duration: 90ms;
+  }
+
+  .pill:focus-visible {
+    outline: 2px solid var(--color-platinum);
+    outline-offset: 3px;
+  }
+
+  /* The sheen is decoration with no state to convey, so it is declared
+     only where motion is welcome — under `reduce` the pill still lifts
+     and glows, it simply never gets swept. Negative z-index puts it over
+     the fill and under the label; `isolation` above keeps it from
+     sliding behind the button altogether. */
+  @media (prefers-reduced-motion: no-preference) {
+    .pill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(
+        100deg,
+        transparent 36%,
+        var(--pill-sheen) 50%,
+        transparent 64%
+      );
+      transform: translateX(-135%);
+      transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .pill:hover::after,
+    .pill:focus-visible::after {
+      transform: translateX(135%);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
