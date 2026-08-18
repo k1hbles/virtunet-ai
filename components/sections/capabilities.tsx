@@ -8,14 +8,14 @@ export function Capabilities() {
     <section className="bg-canvas py-24 md:py-36">
       <div className="wrap grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <h2 className="section-title text-balance">{capabilities.title}</h2>
-          <p className="mt-7 max-w-md text-lg leading-8 text-ink-muted">{capabilities.intro}</p>
-          <div className="mt-8">
+          <h2 className="drift section-title text-balance">{capabilities.title}</h2>
+          <p className="reveal mt-7 max-w-md text-lg leading-8 text-ink-muted">{capabilities.intro}</p>
+          <div className="reveal mt-8">
             <TextLink href={capabilities.cta.href}>{capabilities.cta.label}</TextLink>
           </div>
         </div>
 
-        <div className="grid auto-rows-[250px] gap-4 md:grid-cols-2">
+        <div className="reveal-group grid auto-rows-[250px] gap-4 md:grid-cols-2">
           {capabilities.items.map((c) => (
             <a
               key={c.title}

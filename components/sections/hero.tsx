@@ -4,7 +4,7 @@ import { PillButton } from "@/components/ui/pill-button";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[820px] items-start overflow-hidden bg-canvas pt-36 md:min-h-[900px] md:pt-44">
+    <section className="relative flex min-h-[820px] items-start overflow-clip bg-canvas pt-36 md:min-h-[900px] md:pt-44">
       {/*
         The artwork ships in full colour; the platinum reading is applied
         here in CSS, so reverting is a one-line change and the source file

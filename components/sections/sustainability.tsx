@@ -8,26 +8,28 @@ export function Sustainability() {
       <div className="wrap">
         <div className="grid items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h2 className="section-title text-balance">{sustainability.title}</h2>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-ink-muted">{sustainability.intro}</p>
-            <div className="mt-8">
+            <h2 className="drift section-title text-balance">{sustainability.title}</h2>
+            <p className="reveal mt-7 max-w-xl text-lg leading-8 text-ink-muted">{sustainability.intro}</p>
+            <div className="reveal mt-8">
               <TextLink href={sustainability.cta.href} hover="green">
                 {sustainability.cta.label}
               </TextLink>
             </div>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+          {/* clip, not hidden — see ai-workplace: hidden would anchor the image's
+              view() timeline to a box that never scrolls */}
+          <div className="overflow-clip rounded-2xl border border-line bg-surface">
             <Image
               src={sustainability.image.src}
               alt={sustainability.image.alt}
               width={2048}
               height={1143}
-              className="aspect-[16/10] size-full object-cover"
+              className="settle aspect-[16/10] size-full object-cover"
             />
           </div>
         </div>
 
-        <div className="mt-16 grid border-y border-line md:grid-cols-3">
+        <div className="reveal-group mt-16 grid border-y border-line md:grid-cols-3">
           {sustainability.pillars.map((p, i) => (
             <div
               key={p.title}

@@ -7,15 +7,15 @@ export function AiServices() {
       <div className="wrap">
         <div className="grid gap-8 border-b border-line pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <p className="eyebrow text-accent">{aiServices.eyebrow}</p>
-            <h2 className="section-title mt-5 max-w-2xl">{aiServices.title}</h2>
+            <p className="reveal eyebrow text-accent">{aiServices.eyebrow}</p>
+            <h2 className="drift section-title mt-5 max-w-2xl">{aiServices.title}</h2>
           </div>
-          <p className="max-w-2xl text-lg leading-8 text-ink-muted lg:justify-self-end">
+          <p className="reveal max-w-2xl text-lg leading-8 text-ink-muted lg:justify-self-end">
             {aiServices.intro}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="reveal-group grid md:grid-cols-2 lg:grid-cols-3">
           {aiServices.items.map((s, i) => (
             <a
               key={s.title}

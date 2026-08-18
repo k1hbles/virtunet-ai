@@ -155,3 +155,83 @@
 .hero-rise-1 { animation-delay: 0.05s; }
 .hero-rise-2 { animation-delay: 0.14s; }
 .hero-rise-3 { animation-delay: 0.23s; }
+
+/* ============================================================
+   Scroll motion.
+
+   Each element drives its own animation from its own passage
+   through the viewport (`animation-timeline: view()`), so there
+   is no observer, no scroll listener and no JavaScript.
+
+   The guard is the important part. Browsers without scroll-driven
+   animations, and anyone who prefers reduced motion, never match
+   these rules at all — so they never see the hidden start state.
+   They get the finished page, static, with nothing to un-hide.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+
+    @keyframes reveal-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* opacity and transform are split across two animations so the
+       heading can fade on entry while drifting across its whole pass
+       — one timeline each, and neither fights the other for transform */
+    @keyframes title-fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes title-drift {
+      from { transform: translateY(26px); }
+      to   { transform: translateY(-26px); }
+    }
+
+    @keyframes image-settle {
+      from { opacity: 0; transform: scale(1.04); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes rule-wipe {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* Ranges stay inside the `entry` phase on purpose. A range that ends in
+       `cover` needs the page to scroll PAST the element to finish, which the
+       last elements on the page can never do — they would sit permanently
+       part-faded. Ending on `entry` completes as the element comes into view. */
+    .reveal,
+    .reveal-group > * {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 8% entry 72%;
+    }
+
+    /* a row of cards enters together; offset the later columns so the
+       eye reads across rather than everything landing at once */
+    .reveal-group > *:nth-child(3n + 2) { animation-range: entry 16% entry 80%; }
+    .reveal-group > *:nth-child(3n)     { animation-range: entry 24% entry 88%; }
+
+    .drift {
+      animation: title-fade linear both, title-drift linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 5% entry 75%, cover 0% cover 100%;
+    }
+
+    .settle {
+      animation: image-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 88%;
+    }
+
+    .rule-wipe {
+      transform-origin: left center;
+      animation: rule-wipe linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 82%;
+    }
+  }
+}
