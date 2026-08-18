@@ -5,31 +5,29 @@ import { ArrowUpRight } from "lucide-react";
 import { aiServices } from "@/lib/content";
 import { SplitWords } from "@/components/ui/split-words";
 
-/** How much scroll each panel is given, as a fraction of viewport height. */
-const PANEL_VH = 70;
+/** Scroll length of the pinned opening, as a fraction of viewport height. */
+const OPEN_VH = 160;
 
 export function AiServices() {
   const items = aiServices.items;
-  const n = items.length;
 
   /**
-   * Server-renders as "grid". The sequence only takes over once the client
-   * confirms a wide viewport and no reduced-motion preference, so no-JS,
-   * small-screen and reduced-motion visitors all get the plain grid and
-   * never see a half-built pinned stage.
+   * Server-renders as "static". The pin only engages once the client confirms
+   * a wide viewport and no reduced-motion preference, so no-JS, narrow and
+   * reduced-motion visitors get the same content unpinned rather than a
+   * half-built stage.
    */
-  const [mode, setMode] = useState<"grid" | "sequence">("grid");
+  const [mode, setMode] = useState<"static" | "pinned">("static");
 
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const counterRef = useRef<HTMLSpanElement>(null);
-  const railRef = useRef<HTMLSpanElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const wide = window.matchMedia("(min-width: 1024px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const decide = () => setMode(wide.matches && !reduced.matches ? "sequence" : "grid");
+    const decide = () => setMode(wide.matches && !reduced.matches ? "pinned" : "static");
     decide();
     wide.addEventListener("change", decide);
     reduced.addEventListener("change", decide);
@@ -40,7 +38,7 @@ export function AiServices() {
   }, []);
 
   useEffect(() => {
-    if (mode !== "sequence") return;
+    if (mode !== "pinned") return;
     let cancelled = false;
     let revert: (() => void) | null = null;
 
@@ -50,78 +48,46 @@ export function AiServices() {
       if (cancelled || !trackRef.current || !stageRef.current) return;
       gsap.registerPlugin(ScrollTrigger);
 
-      const panels = panelRefs.current.filter(Boolean) as HTMLDivElement[];
-      if (panels.length !== n) return;
-
-      /**
-       * The counter, rail and `inert` state are written straight to the DOM
-       * rather than through React state — this runs on every scrub frame, and
-       * re-rendering nine panels at 60fps would be the one thing that makes
-       * this feel cheap.
-       */
-      const paint = (progress: number) => {
-        const active = Math.round(progress * (n - 1));
-        if (counterRef.current) {
-          counterRef.current.textContent = String(active + 1).padStart(2, "0");
-        }
-        if (railRef.current) {
-          railRef.current.style.transform = `scaleX(${(active + 1) / n})`;
-        }
-        panels.forEach((p, i) => {
-          if (i === active) p.removeAttribute("inert");
-          else p.setAttribute("inert", "");
-        });
-      };
-
       const ctx = gsap.context(() => {
-        gsap.set(panels, { autoAlpha: 0, y: 28 });
-        gsap.set(panels[0], { autoAlpha: 1, y: 0 });
+        const video = videoRef.current;
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: trackRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            pin: stageRef.current,
-            pinSpacing: false,
-            scrub: 0.6,
+        ScrollTrigger.create({
+          trigger: trackRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          pin: stageRef.current,
+          pinSpacing: false,
+          scrub: 0.5,
+          onUpdate: (self) => {
             /**
-             * `inertia: false` matters: with it on, ScrollTrigger projects
-             * momentum past the release point and a single wheel tick can
-             * skip several panels. Off, each gesture settles on the nearest
-             * panel instead of being thrown to the end.
+             * The clip is never played — its playhead is the scroll position.
+             * Guarded on readyState so seeking before metadata lands can't
+             * throw, and on duration because a still-loading video reports 0.
              */
-            snap: {
-              snapTo: 1 / (n - 1),
-              duration: { min: 0.15, max: 0.4 },
-              delay: 0.06,
-              inertia: false,
-              ease: "power2.inOut",
-            },
-            onUpdate: (self) => paint(self.progress),
-            onRefresh: (self) => paint(self.progress),
+            if (video && video.readyState >= 1 && video.duration) {
+              video.currentTime = self.progress * video.duration;
+            }
           },
         });
 
-        /**
-         * Plain `to` tweens off the gsap.set baseline above, deliberately —
-         * `fromTo` inside a scrubbed timeline applies its from-state at
-         * creation rather than at its position on the timeline, which leaves
-         * the panels showing the wrong slide for a given scroll offset.
-         */
-        /**
-         * Asymmetric handoff, not a crossfade. A symmetric fade leaves both
-         * panels at partial opacity through the middle of every transition,
-         * and because this is scrubbed the reader sits inside that state —
-         * two headlines overlapping. The outgoing panel clears by 45% of the
-         * step, the incoming one starts there.
-         */
-        for (let i = 1; i < n; i++) {
-          tl.to(panels[i - 1], { autoAlpha: 0, y: -34, duration: 0.45, ease: "power1.in" }, i - 1)
-            .to(panels[i], { autoAlpha: 1, y: 0, duration: 0.55, ease: "power1.out" }, i - 1 + 0.45);
+        // the backdrop opens up as the stage is entered, then settles
+        if (backdropRef.current) {
+          gsap.fromTo(
+            backdropRef.current,
+            { scale: 1.12, opacity: 0.5 },
+            {
+              scale: 1,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: trackRef.current,
+                start: "top bottom",
+                end: "top top",
+                scrub: 0.6,
+              },
+            },
+          );
         }
-
-        paint(0);
       }, trackRef);
 
       revert = () => ctx.revert();
@@ -131,86 +97,72 @@ export function AiServices() {
       cancelled = true;
       revert?.();
     };
-  }, [mode, n]);
+  }, [mode]);
 
   return (
     <section id="ai-services" data-mode={mode} className="bg-canvas">
-      <div className="wrap pt-24 md:pt-36">
-        <div className="grid gap-8 border-b border-line pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div>
-            <p className="reveal eyebrow text-accent">{aiServices.eyebrow}</p>
-            <h2 className="drift section-title mt-5 max-w-2xl">
+      {/* ---------- cinematic opening ---------- */}
+      <div ref={trackRef} className="ai-open" style={{ "--open-vh": `${OPEN_VH}vh` } as React.CSSProperties}>
+        <div ref={stageRef} className="ai-stage relative flex items-center overflow-clip">
+          <div ref={backdropRef} className="pointer-events-none absolute inset-0">
+            {aiServices.video ? (
+              <video
+                ref={videoRef}
+                src={aiServices.video.src}
+                poster={aiServices.video.poster}
+                muted
+                playsInline
+                preload="auto"
+                aria-hidden
+                className="size-full object-cover"
+              />
+            ) : (
+              /* stands in for the clip, and remains the permanent fallback
+                 for mobile, reduced motion and any load failure */
+              <div
+                className="size-full"
+                style={{
+                  background:
+                    "radial-gradient(46% 42% at 50% 52%, oklch(61% 0.235 260 / 0.20), transparent 68%)," +
+                    "radial-gradient(30% 28% at 68% 38%, oklch(72% 0.19 151 / 0.12), transparent 70%)," +
+                    "radial-gradient(26% 24% at 32% 64%, oklch(84% 0.18 91 / 0.09), transparent 72%)",
+                }}
+              />
+            )}
+          </div>
+
+          {/* keeps the type off the artwork */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(58% 48% at 50% 50%, oklch(0% 0 0 / 0.55), transparent 76%)," +
+                "linear-gradient(to bottom, oklch(0% 0 0) 0%, transparent 22%, transparent 78%, oklch(0% 0 0) 100%)",
+            }}
+          />
+
+          <div className="wrap relative z-10">
+            <p className="eyebrow text-accent">{aiServices.eyebrow}</p>
+            <h2 className="mt-6 max-w-[16ch] text-balance text-[clamp(2.8rem,6.4vw,6rem)] font-medium leading-[0.96] tracking-[-0.045em] text-ink">
               <SplitWords text={aiServices.title} />
             </h2>
-          </div>
-          <p className="reveal max-w-2xl text-lg leading-8 text-ink-muted lg:justify-self-end">
-            {aiServices.intro}
-          </p>
-        </div>
-      </div>
-
-      {/* ---------- pinned sequence ---------- */}
-      <div
-        ref={trackRef}
-        className="ai-sequence hidden"
-        style={{ height: `${n * PANEL_VH}vh` }}
-      >
-        <div ref={stageRef} className="flex h-screen items-center">
-          <div className="wrap w-full">
-            <div className="flex items-baseline justify-between border-b border-line pb-5">
-              <span className="eyebrow text-ink-muted">{aiServices.eyebrow}</span>
-              <span className="font-mono text-sm tabular-nums text-ink-muted">
-                <span ref={counterRef} className="text-ink">01</span>
-                <span className="mx-1.5 opacity-40">/</span>
-                {String(n).padStart(2, "0")}
-              </span>
-            </div>
-
-            <div className="relative mt-10 min-h-[38vh]">
-              {items.map((s, i) => (
-                <div
-                  key={s.title}
-                  ref={(el) => { panelRefs.current[i] = el; }}
-                  className="absolute inset-0"
-                >
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-ink-muted">
-                    {s.kicker}
-                  </p>
-                  <h3 className="mt-6 max-w-[18ch] text-balance text-[clamp(2.6rem,5.4vw,5rem)] font-medium leading-[0.98] tracking-[-0.04em] text-ink">
-                    {s.title}
-                  </h3>
-                  <p className="mt-7 max-w-xl text-lg leading-8 text-ink-muted">{s.body}</p>
-                  <a
-                    href={s.href}
-                    className="group mt-9 inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-accent"
-                  >
-                    Explore this service
-                    <ArrowUpRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 h-px w-full bg-line">
-              <span
-                ref={railRef}
-                className="block h-px origin-left bg-ink transition-none"
-                style={{ transform: "scaleX(0.111)" }}
-              />
-            </div>
+            <p className="reveal mt-8 max-w-2xl text-lg leading-8 text-ink-muted">
+              {aiServices.intro}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ---------- grid fallback ---------- */}
-      <div className="ai-grid wrap pb-24 md:pb-36">
-        <div className="reveal-group grid md:grid-cols-2 lg:grid-cols-3">
+      {/* ---------- the nine, scannable ---------- */}
+      <div className="wrap pb-24 md:pb-32">
+        <div className="reveal-group grid border-t border-line md:grid-cols-2 lg:grid-cols-3">
           {items.map((s, i) => (
             <a
               key={s.title}
               href={s.href}
               className={[
-                "group flex min-h-64 flex-col justify-between border-b border-line py-8 transition-colors hover:bg-surface md:px-7",
+                "group flex min-h-[17rem] flex-col justify-between border-b border-line py-9 transition-colors hover:bg-surface md:px-8",
                 i % 2 === 1 ? "md:border-l" : "",
                 i % 3 === 0 ? "lg:border-l-0" : "lg:border-l",
               ].join(" ")}
@@ -222,14 +174,14 @@ export function AiServices() {
                 <ArrowUpRight
                   size={18}
                   aria-hidden
-                  className="text-ink-muted transition-colors group-hover:text-accent"
+                  className="text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
                 />
               </div>
               <div>
-                <h3 className="text-balance text-2xl font-medium leading-tight tracking-[-0.03em] text-ink">
+                <h3 className="text-balance text-[1.7rem] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
                   {s.title}
                 </h3>
-                <p className="mt-4 max-w-sm text-sm leading-6 text-ink-muted">{s.body}</p>
+                <p className="mt-4 max-w-sm text-[0.95rem] leading-6 text-ink-muted">{s.body}</p>
               </div>
             </a>
           ))}

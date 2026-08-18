@@ -299,9 +299,13 @@ html.lenis body {
 /* AI services: the sequence and the grid are mutually exclusive. The server
    renders `grid`, so no-JS, narrow and reduced-motion visitors keep the plain
    grid and never glimpse a half-built pinned stage. */
-[data-mode="sequence"] .ai-sequence { display: block; }
-[data-mode="sequence"] .ai-grid { display: none; }
-[data-mode="grid"] .ai-sequence { display: none; }
+/* The opening is a tall track with a pinned stage when the client opts in,
+   and an ordinary padded block otherwise. Same markup, same content — only
+   the scroll behaviour differs, so nothing is hidden from anyone. */
+[data-mode="pinned"] .ai-open { height: var(--open-vh); }
+[data-mode="pinned"] .ai-stage { height: 100vh; }
+[data-mode="static"] .ai-open { height: auto; }
+[data-mode="static"] .ai-stage { min-height: 68vh; padding-block: 6rem; }
 
 /* Word masks.
 

@@ -59,6 +59,12 @@ export const partners = [
 
 export const aiServices = {
   eyebrow: "AI services",
+  /**
+   * Scroll-scrubbed clip for the pinned opening. Null until the artwork
+   * exists; the section falls back to its generated backdrop, which is also
+   * what mobile and reduced-motion visitors always see. See VIDEO-BRIEF.md.
+   */
+  video: null as { src: string; poster: string } | null,
   title: "Adopt AI with confidence.",
   intro:
     "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
