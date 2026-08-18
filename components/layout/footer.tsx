@@ -1,4 +1,4 @@
-import { footer, site } from "@/lib/content";
+import { footer, legal, site } from "@/lib/content";
 import { SmartLink } from "@/components/ui/smart-link";
 import { Logo } from "@/components/ui/logo";
 
@@ -32,9 +32,21 @@ export function Footer() {
           ))}
         </div>
 
+        {/* The legal identity belongs here, not the trading name alone: the
+            entity is Virtunet Pty Ltd and the ABN is what identifies it. The
+            privacy policy has to be reachable from every page, because the
+            site collects personal information through the contact form and
+            both tools. */}
         <div className="wrap flex flex-col gap-3 border-t border-line py-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
-          <span>{site.closing}</span>
+          <span>
+            © {new Date().getFullYear()} {legal.entity}. All rights reserved. ABN {legal.abn}.
+          </span>
+          <span className="flex items-center gap-5">
+            <SmartLink href="/privacy-policy" className="transition-colors hover:text-accent">
+              Privacy Policy
+            </SmartLink>
+            <span className="hidden md:inline">{site.closing}</span>
+          </span>
         </div>
       </div>
     </footer>

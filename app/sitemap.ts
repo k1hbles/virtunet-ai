@@ -29,9 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     at("/insights", 0.7),
     ...articles.map((a) => at(`/insights/${a.slug}`, 0.6)),
     at("/about", 0.6),
+    at("/partnerships", 0.6),
     at("/responsible-ai", 0.5),
     at("/tools/ai-readiness-check", 0.8),
     at("/tools/ai-roi-calculator", 0.8),
     at("/contact", 0.8),
+    at("/privacy-policy", 0.3),
   ];
 }

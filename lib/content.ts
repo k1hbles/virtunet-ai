@@ -219,6 +219,17 @@ export const insights = {
   ],
 } as const;
 
+/**
+ * The legal identity, as published in virtu.net's own footer. The trading
+ * name is Virtu; the entity that carries the obligations is Virtunet Pty Ltd,
+ * and the ABN is what identifies it. Australian consumer and privacy
+ * obligations attach to the entity, so both belong on every page.
+ */
+export const legal = {
+  entity: "Virtunet Pty Ltd",
+  abn: "73 134 012 061",
+} as const;
+
 export const footer = {
   cta: { title: "Ready to build what comes next?", label: "Speak to our specialists", href: routes.contact },
   columns: [
@@ -237,6 +248,7 @@ export const footer = {
       heading: "Virtu",
       links: [
         { label: "About", href: routes.about },
+        { label: "Partnerships", href: "/partnerships" },
         { label: "Contact", href: routes.contact },
         { label: "Sustainability", href: routes.sustainability },
         { label: "Careers", href: "https://virtu.net/careers/" },
