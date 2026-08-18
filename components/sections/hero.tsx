@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { hero } from "@/lib/content";
-import { PillButton } from "@/components/ui/pill-button";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 export function Hero() {
   return (
@@ -93,9 +93,7 @@ export function Hero() {
           {hero.subtitle}
         </p>
         <div className="hero-rise hero-rise-3 mt-8">
-          <PillButton href={hero.cta.href} tone="platinum">
-            {hero.cta.label}
-          </PillButton>
+          <LiquidButton href={hero.cta.href}>{hero.cta.label}</LiquidButton>
         </div>
       </div>
     </section>

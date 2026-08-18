@@ -33,6 +33,11 @@
   --color-platinum: oklch(87% 0.008 250);
   --color-platinum-dim: oklch(70% 0.006 250);
 
+  /* the lit face each filled button takes on hover — one step up the
+     lightness axis, same hue, so the button brightens rather than shifts */
+  --color-platinum-lift: oklch(94% 0.006 250);
+  --color-accent-lift: oklch(67% 0.235 260);
+
   /* the original resolved --font-heading/body to the system stack */
   --font-sans: system-ui, sans-serif, -apple-system;
   --font-mono: ui-monospace, monospace;
@@ -102,67 +107,89 @@
   }
 
   /* ------------------------------------------------------------
-     The filled pill CTA.
+     CTA behaviour, shared by every call to action whatever its surface.
 
-     Hover used to fade the button to 90% opacity — retreat, from the
-     one element on the page that should advance. It now lifts, casts a
-     glow in its own colour, and a sheen crosses the face once.
-
-     Both colours come from the call site as custom properties, so the
-     accent pill glows blue and the platinum one silver without this
-     rule knowing anything about tones.
+     Under a quarter of a second and symmetric on the way out. An earlier
+     version swept a sheen across the face for 760ms and, on leaving,
+     crawled it back again: hover feedback that outlives the cursor reads
+     as lag.
      ------------------------------------------------------------ */
-  .pill {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+  .cta {
     transition:
-      transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+      background-color 140ms ease-out,
+      border-color 140ms ease-out,
+      transform 140ms ease-out;
   }
 
-  .pill:hover,
-  .pill:focus-visible {
+  .cta:hover,
+  .cta:focus-visible {
     transform: translateY(-1px);
-    box-shadow: 0 10px 28px -12px var(--pill-glow);
   }
 
   /* pressed reads as pressed: the lift collapses rather than deepening */
-  .pill:active {
+  .cta:active {
     transform: translateY(0) scale(0.985);
-    transition-duration: 90ms;
+    transition-duration: 80ms;
   }
 
-  .pill:focus-visible {
+  .cta:focus-visible {
     outline: 2px solid var(--color-platinum);
     outline-offset: 3px;
   }
 
-  /* The sheen is decoration with no state to convey, so it is declared
-     only where motion is welcome — under `reduce` the pill still lifts
-     and glows, it simply never gets swept. Negative z-index puts it over
-     the fill and under the label; `isolation` above keeps it from
-     sliding behind the button altogether. */
-  @media (prefers-reduced-motion: no-preference) {
-    .pill::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(
-        100deg,
-        transparent 36%,
-        var(--pill-sheen) 50%,
-        transparent 64%
-      );
-      transform: translateX(-135%);
-      transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
+  /* ------------------------------------------------------------
+     The liquid glass CTA.
 
-    .pill:hover::after,
-    .pill:focus-visible::after {
-      transform: translateX(135%);
+     Adapted from the 21st.dev liquid button. Two layers do the work: this
+     one is the lens itself — a rim built from opposed inset highlights, so
+     the top-left and bottom-right edges catch light the way a thick piece
+     of glass does — and `.liquid-refraction` below bends what is behind it.
+
+     The plain blur here is deliberately the base declaration rather than
+     part of the refraction layer. Where the SVG backdrop filter is not
+     supported (Safari does not take url() in backdrop-filter) the button
+     still frosts; it just stops rippling.
+     ------------------------------------------------------------ */
+  .liquid {
+    position: relative;
+    isolation: isolate;
+    color: var(--color-ink);
+    /* a body of its own, so the button is still a button on the rare
+       browser with no backdrop filter at all */
+    background-color: oklch(100% 0 0 / 0.04);
+    backdrop-filter: blur(10px) saturate(150%);
+    box-shadow:
+      inset 3px 3px 0.5px -3.5px oklch(100% 0 0 / 0.5),
+      inset -3px -3px 0.5px -3.5px oklch(100% 0 0 / 0.5),
+      inset 1px 1px 1px -0.5px oklch(100% 0 0 / 0.35),
+      inset -1px -1px 1px -0.5px oklch(100% 0 0 / 0.35),
+      inset 0 0 6px 6px oklch(100% 0 0 / 0.1),
+      inset 0 0 2px 2px oklch(100% 0 0 / 0.06),
+      0 2px 6px oklch(0% 0 0 / 0.35),
+      0 12px 32px -14px oklch(0% 0 0 / 0.9);
+  }
+
+  .liquid:hover,
+  .liquid:focus-visible {
+    background-color: oklch(100% 0 0 / 0.08);
+  }
+
+  /* The refraction. Sits under the label and over the button's own ground,
+     and is confined to pointer-fine wide viewports: displacing live
+     backdrop pixels is the most expensive thing on this page, and the hero
+     already drives Lenis, a pinned scrub and a seeking video on the same
+     frames. Phones get the frost without the ripple. */
+  .liquid-refraction {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    .liquid-refraction {
+      backdrop-filter: url("#liquid-glass");
     }
   }
 }
