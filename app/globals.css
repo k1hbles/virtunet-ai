@@ -451,3 +451,19 @@ html.lenis body {
   transform-origin: 50% 45%;
   animation: page-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
+
+/* The pinned stage's layout has to follow the same signal as its motion.
+
+   It used to come from the `lg:` breakpoint while the crossfade came from
+   `data-mode`, and those two disagree: a desktop reader with reduced motion
+   matched `lg` and got absolutely positioned beats, but never got the fade
+   that leaves one of them showing, so all three stacked on top of each
+   other. Both now key off `data-mode`. */
+[data-mode="pinned"] .ai-beats { position: absolute; inset-inline: 0; top: 3rem; }
+[data-mode="pinned"] .ai-beat { position: absolute; inset-inline: 0; top: 0; }
+/* Until the GSAP import resolves and writes its inline styles, only the
+   first beat shows — so a slow import cannot flash the whole stack either. */
+[data-mode="pinned"] .ai-beat:not(:first-child) { opacity: 0; visibility: hidden; }
+[data-mode="pinned"] .ai-rail { position: absolute; inset-inline: 0; bottom: 0; margin-top: 0; }
+/* The rail reports scrub progress, so it means nothing when nothing scrubs. */
+[data-mode="static"] .ai-rail { display: none; }

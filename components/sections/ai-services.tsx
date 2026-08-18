@@ -211,12 +211,12 @@ export function AiServices() {
             <div className="relative order-2 lg:order-1 lg:min-h-[26rem]">
               <p className="eyebrow mb-7 text-accent">{aiServices.eyebrow}</p>
 
-              <div className="relative lg:absolute lg:inset-x-0 lg:top-12">
+              <div className="ai-beats relative">
                 {beats.map((beat, i) => (
                   <div
                     key={beat.title}
                     ref={(el) => { beatRefs.current[i] = el; }}
-                    className="ai-beat lg:absolute lg:inset-x-0 lg:top-0"
+                    className="ai-beat"
                   >
                     <h2 className="max-w-[15ch] text-balance text-[clamp(2.2rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.04em] text-ink">
                       {i === 0 ? <SplitWords text={beat.title} /> : beat.title}
@@ -226,7 +226,7 @@ export function AiServices() {
                 ))}
               </div>
 
-              <div className="ai-rail mt-10 hidden h-px w-full bg-line lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0 lg:block">
+              <div className="ai-rail mt-10 h-px w-full bg-line">
                 <span ref={railRef} className="block h-px origin-left bg-ink" style={{ transform: "scaleX(0)" }} />
               </div>
             </div>
