@@ -66,27 +66,37 @@ export const hero = {
  * `aspect` is the mark's true width over height, measured after each viewBox
  * was cropped to its artwork — the marks previously sat letterboxed inside a
  * 24x24 square, which is why an emblem and a wordmark rendered at wildly
- * different optical sizes. `scale` is optical rather than arithmetic: a
- * wordmark set to an emblem's height reads as much larger than it, so the
- * wordmarks are held back until the row looks even.
+ * different optical sizes.
  *
- * Lenovo is a special case: its mark is the wordmark inside a solid box, so
- * on black the box inverted into a white slab. The artwork here is the same
- * official path with the box masked away, leaving the letterforms alone.
+ * `scale` is a fraction of the row height, and it is optical rather than
+ * arithmetic. Equal heights do not look equal, and neither does equal ink:
+ * measured, these marks span 57%–163% of the mean ink area, so equalising
+ * that would have pushed Dell's thin ring to 58px beside HP's 42px disc.
+ * Three rules produced the numbers instead:
  *
- * Google is the wordmark rather than the 'G' glyph, recoloured to white from
- * the official artwork. Its `scale` is set against cap height rather than
- * overall height, because the descender on the 'g' makes the mark taller
- * than it looks next to marks that have none.
+ *   1. The two circular emblems share a diameter, with the outline mark
+ *      (Dell) a few percent larger than the solid one (HP), because an
+ *      outline reads smaller than a filled shape of the same size.
+ *   2. Solid geometric marks are held back — Microsoft's squares and Apple's
+ *      silhouette carry more ink per pixel of height than anything else here.
+ *   3. Wordmarks are matched on cap height, not overall height. Lenovo has no
+ *      descender, so its full height is its cap height; Google's capital G
+ *      measures 0.777 of its mark, so it is set taller to land on the same
+ *      cap. Both come out at 20.2px on a 44px row.
+ *
+ * Lenovo is a special case of artwork rather than sizing: its mark is the
+ * wordmark inside a solid box, which inverted into a white slab on black.
+ * The file is the same official path with the box masked away. Google is the
+ * official wordmark recoloured white, not the 'G' glyph.
  */
 export const partners = [
-  { name: "Microsoft", tier: "Silver Partner", logo: "/logos/microsoft.svg", aspect: 1, scale: 0.86 },
-  { name: "HP", tier: "Power Partner", logo: "/logos/hp.svg", aspect: 1, scale: 1 },
-  { name: "Lenovo", tier: "Platinum Partner", logo: "/logos/lenovo.svg", aspect: 4.828, scale: 0.45 },
+  { name: "Microsoft", tier: "Silver Partner", logo: "/logos/microsoft.svg", aspect: 1, scale: 0.8 },
+  { name: "HP", tier: "Power Partner", logo: "/logos/hp.svg", aspect: 1, scale: 0.95 },
+  { name: "Lenovo", tier: "Platinum Partner", logo: "/logos/lenovo.svg", aspect: 4.828, scale: 0.46 },
   { name: "Dell", tier: "Gold Partner", logo: "/logos/dell.svg", aspect: 1, scale: 1 },
-  { name: "Cisco", tier: "Select Partner", logo: "/logos/cisco.svg", aspect: 1.897, scale: 0.74 },
-  { name: "Apple", tier: "Authorised Reseller", logo: "/logos/apple.svg", aspect: 0.815, scale: 0.94 },
-  { name: "Google", tier: "Partner", logo: "/logos/google.svg", aspect: 3.039, scale: 0.6 },
+  { name: "Cisco", tier: "Select Partner", logo: "/logos/cisco.svg", aspect: 1.897, scale: 0.76 },
+  { name: "Apple", tier: "Authorised Reseller", logo: "/logos/apple.svg", aspect: 0.815, scale: 0.86 },
+  { name: "Google", tier: "Partner", logo: "/logos/google.svg", aspect: 3.039, scale: 0.59 },
 ] as const;
 
 export const aiServices = {
