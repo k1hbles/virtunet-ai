@@ -6,6 +6,7 @@ import { Capabilities } from "@/components/sections/capabilities";
 import { AiWorkplace } from "@/components/sections/ai-workplace";
 import { Sustainability } from "@/components/sections/sustainability";
 import { Insights } from "@/components/sections/insights";
+import { CtaBand } from "@/components/page/cta-band";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <AiWorkplace />
         <Sustainability />
         <Insights />
+      <CtaBand title="Ready to build what comes next?" />
     </>
   );
 }
