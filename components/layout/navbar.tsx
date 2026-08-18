@@ -37,7 +37,7 @@ export function Navbar() {
         {/* the link already carries the accessible name, so the image is
             decorative here and must not announce "Virtu" a second time */}
         <SmartLink href={routes.home} className="inline-flex items-center" aria-label="Virtu home">
-          <Logo height={26} alt="" priority />
+          <Logo height={26} tone="white" alt="" priority />
         </SmartLink>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">

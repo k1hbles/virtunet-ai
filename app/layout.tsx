@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/content";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { PageTransition } from "@/components/layout/page-transition";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
@@ -51,7 +52,9 @@ export default function RootLayout({
       <body>
         <div className="min-h-screen overflow-x-clip bg-canvas">
           <Navbar />
-          <main>{children}</main>
+          <main>
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <SmoothScroll />
         </div>
