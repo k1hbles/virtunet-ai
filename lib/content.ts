@@ -46,7 +46,7 @@ export const navLinks = [
 export const hero = {
   title: "The technology partner for an AI-native future.",
   subtitle:
-    "From procurement and licensing to deployment and lifecycle, Virtu makes modern technology work for your organisation.",
+    "Procurement, licensing, deployment and lifecycle, handled by one Australian partner — and now built to carry the AI running on top of all of it.",
   cta: { label: "Speak to our specialists", href: routes.contact },
   image: {
     src: "/img/hero-ai-edge.webp",
@@ -84,23 +84,24 @@ export const aiServices = {
   beats: [
     {
       title: "Adopt AI with confidence.",
-      body: "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
+      body: "Strategy, security and implementation from the same team — so what gets assessed is what gets built, and what gets built is what gets supported.",
     },
     {
       title: "Every layer accounted for.",
       body: "Data, security, skills and process are examined before anything ships. You see what is inside the stack, not just what runs on top of it.",
     },
     {
-      title: "Nine services, one delivery model.",
+      title: "One team, one delivery model.",
       body: "Strategy through to enablement, delivered by the people who scoped it. Start anywhere, stop after any stage.",
     },
   ],
   title: "Adopt AI with confidence.",
   intro:
-    "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
+    "Strategy, security and implementation from the same team — so what gets assessed is what gets built, and what gets built is what gets supported.",
   /**
-   * `group` clusters the nine into three, so the section reads as three areas
-   * rather than nine equal cards. The grouping is editorial, not taken from
+   * `group` clusters these nine into three, so the section reads as three areas
+   * rather than nine equal cards. It shows a selection, not the full thirteen
+   * on /services, which is why no copy here commits to a number. The grouping is editorial, not taken from
    * virtunet.ai — change the strings here and the section regroups itself.
    */
   groupOrder: ["Assess & govern", "Build & automate", "Secure & operate"],
@@ -135,7 +136,7 @@ export const capabilities: {
 } = {
   title: "Technology, made to work.",
   intro:
-    "One partner across the technology lifecycle—from choosing the right products and licences to deploying, securing and sustaining them.",
+    "The decisions compound. What gets bought shapes what can be deployed, what can be secured, and what it costs to replace.",
   cta: { label: "Explore all solutions", href: routes.solutions },
   /** `feature: true` spans the full grid width and carries artwork. */
   items: [
@@ -149,7 +150,7 @@ export const capabilities: {
 
 export const aiWorkplace = {
   title: "Prepare your workplace for AI.",
-  body: "AI readiness is more than a device upgrade. Virtu helps align the products, licences, cloud, security and workplace foundations your people need to move forward with confidence.",
+  body: "AI readiness is more than a device refresh. The licences, cloud, security and workplace foundations underneath have to be ready too — that is usually where a rollout stalls.",
   cta: { label: "Explore digital workplace", href: routes.workplace },
   image: {
     src: "/img/ai-ready-workplace.webp",
@@ -160,7 +161,7 @@ export const aiWorkplace = {
 export const sustainability = {
   title: "Progress that lasts beyond deployment.",
   intro:
-    "Virtu brings sustainability into the technology lifecycle—from product selection and resilient infrastructure to responsible end-of-life asset management.",
+    "Sustainability is settled at procurement, not at disposal — in what gets chosen, how long it is kept running, and what happens to it after that.",
   cta: { label: "Our sustainability commitment", href: routes.sustainability },
   image: {
     src: "/img/sustainable-lifecycle.webp",
