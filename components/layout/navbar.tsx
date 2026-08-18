@@ -53,7 +53,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <PillButton href={routes.contact} size="sm" icon="up-right">
+          <PillButton href={routes.contact} size="sm" icon="up-right" tone="platinum">
             Speak to our specialists
           </PillButton>
         </div>
@@ -90,7 +90,7 @@ export function Navbar() {
           ))}
         </div>
         <div className="mt-7">
-          <PillButton href={routes.contact} icon="up-right">
+          <PillButton href={routes.contact} icon="up-right" tone="platinum">
             Speak to our specialists
           </PillButton>
         </div>

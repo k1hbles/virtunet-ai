@@ -1,23 +1,34 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-/** The filled accent pill used by the navbar, hero and footer CTAs. */
+type Tone = "accent" | "platinum";
+
+const TONE: Record<Tone, string> = {
+  accent: "bg-accent text-on-accent",
+  platinum: "bg-platinum text-canvas",
+};
+
+/** The filled pill used by the navbar, hero and footer CTAs. */
 export function PillButton({
   href,
   children,
   size = "md",
   icon = "right",
+  tone = "accent",
+  className = "",
 }: {
   href: string;
   children: React.ReactNode;
   size?: "sm" | "md";
   icon?: "right" | "up-right";
+  tone?: Tone;
+  className?: string;
 }) {
   const Icon = icon === "right" ? ArrowRight : ArrowUpRight;
   const dims = size === "sm" ? "px-5 py-2.5 text-sm" : "px-7 py-3.5 text-base";
   return (
     <a
       href={href}
-      className={`inline-flex shrink-0 items-center gap-2 rounded-full bg-accent font-medium text-on-accent transition-opacity hover:opacity-90 ${dims}`}
+      className={`inline-flex shrink-0 items-center gap-2 rounded-full font-medium transition-opacity hover:opacity-90 ${TONE[tone]} ${dims} ${className}`}
     >
       {children}
       <Icon size={size === "sm" ? 15 : 17} aria-hidden />

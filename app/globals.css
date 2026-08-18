@@ -29,6 +29,10 @@
   --color-accent-green: oklch(72% 0.19 151);
   --color-on-accent: oklch(100% 0 0);
 
+  /* platinum: the cool silver the hero is built on */
+  --color-platinum: oklch(87% 0.008 250);
+  --color-platinum-dim: oklch(70% 0.006 250);
+
   /* the original resolved --font-heading/body to the system stack */
   --font-sans: system-ui, sans-serif, -apple-system;
   --font-mono: ui-monospace, monospace;
@@ -101,6 +105,53 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   Hero motion.
+
+   Plain keyframes rather than a motion library, so the hero
+   stays a server component and ships no extra JavaScript.
+   Every animation uses `both` fill, so the reduced-motion rule
+   above collapses each one onto its finished state instead of
+   leaving an element stuck invisible.
+   ============================================================ */
+@keyframes hero-image-in {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 0.5; transform: scale(1); }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-wash-drift {
+  0%, 100% { opacity: 0.55; transform: translate3d(0, 0, 0) scale(1); }
+  50%      { opacity: 0.85; transform: translate3d(0, -1.2%, 0) scale(1.03); }
+}
+
+.hero-image {
+  animation: hero-image-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-wash {
+  /* `both` matters here: without a fill mode the reduced-motion rule ends the
+     animation and drops the wash back to its base opacity of 1, brighter than
+     any frame of the drift itself. With it, the wash rests at the 100% stop. */
+  animation: hero-wash-drift 18s ease-in-out infinite both;
+  will-change: opacity, transform;
+}
+
+.hero-rise {
+  animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-rise-1 { animation-delay: 0.05s; }
+.hero-rise-2 { animation-delay: 0.14s; }
+.hero-rise-3 { animation-delay: 0.23s; }
