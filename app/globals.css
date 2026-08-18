@@ -302,10 +302,13 @@ html.lenis body {
 /* The opening is a tall track with a pinned stage when the client opts in,
    and an ordinary padded block otherwise. Same markup, same content — only
    the scroll behaviour differs, so nothing is hidden from anyone. */
-[data-mode="pinned"] .ai-open { height: var(--open-vh); }
+[data-mode="pinned"] .ai-track { height: var(--stage-vh); }
 [data-mode="pinned"] .ai-stage { height: 100vh; }
-[data-mode="static"] .ai-open { height: auto; }
-[data-mode="static"] .ai-stage { min-height: 68vh; padding-block: 6rem; }
+[data-mode="static"] .ai-track { height: auto; }
+[data-mode="static"] .ai-stage { padding-block: 5rem; }
+/* unpinned, the beats read as ordinary consecutive prose rather than a
+   stack of absolutely-positioned panels nobody can scroll between */
+[data-mode="static"] .ai-beat + .ai-beat { margin-top: 3rem; }
 
 /* Word masks.
 

@@ -5,24 +5,49 @@ import { ArrowUpRight } from "lucide-react";
 import { aiServices } from "@/lib/content";
 import { SplitWords } from "@/components/ui/split-words";
 
-/** Scroll length of the pinned opening, as a fraction of viewport height. */
-const OPEN_VH = 160;
+/** Scroll length of the pinned stage, as a fraction of viewport height. */
+const STAGE_VH = 300;
+/** Share of each beat's slice spent crossfading rather than holding still. */
+const FADE = 0.14;
 
 export function AiServices() {
   const items = aiServices.items;
+  const beats = aiServices.beats;
 
   /**
-   * Server-renders as "static". The pin only engages once the client confirms
-   * a wide viewport and no reduced-motion preference, so no-JS, narrow and
-   * reduced-motion visitors get the same content unpinned rather than a
-   * half-built stage.
+   * Server-renders "static": video visible, all beats stacked as ordinary
+   * prose, nothing pinned. The scrubbed stage only engages once the client
+   * confirms a wide viewport and no reduced-motion preference.
    */
   const [mode, setMode] = useState<"static" | "pinned">("static");
 
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const backdropRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const beatRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const railRef = useRef<HTMLSpanElement>(null);
+
+  /**
+   * The clip is 3MB — the heaviest thing on the page. Hold it off the initial
+   * load and fetch it only once the section is within a couple of viewports,
+   * which is far enough ahead that it is buffered before anyone reaches it.
+   */
+  useEffect(() => {
+    const el = trackRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        video.preload = "auto";
+        video.load();
+        io.disconnect();
+      },
+      { rootMargin: "200% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const wide = window.matchMedia("(min-width: 1024px)");
@@ -48,8 +73,21 @@ export function AiServices() {
       if (cancelled || !trackRef.current || !stageRef.current) return;
       gsap.registerPlugin(ScrollTrigger);
 
+      const video = videoRef.current;
+      const panels = beatRefs.current.filter(Boolean) as HTMLDivElement[];
+      const n = beats.length;
+
+      /**
+       * Safari and iOS will not render a seeked frame until the element has
+       * decoded at least once, so prime it with a muted play/pause. The catch
+       * is required: autoplay rejection is expected and harmless here.
+       */
+      if (video) {
+        video.play().then(() => video.pause()).catch(() => {});
+      }
+
       const ctx = gsap.context(() => {
-        const video = videoRef.current;
+        gsap.set(panels.slice(1), { autoAlpha: 0, y: 24 });
 
         ScrollTrigger.create({
           trigger: trackRef.current,
@@ -57,37 +95,39 @@ export function AiServices() {
           end: "bottom bottom",
           pin: stageRef.current,
           pinSpacing: false,
-          scrub: 0.5,
+          scrub: 0.4,
           onUpdate: (self) => {
-            /**
-             * The clip is never played — its playhead is the scroll position.
-             * Guarded on readyState so seeking before metadata lands can't
-             * throw, and on duration because a still-loading video reports 0.
-             */
+            const p = self.progress;
+
+            // the clip's playhead is the scroll position
             if (video && video.readyState >= 1 && video.duration) {
-              video.currentTime = self.progress * video.duration;
+              video.currentTime = Math.min(p * video.duration, video.duration - 0.001);
             }
+
+            if (railRef.current) railRef.current.style.transform = `scaleX(${p})`;
+
+            /**
+             * Each beat owns a slice and holds still through most of it,
+             * crossfading only in the FADE margins. Dwell is the point — the
+             * previous build left the reader inside a permanent dissolve.
+             */
+            panels.forEach((panel, i) => {
+              const start = i / n;
+              const end = (i + 1) / n;
+              const fade = (end - start) * FADE;
+              let o = 0;
+              if (p >= start - fade && p <= end + fade) {
+                if (p < start) o = (p - (start - fade)) / fade;
+                else if (p > end) o = 1 - (p - end) / fade;
+                else o = 1;
+              }
+              o = Math.max(0, Math.min(1, o));
+              gsap.set(panel, { autoAlpha: o, y: (1 - o) * 24 });
+              if (o > 0.5) panel.removeAttribute("inert");
+              else panel.setAttribute("inert", "");
+            });
           },
         });
-
-        // the backdrop opens up as the stage is entered, then settles
-        if (backdropRef.current) {
-          gsap.fromTo(
-            backdropRef.current,
-            { scale: 1.12, opacity: 0.5 },
-            {
-              scale: 1,
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: trackRef.current,
-                start: "top bottom",
-                end: "top top",
-                scrub: 0.6,
-              },
-            },
-          );
-        }
       }, trackRef);
 
       revert = () => ctx.revert();
@@ -97,64 +137,55 @@ export function AiServices() {
       cancelled = true;
       revert?.();
     };
-  }, [mode]);
+  }, [mode, beats.length]);
 
   return (
     <section id="ai-services" data-mode={mode} className="bg-canvas">
-      {/* ---------- cinematic opening ---------- */}
-      <div ref={trackRef} className="ai-open" style={{ "--open-vh": `${OPEN_VH}vh` } as React.CSSProperties}>
-        <div ref={stageRef} className="ai-stage relative flex items-center overflow-clip">
-          <div ref={backdropRef} className="pointer-events-none absolute inset-0">
-            {aiServices.video ? (
+      <div ref={trackRef} className="ai-track" style={{ "--stage-vh": `${STAGE_VH}vh` } as React.CSSProperties}>
+        <div ref={stageRef} className="ai-stage flex items-center overflow-clip">
+          <div className="wrap grid w-full items-center gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+            {/* ---- copy beats ---- */}
+            <div className="relative order-2 lg:order-1 lg:min-h-[26rem]">
+              <p className="eyebrow mb-7 text-accent">{aiServices.eyebrow}</p>
+
+              <div className="relative lg:absolute lg:inset-x-0 lg:top-12">
+                {beats.map((beat, i) => (
+                  <div
+                    key={beat.title}
+                    ref={(el) => { beatRefs.current[i] = el; }}
+                    className="ai-beat lg:absolute lg:inset-x-0 lg:top-0"
+                  >
+                    <h2 className="max-w-[15ch] text-balance text-[clamp(2.2rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.04em] text-ink">
+                      {i === 0 ? <SplitWords text={beat.title} /> : beat.title}
+                    </h2>
+                    <p className="mt-6 max-w-lg text-[1.05rem] leading-7 text-ink-muted">{beat.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="ai-rail mt-10 hidden h-px w-full bg-line lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0 lg:block">
+                <span ref={railRef} className="block h-px origin-left bg-ink" style={{ transform: "scaleX(0)" }} />
+              </div>
+            </div>
+
+            {/* ---- the clip ---- */}
+            <div className="order-1 lg:order-2 lg:scale-[1.12]">
               <video
                 ref={videoRef}
                 src={aiServices.video.src}
                 poster={aiServices.video.poster}
                 muted
                 playsInline
-                preload="auto"
-                aria-hidden
-                className="size-full object-cover"
+                preload="metadata"
+                aria-label={aiServices.video.alt}
+                className="w-full"
               />
-            ) : (
-              /* stands in for the clip, and remains the permanent fallback
-                 for mobile, reduced motion and any load failure */
-              <div
-                className="size-full"
-                style={{
-                  background:
-                    "radial-gradient(46% 42% at 50% 52%, oklch(61% 0.235 260 / 0.20), transparent 68%)," +
-                    "radial-gradient(30% 28% at 68% 38%, oklch(72% 0.19 151 / 0.12), transparent 70%)," +
-                    "radial-gradient(26% 24% at 32% 64%, oklch(84% 0.18 91 / 0.09), transparent 72%)",
-                }}
-              />
-            )}
-          </div>
-
-          {/* keeps the type off the artwork */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(58% 48% at 50% 50%, oklch(0% 0 0 / 0.55), transparent 76%)," +
-                "linear-gradient(to bottom, oklch(0% 0 0) 0%, transparent 22%, transparent 78%, oklch(0% 0 0) 100%)",
-            }}
-          />
-
-          <div className="wrap relative z-10">
-            <p className="eyebrow text-accent">{aiServices.eyebrow}</p>
-            <h2 className="mt-6 max-w-[16ch] text-balance text-[clamp(2.8rem,6.4vw,6rem)] font-medium leading-[0.96] tracking-[-0.045em] text-ink">
-              <SplitWords text={aiServices.title} />
-            </h2>
-            <p className="reveal mt-8 max-w-2xl text-lg leading-8 text-ink-muted">
-              {aiServices.intro}
-            </p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ---------- the nine, scannable ---------- */}
+      {/* ---- the nine, scannable ---- */}
       <div className="wrap pb-24 md:pb-32">
         <div className="reveal-group grid border-t border-line md:grid-cols-2 lg:grid-cols-3">
           {items.map((s, i) => (

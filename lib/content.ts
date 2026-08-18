@@ -60,11 +60,33 @@ export const partners = [
 export const aiServices = {
   eyebrow: "AI services",
   /**
-   * Scroll-scrubbed clip for the pinned opening. Null until the artwork
-   * exists; the section falls back to its generated backdrop, which is also
-   * what mobile and reduced-motion visitors always see. See VIDEO-BRIEF.md.
+   * Scroll-scrubbed clip for the pinned stage: a sealed chassis that opens
+   * into its internals as the reader scrolls. Re-encoded with every frame a
+   * keyframe so arbitrary seeks are instant. See VIDEO-BRIEF.md.
    */
-  video: null as { src: string; poster: string } | null,
+  video: {
+    src: "/video/ai-stack.mp4",
+    poster: "/video/ai-stack-poster.jpg",
+    alt: "An AI compute chassis opening to reveal its internal architecture",
+  },
+  /**
+   * Copy beats mapped onto the clip's arc. Each holds for most of its third
+   * of the scroll and crossfades only in the gaps, so there is time to read.
+   */
+  beats: [
+    {
+      title: "Adopt AI with confidence.",
+      body: "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
+    },
+    {
+      title: "Every layer accounted for.",
+      body: "Data, security, skills and process are examined before anything ships. You see what is inside the stack, not just what runs on top of it.",
+    },
+    {
+      title: "Nine services, one delivery model.",
+      body: "Strategy through to enablement, delivered by the people who scoped it. Start anywhere, stop after any stage.",
+    },
+  ],
   title: "Adopt AI with confidence.",
   intro:
     "From first assessment to governed AI agents, Virtu brings together strategy, security and hands-on implementation to turn AI ambition into working outcomes.",
