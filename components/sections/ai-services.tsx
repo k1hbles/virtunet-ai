@@ -28,25 +28,51 @@ export function AiServices() {
   const railRef = useRef<HTMLSpanElement>(null);
 
   /**
-   * The clip is 3MB — the heaviest thing on the page. Hold it off the initial
-   * load and fetch it only once the section is within a couple of viewports,
-   * which is far enough ahead that it is buffered before anyone reaches it.
+   * The clip is the heaviest asset on the site. The section sits only ~1,400px
+   * down, so proximity alone fires immediately and the video races the hero
+   * for bandwidth. Waiting for the load event first lets the fonts, hero image
+   * and JS finish, then fetches during idle — still far enough ahead of the
+   * reader that it is buffered before they arrive.
    */
   useEffect(() => {
     const el = trackRef.current;
     const video = videoRef.current;
     if (!el || !video) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((e) => e.isIntersecting)) return;
-        video.preload = "auto";
-        video.load();
-        io.disconnect();
-      },
-      { rootMargin: "200% 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+
+    let io: IntersectionObserver | null = null;
+    const begin = () => {
+      io = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          /* Chrome begins buffering as soon as a src attribute exists,
+             whatever `preload` says — so the src is withheld until here
+             rather than merely hinted at. */
+          video.src = aiServices.video.src;
+          video.preload = "auto";
+          video.load();
+          io?.disconnect();
+        },
+        { rootMargin: "150% 0px" },
+      );
+      io.observe(el);
+    };
+
+    const afterLoad = () => {
+      if ("requestIdleCallback" in window) {
+        (window as Window & { requestIdleCallback: (cb: () => void, o?: { timeout: number }) => void })
+          .requestIdleCallback(begin, { timeout: 2000 });
+      } else {
+        setTimeout(begin, 400);
+      }
+    };
+
+    if (document.readyState === "complete") afterLoad();
+    else window.addEventListener("load", afterLoad, { once: true });
+
+    return () => {
+      io?.disconnect();
+      window.removeEventListener("load", afterLoad);
+    };
   }, []);
 
   useEffect(() => {
@@ -172,7 +198,6 @@ export function AiServices() {
             <div className="order-1 lg:order-2 lg:scale-[1.12]">
               <video
                 ref={videoRef}
-                src={aiServices.video.src}
                 poster={aiServices.video.poster}
                 muted
                 playsInline
