@@ -103,60 +103,97 @@ export function AiServices() {
       const panels = beatRefs.current.filter(Boolean) as HTMLDivElement[];
       const n = beats.length;
 
-      /**
-       * Safari and iOS will not render a seeked frame until the element has
-       * decoded at least once, so prime it with a muted play/pause. The catch
-       * is required: autoplay rejection is expected and harmless here.
-       */
-      if (video) {
-        video.play().then(() => video.pause()).catch(() => {});
-      }
+      let unprime: (() => void) | null = null;
 
       const ctx = gsap.context(() => {
         gsap.set(panels.slice(1), { autoAlpha: 0, y: 24 });
 
-        ScrollTrigger.create({
+        let progress = 0;
+
+        /**
+         * Paints the whole stage for a given progress. Separate from onUpdate
+         * because the stage also has to be painted when nothing has scrolled:
+         * on build, on refresh, and when the clip finally decodes.
+         */
+        const render = (p: number) => {
+          progress = p;
+
+          // the clip's playhead is the scroll position
+          if (video && video.readyState >= 1 && video.duration) {
+            video.currentTime = Math.min(p * video.duration, video.duration - 0.001);
+          }
+
+          if (railRef.current) railRef.current.style.transform = `scaleX(${p})`;
+
+          /**
+           * Each beat owns a slice and holds still through most of it,
+           * crossfading only in the FADE margins. Dwell is the point — the
+           * previous build left the reader inside a permanent dissolve.
+           */
+          panels.forEach((panel, i) => {
+            const start = i / n;
+            const end = (i + 1) / n;
+            const fade = (end - start) * FADE;
+            let o = 0;
+            if (p >= start - fade && p <= end + fade) {
+              if (p < start) o = (p - (start - fade)) / fade;
+              else if (p > end) o = 1 - (p - end) / fade;
+              else o = 1;
+            }
+            o = Math.max(0, Math.min(1, o));
+            gsap.set(panel, { autoAlpha: o, y: (1 - o) * 24 });
+            if (o > 0.5) panel.removeAttribute("inert");
+            else panel.setAttribute("inert", "");
+          });
+        };
+
+        const st = ScrollTrigger.create({
           trigger: trackRef.current,
           start: "top top",
           end: "bottom bottom",
           pin: stageRef.current,
           pinSpacing: false,
           scrub: 0.4,
-          onUpdate: (self) => {
-            const p = self.progress;
-
-            // the clip's playhead is the scroll position
-            if (video && video.readyState >= 1 && video.duration) {
-              video.currentTime = Math.min(p * video.duration, video.duration - 0.001);
-            }
-
-            if (railRef.current) railRef.current.style.transform = `scaleX(${p})`;
-
-            /**
-             * Each beat owns a slice and holds still through most of it,
-             * crossfading only in the FADE margins. Dwell is the point — the
-             * previous build left the reader inside a permanent dissolve.
-             */
-            panels.forEach((panel, i) => {
-              const start = i / n;
-              const end = (i + 1) / n;
-              const fade = (end - start) * FADE;
-              let o = 0;
-              if (p >= start - fade && p <= end + fade) {
-                if (p < start) o = (p - (start - fade)) / fade;
-                else if (p > end) o = 1 - (p - end) / fade;
-                else o = 1;
-              }
-              o = Math.max(0, Math.min(1, o));
-              gsap.set(panel, { autoAlpha: o, y: (1 - o) * 24 });
-              if (o > 0.5) panel.removeAttribute("inert");
-              else panel.setAttribute("inert", "");
-            });
-          },
+          onUpdate: (self) => render(self.progress),
+          /* A reload restores the scroll position, but onUpdate does not fire
+             until the reader moves. Painting on every refresh keeps the stage
+             honest about where the page already is. */
+          onRefresh: (self) => render(self.progress),
         });
+
+        render(st.progress);
+
+        /**
+         * The clip is fetched long after the stage is built (see the loader
+         * above), so until it has decoded a frame the element is still showing
+         * its poster — at a scroll position that has nothing to do with it.
+         * Seek it as soon as there is a frame to seek to.
+         *
+         * The muted play/pause is the prime: Safari and iOS will not render a
+         * seeked frame until the element has decoded at least once. It has to
+         * happen here rather than at import time, because back then the clip
+         * had no src yet and the call rejected on every browser. The catch is
+         * still required — autoplay rejection is expected and harmless — and
+         * the seek runs either way, since play() leaves the playhead adrift.
+         */
+        if (video) {
+          const prime = () => {
+            video
+              .play()
+              .then(() => video.pause())
+              .catch(() => {})
+              .finally(() => render(progress));
+          };
+          if (video.readyState >= 2) prime();
+          else video.addEventListener("loadeddata", prime, { once: true });
+          unprime = () => video.removeEventListener("loadeddata", prime);
+        }
       }, trackRef);
 
-      revert = () => ctx.revert();
+      revert = () => {
+        unprime?.();
+        ctx.revert();
+      };
     });
 
     return () => {

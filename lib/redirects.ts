@@ -47,12 +47,8 @@ const nearest: Record<string, string> = {
   "/enterprise-ai-consulting": "/services",
   // partner ecosystem material lives in the company story for now
   "/ai-ecosystem": "/about",
-  // the readiness *tool* does not exist here; the assessment service is the
-  // closest equivalent content
-  "/ai-readiness": "/services/ai-readiness-assessment",
-  // likewise the ROI calculator — the strategy day is what produces a costed
-  // business case
-  "/ai-roi-calculator": "/services/ai-strategy-day",
+  "/ai-readiness": "/tools/ai-readiness-check",
+  "/ai-roi-calculator": "/tools/ai-roi-calculator",
   "/responsible-ai": "/responsible-ai",
 };
 

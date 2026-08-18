@@ -6,9 +6,11 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[100svh] items-start overflow-clip bg-canvas pt-28 md:pt-32">
       {/*
-        No grayscale here, unlike the previous hero: this artwork is already
-        brushed platinum on black, and desaturating it would remove the single
-        blue LED that is the only colour in the frame.
+        No grayscale here, unlike an earlier hero: the artwork is already
+        near-monochrome brushed platinum on black, so a filter would only cost
+        contrast in the shadows without changing the palette. The subject is a
+        close crop that sits low and right, which is what leaves the upper half
+        clear for the type.
       */}
       <Image
         src={hero.image.src}

@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     url: "/",
     title: site.title,
     description: site.description,
+    /*
+     * Deliberately not the hero artwork. The hero is a dark close crop that
+     * reads as a near-black rectangle at card size; this wider shot of the
+     * whole unit survives the thumbnail.
+     */
     images: [
       {
         url: "/img/hero-ai-unit.webp",

@@ -49,8 +49,8 @@ export const hero = {
     "From procurement and licensing to deployment and lifecycle, Virtu makes modern technology work for your organisation.",
   cta: { label: "Speak to our specialists", href: routes.contact },
   image: {
-    src: "/img/hero-ai-unit.webp",
-    alt: "A brushed aluminium AI compute unit with airflow traced around it",
+    src: "/img/hero-ai-edge.webp",
+    alt: "The machined edge of a brushed aluminium AI compute unit, lit against black",
     width: 1672,
     height: 941,
   },
@@ -191,6 +191,8 @@ export const footer = {
       heading: "Services",
       links: [
         { label: "All AI services", href: routes.services },
+        { label: "AI Readiness Check", href: "/tools/ai-readiness-check" },
+        { label: "AI ROI Calculator", href: "/tools/ai-roi-calculator" },
         { label: "Industries", href: routes.industries },
         { label: "Client outcomes", href: routes.outcomes },
         { label: "Insights", href: routes.insights },
