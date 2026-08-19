@@ -175,7 +175,7 @@ export const services: Service[] = [
       "Fairness, transparency and contestability built into the decision, not reviewed after it.",
     intro: [
       "Ethics becomes concrete the moment an AI system affects a person — who gets shortlisted, who gets flagged, whose claim is delayed. At that point somebody has to be able to explain the decision, and somebody has to be able to challenge it.",
-      "We align the work to Australia's AI Ethics Principles and to recognised frameworks, then do the unglamorous part: deciding which decisions need a human in the loop, what gets disclosed, and how a person contests an outcome and reaches someone with the authority to change it.",
+      "We align the work to Australia's AI Ethics Principles and to recognised frameworks, then do the unglamorous part: deciding which decisions need a human in the loop, what gets disclosed, and how a person contests an outcome and reaches someone with the authority to change it. The position this is built on is set out in full on our responsible AI page.",
     ],
     outcomes: [
       "Impact assessments for the uses that actually affect people",

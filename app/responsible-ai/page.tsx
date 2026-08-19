@@ -3,6 +3,7 @@ import { company } from "@/lib/company";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionHead } from "@/components/page/section-head";
 import { CtaBand } from "@/components/page/cta-band";
+import { TextLink } from "@/components/ui/pill-button";
 
 export const metadata: Metadata = {
   title: "Responsible AI",
@@ -123,6 +124,16 @@ export default function ResponsibleAiPage() {
               </li>
             ))}
           </ul>
+          {/*
+            This page states the position; the service is how it gets applied.
+            Without this the page is a dead end — a reader who agrees with it
+            has nowhere to go except the contact form.
+          */}
+          <div className="reveal mt-12">
+            <TextLink href="/services/ai-ethics">
+              How this is delivered: Responsible AI &amp; Ethics
+            </TextLink>
+          </div>
         </div>
       </section>
 
