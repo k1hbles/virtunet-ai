@@ -113,7 +113,7 @@ export const aiServices = {
   beats: [
     {
       title: "Adopt AI with confidence.",
-      body: "Virtu takes organisations from an honest read on readiness through to governed agents doing real work, with strategy, governance and delivery from one team.",
+      body: "Virtu takes organisations from a first honest read to agents carrying real work, and measures what changed. Strategy, governance and delivery come from one team, so the controls arrive with the capability rather than a year after it.",
     },
     {
       title: "Every layer accounted for.",
@@ -126,7 +126,7 @@ export const aiServices = {
   ],
   title: "Adopt AI with confidence.",
   intro:
-    "Virtu takes organisations from an honest read on readiness through to governed agents doing real work, with strategy, governance and delivery from one team.",
+    "Virtu takes organisations from a first honest read to agents carrying real work, and measures what changed. Strategy, governance and delivery come from one team, so the controls arrive with the capability rather than a year after it.",
   /**
    * `group` clusters these nine into three, so the section reads as three areas
    * rather than nine equal cards. It shows a selection, not the full thirteen
@@ -138,41 +138,44 @@ export const aiServices = {
 /**
  * Crawl, walk, run.
  *
- * Attribution note, because it was nearly got wrong: this framing is not
- * MIT's. It is used across the industry, by Georgian, ScienceLogic, Microsoft
- * and others, and no single owner can be credited for it. It is presented
- * here as an approach, not as a cited model.
+ * Attribution: this framing is not MIT's. It is used across the industry, by
+ * Georgian, ScienceLogic, Microsoft and others, and is presented here as an
+ * approach rather than a cited model.
  *
- * The section previously opened on MIT's finding that 95% of enterprise
- * pilots produce no measurable return, set as the largest element on the
- * page. That was a mistake in a different way from a citation error: the
- * dominant message of a section on a site selling AI services became "AI does
- * not work". The stall is still the reason the staged approach matters, so it
- * stays in the intro as a subordinate clause rather than as a hero statistic.
+ * Written results-first, on purpose. An earlier version led on what breaks at
+ * each stage, which framed the controls as a brake and left the section
+ * arguing that AI is dangerous on a site that sells AI. Buyers do not purchase
+ * governance; they purchase throughput, and then need the governance to keep
+ * it. So each stage says what the business gets, and the control appears as
+ * the thing that makes the next stage possible.
  *
- * Each stage is one line carrying both what it is and where the risk moves
- * to. The earlier version split that across four fields per stage, which is
- * what made the section enormous.
+ * Centralisation is the through-line. The first return is not a model, it is
+ * bringing the AI people are already using out of the shadows and into one
+ * place that can be seen, supported and bought once.
+ *
+ * `flow` is the schematic: how far into the work the AI actually reaches.
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
-  title: "Move at the pace the risk allows.",
+  title: "Each stage returns more than the last.",
   intro:
-    "Each stage puts AI closer to your systems, and each carries a different risk. Most pilots stall because a stage was skipped, so Virtu moves you through them deliberately.",
+    "This is compounding, not caution. Every stage brings AI closer to the work and pays back more than the one before it, and the controls are what make the next stage possible rather than what hold it back.",
   stages: [
     {
       name: "Crawl",
-      line: "People draft and research with AI. Nothing is written back, so the only exposure is what it can already read.",
+      line: "Individuals get faster, and the AI your people are already using comes in-house: one place you can see, support and pay for once.",
+      unlocks: "a single approved surface, instead of a dozen unapproved ones.",
       flow: [
         { label: "You", state: "on" },
         { label: "AI", state: "on" },
-        { label: "No gate", state: "off" },
+        { label: "Not yet", state: "off" },
         { label: "Systems", state: "off" },
       ],
     },
     {
       name: "Walk",
-      line: "AI works inside a real process, with a person approving every step. The risk moves to quality.",
+      line: "A process gets faster. AI runs inside real work with a person approving, so cycle time falls without accuracy slipping.",
+      unlocks: "a measured baseline, which is what makes the gain provable.",
       flow: [
         { label: "You", state: "on" },
         { label: "AI", state: "on" },
@@ -182,7 +185,8 @@ export const crawlWalkRun = {
     },
     {
       name: "Run",
-      line: "Agents act within set limits and stop at the edge of them. The risk becomes authority and cost.",
+      line: "The organisation gains capacity. Agents do the work inside set limits, so volume rises without adding headcount.",
+      unlocks: "authority and logging, which is what lets you hand over real work.",
       flow: [
         { label: "You", state: "muted" },
         { label: "AI", state: "on" },
@@ -191,7 +195,7 @@ export const crawlWalkRun = {
       ],
     },
   ],
-  footnote: "Virtu will tell you which stage you are at, including when the answer is not the next one.",
+  footnote: "Virtu will tell you which stage you are at, and what the next one is worth before you commit to it.",
   cta: { label: "Find out which stage you are at", href: "/tools/ai-readiness-check" },
 } as const;
 

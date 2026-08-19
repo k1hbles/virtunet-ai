@@ -76,8 +76,14 @@ export function CrawlWalkRun() {
                 </div>
               </div>
 
-              <p className="mt-6 border-t border-line pt-6 text-[0.98rem] leading-7 text-ink-muted">
+              <p className="mt-6 border-t border-line pt-6 text-[0.98rem] leading-7 text-ink">
                 {stage.line}
+              </p>
+              {/* the control, framed as what the result depends on rather than
+                  as a restriction placed on it */}
+              <p className="mt-4 text-[0.9rem] leading-6 text-ink-muted">
+                <span className="text-ink-muted/70">Unlocked by </span>
+                {stage.unlocks}
               </p>
             </li>
           ))}
