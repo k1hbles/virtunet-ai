@@ -153,7 +153,8 @@ export const aiServices = {
  * bringing the AI people are already using out of the shadows and into one
  * place that can be seen, supported and bought once.
  *
- * `flow` is the schematic: how far into the work the AI actually reaches.
+ * `reach` drives the diagram: where the AI sits relative to your systems.
+ * Outside them, at a gate on the boundary, or working inside them.
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
@@ -165,34 +166,19 @@ export const crawlWalkRun = {
       name: "Crawl",
       line: "Individuals get faster, and the AI your people are already using comes in-house: one place you can see, support and pay for once.",
       unlocks: "a single approved surface, instead of a dozen unapproved ones.",
-      flow: [
-        { label: "You", state: "on" },
-        { label: "AI", state: "on" },
-        { label: "Not yet", state: "off" },
-        { label: "Systems", state: "off" },
-      ],
+      reach: "outside",
     },
     {
       name: "Walk",
       line: "A process gets faster. AI runs inside real work with a person approving, so cycle time falls without accuracy slipping.",
       unlocks: "a measured baseline, which is what makes the gain provable.",
-      flow: [
-        { label: "You", state: "on" },
-        { label: "AI", state: "on" },
-        { label: "Approval", state: "on" },
-        { label: "Systems", state: "on" },
-      ],
+      reach: "gated",
     },
     {
       name: "Run",
       line: "The organisation gains capacity. Agents do the work inside set limits, so volume rises without adding headcount.",
       unlocks: "authority and logging, which is what lets you hand over real work.",
-      flow: [
-        { label: "You", state: "muted" },
-        { label: "AI", state: "on" },
-        { label: "Limits", state: "on" },
-        { label: "Systems", state: "on" },
-      ],
+      reach: "inside",
     },
   ],
   footnote: "Virtu will tell you which stage you are at, and what the next one is worth before you commit to it.",

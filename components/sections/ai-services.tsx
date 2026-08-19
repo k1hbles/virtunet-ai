@@ -278,36 +278,47 @@ export function AiServices() {
       {/*
         The catalogue, by stage.
 
-        Previously three columns holding five, three and three, which left two
-        of them stopping short and a hole under the shorter pair. That split
-        was presentational — the catalogue has five stages, not three — so the
-        fix is to stop fighting the taxonomy. Each stage is now a labelled row,
-        where an uneven number of services reads as a fact about that stage
-        rather than as a column that ran out.
+        Redrawn to match the crawl / walk / run section: a monospace stage
+        marker, hairline rows, and no boxes. It also surfaces each stage's
+        summary, which existed in lib/services.ts and had never been shown
+        anywhere — the index page listed service names with no explanation of
+        what the stage was for.
 
-        Read from lib/services.ts rather than a copy in the content file, so
-        the home page cannot drift from the catalogue it links to.
+        Read from lib/services.ts so the home page cannot drift from the
+        catalogue it links to.
       */}
       <div className="wrap pb-24 md:pb-32">
         <div className="border-t border-line">
-          {stages.map((stage) => (
+          {stages.map((stage, i) => (
             <div
               key={stage.slug}
-              className="reveal grid gap-5 border-b border-line py-7 md:grid-cols-[11rem_1fr] md:items-baseline md:gap-12"
+              className="reveal grid gap-6 border-b border-line py-9 md:grid-cols-[6rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-12 md:py-10"
             >
-              <p className="eyebrow text-ink-muted">{stage.name}</p>
-              <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-ink-muted md:pt-1">
+                Stage {String(i + 1).padStart(2, "0")}
+              </p>
+
+              <div>
+                <h3 className="text-[1.35rem] font-medium tracking-[-0.03em] text-ink">
+                  {stage.name}
+                </h3>
+                <p className="mt-3 max-w-sm text-[0.95rem] leading-6 text-ink-muted">
+                  {stage.summary}
+                </p>
+              </div>
+
+              <ul className="flex flex-col gap-px self-start">
                 {servicesByStage(stage.slug).map((svc) => (
                   <li key={svc.slug}>
                     <a
                       href={`/services/${svc.slug}`}
-                      className="group inline-flex items-baseline gap-2 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
+                      className="group flex items-baseline justify-between gap-6 py-2 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
                     >
-                      {svc.title}
+                      <span>{svc.title}</span>
                       <ArrowUpRight
                         size={15}
                         aria-hidden
-                        className="shrink-0 translate-y-[3px] text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                        className="shrink-0 translate-y-0.5 text-ink-muted opacity-0 transition-all group-hover:translate-x-0.5 group-hover:text-accent group-hover:opacity-100"
                       />
                     </a>
                   </li>
