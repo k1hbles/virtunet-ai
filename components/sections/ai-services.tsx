@@ -220,7 +220,7 @@ export function AiServices() {
   }, [mode, beats.length]);
 
   return (
-    <section id="ai-services" data-mode={mode} className="bg-canvas">
+    <section id="ai-services" data-mode={mode} className="border-t border-line bg-canvas">
       <div ref={trackRef} className="ai-track" style={{ "--stage-vh": `${STAGE_VH}vh` } as React.CSSProperties}>
         <div ref={stageRef} className="ai-stage flex items-center overflow-clip">
           <div className="wrap grid w-full items-center gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">

@@ -13,9 +13,12 @@ export function Insights() {
     <section className="border-t border-line bg-canvas py-24 md:py-32">
       <div className="wrap">
         <div className="flex items-end justify-between gap-6">
-          <h2 className="drift text-balance text-4xl font-medium tracking-[-0.04em] text-ink md:text-6xl">
-            <SplitWords text={insights.title} />
-          </h2>
+          <div>
+            <p className="eyebrow text-accent">{insights.eyebrow}</p>
+            <h2 className="drift section-title mt-6 text-balance">
+              <SplitWords text={insights.title} />
+            </h2>
+          </div>
           <a
             href={insights.cta.href}
             className="reveal hidden items-center gap-2 text-sm text-ink transition-colors hover:text-accent md:inline-flex"

@@ -46,7 +46,7 @@ export function PartnerStrip() {
   }, []);
 
   return (
-    <section className="border-y border-line bg-canvas py-12">
+    <section className="border-t border-line bg-canvas py-12">
       <div className="wrap overflow-clip">
         <p className="reveal text-center text-[11px] font-medium uppercase tracking-[0.3em] text-ink-muted">
           Platforms and silicon we build on

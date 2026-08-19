@@ -159,9 +159,9 @@ export const aiServices = {
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
-  title: "Hours back, then cycle time, then capacity.",
+  title: "Each stage pays for the next one.",
   intro:
-    "This is compounding, not caution. Every stage brings AI closer to the work and pays back more than the one before it, and the controls are what make the next stage possible rather than what hold it back.",
+    "This is compounding, not caution. Every stage brings AI closer to the work and returns more than the one before it, and the controls are what make the next stage possible rather than what hold it back.",
   stages: [
     {
       name: "Crawl",
@@ -196,6 +196,7 @@ export const crawlWalkRun = {
  * reproduced as published.
  */
 export const aiWorkplace = {
+  eyebrow: "AI-native work",
   title: "AI-enabled, or AI-native.",
   body:
     "AI-enabled is adding AI to the way your business already works. AI-native is redesigning how people, processes and technology work together around what AI now makes possible. Virtu rebuilds how a team produces its work with agentic tooling in the middle of it, and leaves behind a practice the next team can start from.",
@@ -213,6 +214,7 @@ export const aiWorkplace = {
  * one no competitor in this category is currently claiming.
  */
 export const sustainability = {
+  eyebrow: "Sustainability",
   title: "What it costs to keep running.",
   intro:
     "Inference is a running cost, not a purchase. Virtu sizes models and compute against the work they actually do, so energy and spend stay proportionate as usage grows rather than scaling with it.",
@@ -229,6 +231,7 @@ export const sustainability = {
 } as const;
 
 export const insights = {
+  eyebrow: "Insights",
   title: "Ideas for what comes next.",
   cta: { label: "View all insights", href: routes.insights },
   /**

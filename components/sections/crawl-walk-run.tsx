@@ -18,7 +18,7 @@ import { ReachDiagram } from "@/components/sections/reach-diagram";
  */
 export function CrawlWalkRun() {
   return (
-    <section className="border-y border-line bg-canvas py-20 md:py-28">
+    <section className="border-t border-line bg-canvas py-24 md:py-32">
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-end lg:gap-16">
           <div>

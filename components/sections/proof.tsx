@@ -19,7 +19,7 @@ export function Proof() {
   const { firstClient } = company;
 
   return (
-    <section className="border-y border-line bg-canvas py-20 md:py-28">
+    <section className="border-t border-line bg-canvas py-24 md:py-32">
       <div className="wrap">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
           <div>

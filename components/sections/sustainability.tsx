@@ -5,11 +5,12 @@ import { SplitWords } from "@/components/ui/split-words";
 
 export function Sustainability() {
   return (
-    <section className="bg-canvas py-24 md:py-36">
+    <section className="border-t border-line bg-canvas py-24 md:py-32">
       <div className="wrap">
         <div className="grid items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h2 className="drift section-title text-balance"><SplitWords text={sustainability.title} /></h2>
+            <p className="eyebrow text-accent">{sustainability.eyebrow}</p>
+            <h2 className="drift section-title mt-6 text-balance"><SplitWords text={sustainability.title} /></h2>
             <p className="reveal mt-7 max-w-xl text-lg leading-8 text-ink-muted">{sustainability.intro}</p>
             <div className="reveal mt-8">
               <TextLink href={sustainability.cta.href} hover="green">
