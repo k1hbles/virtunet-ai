@@ -36,8 +36,18 @@ export function Capabilities() {
                 />
               )}
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,0,0,.88)_0%,rgba(0,0,0,.28)_72%)]" />
+              {/*
+                The fallback glow for cards without artwork. It spans the whole
+                card rather than a fixed strip at the bottom: the previous
+                version lived in a 112px box, and its gradient had not reached
+                `transparent` by the time that box ended, so it was sliced off
+                flat along the box's top edge — a hard horizontal line partway
+                up a 250px card. Given the full height it fades out on its own,
+                and the extra stop keeps the falloff smooth enough not to band
+                against a near-black background.
+              */}
               {!c.image && (
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-[radial-gradient(circle_at_75%_100%,rgba(32,96,255,.18),transparent_60%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(125%_85%_at_78%_106%,rgba(32,96,255,.20)_0%,rgba(32,96,255,.085)_34%,rgba(32,96,255,.02)_58%,transparent_74%)]" />
               )}
 
               <div className="relative z-10 flex h-full flex-col justify-between">
