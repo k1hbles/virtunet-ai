@@ -99,9 +99,10 @@ export const aiServices = {
    * and poster, and the pinned stage starts scrubbing it again.
    */
   media: {
-    kind: "image",
-    src: "/img/ai-accelerator-exploded.webp",
-    alt: "An AI accelerator card separated into its layers: shrouds, heatsinks, chassis and board",
+    kind: "video",
+    src: "/video/ai-accelerator-teardown.mp4",
+    poster: "/video/ai-accelerator-teardown-poster.jpg",
+    alt: "An AI accelerator card separating into its layers: shrouds, heatsinks, chassis and board",
   } as
     | { kind: "image"; src: string; alt: string }
     | { kind: "video"; src: string; poster: string; alt: string },

@@ -131,19 +131,32 @@ export function AiServices() {
 
           /**
            * Each beat owns a slice and holds still through most of it,
-           * crossfading only in the FADE margins. Dwell is the point — the
-           * previous build left the reader inside a permanent dissolve.
+           * crossfading only in the FADE margins. Dwell is the point: an
+           * earlier build left the reader inside a permanent dissolve.
+           *
+           * The crossfade is centred on the boundary between two slices, and
+           * that matters. The previous version ramped a beat in over the
+           * window before its slice while the outgoing beat was still at full
+           * opacity, then ramped the outgoing one down over the window after.
+           * The two ramps did not overlap, so at the boundary itself both
+           * beats sat at opacity 1 and the headings printed on top of each
+           * other. Sharing one window centred on the boundary means each is at
+           * half opacity there, which is what a dissolve is.
            */
           panels.forEach((panel, i) => {
             const start = i / n;
             const end = (i + 1) / n;
-            const fade = (end - start) * FADE;
-            let o = 0;
-            if (p >= start - fade && p <= end + fade) {
-              if (p < start) o = (p - (start - fade)) / fade;
-              else if (p > end) o = 1 - (p - end) / fade;
-              else o = 1;
-            }
+            const half = (end - start) * FADE;
+            const first = i === 0;
+            const last = i === n - 1;
+
+            let o: number;
+            if (!first && p < start - half) o = 0;
+            else if (!last && p > end + half) o = 0;
+            else if (!first && p < start + half) o = (p - (start - half)) / (2 * half);
+            else if (!last && p > end - half) o = 1 - (p - (end - half)) / (2 * half);
+            else o = 1;
+
             o = Math.max(0, Math.min(1, o));
             gsap.set(panel, { autoAlpha: o, y: (1 - o) * 24 });
             if (o > 0.5) panel.removeAttribute("inert");
