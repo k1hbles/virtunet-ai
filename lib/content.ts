@@ -142,7 +142,8 @@ export const aiServices = {
  * Georgian, ScienceLogic, Microsoft and others, and is presented here as an
  * approach rather than a cited model.
  *
- * Written results-first, on purpose. An earlier version led on what breaks at
+ * Written results-first, on purpose. The heading names the three returns
+ * in order rather than asserting that returns exist. An earlier version led on what breaks at
  * each stage, which framed the controls as a brake and left the section
  * arguing that AI is dangerous on a site that sells AI. Buyers do not purchase
  * governance; they purchase throughput, and then need the governance to keep
@@ -158,7 +159,7 @@ export const aiServices = {
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
-  title: "Each stage returns more than the last.",
+  title: "Hours back, then cycle time, then capacity.",
   intro:
     "This is compounding, not caution. Every stage brings AI closer to the work and pays back more than the one before it, and the controls are what make the next stage possible rather than what hold it back.",
   stages: [
@@ -200,8 +201,8 @@ export const aiWorkplace = {
     "AI-enabled is adding AI to the way your business already works. AI-native is redesigning how people, processes and technology work together around what AI now makes possible. Virtu rebuilds how a team produces its work with agentic tooling in the middle of it, and leaves behind a practice the next team can start from.",
   cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
-    src: "/img/ai-workplace-coldplate.webp",
-    alt: "A precision-machined aluminium cold plate for AI accelerators, its cooling fins receding into shadow",
+    src: "/img/ai-workplace-coldplate-v2.webp",
+    alt: "A precision-machined aluminium cold plate for AI accelerators, its fins and honeycomb vent lit in cool blue",
   },
 } as const;
 

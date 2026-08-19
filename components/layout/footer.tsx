@@ -49,6 +49,25 @@ export function Footer() {
           ))}
         </div>
 
+        {/*
+          The closing statement, set at the size of a statement.
+
+          It was six words in the corner of the legal bar, which is where a
+          company line goes to be ignored. Sized to the width of the page it
+          becomes the last thing a reader sees, which is the job it was written
+          for. It is removed from the legal bar below rather than repeated.
+
+          Sized in vw so it meets both edges at any width, which is the whole
+          effect, but clamped: unclamped it ran to four lines and became a wall
+          rather than a closing line. Clipped, because type this size will
+          otherwise push the page sideways on narrow screens.
+        */}
+        <div className="wrap overflow-clip pb-10 pt-4 md:pb-14">
+          <p className="reveal text-[clamp(2rem,7vw,6.5rem)] font-medium leading-[0.9] tracking-[-0.05em] text-ink">
+            {site.closing.replace(/\.$/, "")}
+          </p>
+        </div>
+
         {/* The legal identity belongs here, not the trading name alone: the
             entity is Virtunet Pty Ltd and the ABN is what identifies it. The
             privacy policy has to be reachable from every page, because the
@@ -58,12 +77,9 @@ export function Footer() {
           <span>
             © {new Date().getFullYear()} {legal.entity}. All rights reserved. ABN {legal.abn}.
           </span>
-          <span className="flex items-center gap-5">
-            <SmartLink href="/privacy-policy" className="transition-colors hover:text-accent">
-              Privacy Policy
-            </SmartLink>
-            <span className="hidden md:inline">{site.closing}</span>
-          </span>
+          <SmartLink href="/privacy-policy" className="transition-colors hover:text-accent">
+            Privacy Policy
+          </SmartLink>
         </div>
       </div>
     </footer>
