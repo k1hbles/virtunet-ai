@@ -187,7 +187,7 @@ export const aiWorkplace = {
   body: "AI readiness is more than a device upgrade. Virtu helps align the products, licences, cloud, security and workplace foundations your people need to move forward with confidence.",
   cta: { label: "Explore digital workplace", href: routes.workplace },
   image: {
-    src: "/img/ai-ready-workplace.webp",
+    src: "/img/ai-workplace-desk.webp",
     alt: "A laptop, external display and a compact AI compute unit on a dark desk, lit in blue",
   },
 } as const;
