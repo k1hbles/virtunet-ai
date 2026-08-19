@@ -1,10 +1,17 @@
 /**
  * The service catalogue, and the journey it hangs off.
  *
- * Facts, credentials and structure are carried over from virtunet.ai; the
- * prose is rewritten to match this site's register. Every service belongs to
- * exactly one stage, which is what makes thirteen services read as five
- * moves rather than a list.
+ * This is virtunet.ai's offer, not virtu.net's. Hardware distribution,
+ * procurement, licensing and device lifecycle belong to virtu.net; what
+ * survives here is the compute AI actually runs on, in the Run stage.
+ *
+ * The five stages are a sequence, and every service belongs to exactly one,
+ * which is what makes eleven services read as five moves rather than a list.
+ *
+ * The service mix is a positioning decision rather than a record of work
+ * already sold. That is deliberate and agreed. It does not extend to facts:
+ * no client outcomes, partner tiers, certifications or statistics are
+ * invented anywhere in this file.
  */
 
 export type Stage = {
@@ -16,34 +23,34 @@ export type Stage = {
 
 export const stages: Stage[] = [
   {
-    slug: "strategise",
-    name: "Strategise",
+    slug: "orient",
+    name: "Orient",
     index: 1,
-    summary: "Agree where AI creates value, what it costs, and whether you are ready.",
+    summary: "Agree where AI earns its place here, and whether you are ready to put it there.",
   },
   {
     slug: "govern",
     name: "Govern",
     index: 2,
-    summary: "Put the policy, controls and security in place that make AI safe to approve.",
+    summary: "Decide what an agent is allowed to do, and be able to show why afterwards.",
   },
   {
-    slug: "prepare",
-    name: "Prepare",
+    slug: "build",
+    name: "Build",
     index: 3,
-    summary: "Get the data, devices and workspaces ready for the work to actually land.",
-  },
-  {
-    slug: "implement",
-    name: "Implement",
-    index: 4,
-    summary: "Ship governed capability your people use — measured, not demonstrated.",
+    summary: "Put agents and automation into the work itself, not into a demo.",
   },
   {
     slug: "adopt",
-    name: "Adopt & scale",
+    name: "Adopt",
+    index: 4,
+    summary: "Change how the work is done, because a tool nobody's habits changed is shelfware.",
+  },
+  {
+    slug: "run",
+    name: "Run",
     index: 5,
-    summary: "Build the habit and the capability, then extend what worked to the next team.",
+    summary: "The compute underneath it, sized for what you actually run and what it costs.",
   },
 ];
 
@@ -65,10 +72,11 @@ export type Service = {
 };
 
 export const services: Service[] = [
+  /* ---------------------------------------------------------------- orient */
   {
     slug: "ai-strategy-day",
     title: "AI Strategy Day",
-    stage: "strategise",
+    stage: "orient",
     kicker: "One day",
     summary:
       "A facilitated day that turns AI ambition into a plan your board can fund.",
@@ -99,275 +107,247 @@ export const services: Service[] = [
   {
     slug: "ai-readiness-assessment",
     title: "AI Readiness Assessment",
-    stage: "strategise",
+    stage: "orient",
     kicker: "Evidence",
     summary:
-      "A structured read on strategy, data, technology, people and governance — with a costed plan to close the gaps.",
+      "A structured read on whether your data, permissions, governance and people can carry AI — with a costed plan to close the gaps.",
     intro: [
       "Readiness is the question that decides whether an AI programme becomes capability or a series of stalled pilots. It is also the question most organisations answer by instinct.",
-      "We score five dimensions against evidence — interviews, platform review, data and access mapping — and hand back the gaps in priority order, with what it costs to close each one.",
+      "We assess against evidence rather than opinion: interviews, a platform and permissions review, and a look at what your data would actually expose to an assistant that can read everything a user can. The gaps come back in priority order, with what it costs to close each one.",
     ],
     outcomes: [
-      "An objective readiness score across five dimensions",
+      "An objective read across strategy, data, permissions, people and governance",
       "A clear view of what stands between you and safe adoption",
       "A prioritised, costed plan to close those gaps",
       "The confidence to invest, or the evidence to wait",
     ],
     steps: [
       { name: "Discover", body: "Stakeholder interviews and a review of data, platforms and current initiatives." },
-      { name: "Assess", body: "Score strategy, data and technology, people, and governance against evidence." },
+      { name: "Assess", body: "Test strategy, data and permissions, people, and governance against evidence." },
       { name: "Diagnose", body: "Identify the gaps that actually block progress, separated from the noise." },
       { name: "Plan", body: "Sequence and cost the remediation so it can be funded." },
     ],
     deliverables: [
-      "Readiness scorecard across five dimensions",
-      "Gap analysis with severity and effort",
-      "Prioritised remediation plan",
+      "Readiness findings across five dimensions",
+      "Permissions and data exposure review",
+      "Prioritised gap register",
+      "Costed remediation plan",
     ],
   },
+
+  /* ---------------------------------------------------------------- govern */
   {
     slug: "ai-governance",
-    title: "AI Governance & Assurance",
+    title: "AI & Agent Governance",
     stage: "govern",
     kicker: "Guardrails",
     summary:
-      "The policies, controls and oversight that let you move quickly without crossing security, privacy or compliance lines.",
+      "Policy, controls and oversight for systems that now act, not just answer.",
     intro: [
-      "Shadow AI, data leakage, biased outputs and unclear accountability are board-level risks now, not hypotheticals. Governance is what converts a nervous maybe into a defensible yes.",
-      "We write policy your people can actually follow, put controls behind it, and define who is accountable when a model is wrong — aligned to Australia's AI Ethics Principles and informed by ISO/IEC 42001 and the NIST AI Risk Management Framework.",
+      "Governance written for chatbots does not survive contact with agents. An assistant that drafts an email is a different risk from one that can send it, move money, change a record or call another system on your behalf.",
+      "We put the guardrails in place for both: an acceptable-use standard people can actually follow, a register of what is running, and defined limits on what each agent may do, with whom, and under whose authority.",
     ],
     outcomes: [
-      "A practical AI policy and acceptable-use standard people will follow",
-      "Risk controls covering data, security, privacy and model use",
-      "Oversight and accountability your board can point at",
-      "The ability to approve AI, safely",
+      "A practical AI and agent policy your people can follow",
+      "A register of what is deployed, what it can reach, and who owns it",
+      "Defined authority limits and human review points for consequential actions",
+      "An audit trail that answers 'why did it do that' after the fact",
     ],
     steps: [
-      { name: "Assess", body: "Review current AI use, shadow AI exposure, data flows and risk appetite." },
-      { name: "Define", body: "Write the policy, the acceptable-use standard and the review path." },
-      { name: "Implement", body: "Put the technical and process controls behind the policy." },
-      { name: "Enable", body: "Brief the people who have to apply it, and set the review cadence." },
+      { name: "Baseline", body: "Find what is already running, including what nobody approved." },
+      { name: "Frame", body: "Set policy and authority limits proportionate to the risk of each use." },
+      { name: "Instrument", body: "Put logging, review points and escalation paths in place." },
+      { name: "Embed", body: "Hand it to the people who will operate it, and test that it holds." },
     ],
     deliverables: [
-      "AI policy and acceptable-use standard",
-      "Risk register and control mapping",
-      "Governance operating model with named accountabilities",
+      "AI and agent acceptable-use policy",
+      "Agent register and ownership model",
+      "Authority and escalation matrix",
+      "Audit and logging standard",
     ],
   },
   {
-    slug: "ai-cybersecurity",
-    title: "AI for Cybersecurity",
+    slug: "ai-ethics",
+    title: "Responsible AI & Ethics",
     stage: "govern",
-    kicker: "Machine speed",
+    kicker: "Defensible",
     summary:
-      "AI-driven detection, response and SOC augmentation, aligned to zero trust and your Australian compliance obligations.",
+      "Fairness, transparency and contestability built into the decision, not reviewed after it.",
     intro: [
-      "Attackers adopted automation first. Detection that depends on an analyst reading every alert is already losing on volume alone.",
-      "We apply AI where it measurably helps — triage, correlation, routine response — and leave human judgement where consequence demands it.",
+      "Ethics becomes concrete the moment an AI system affects a person — who gets shortlisted, who gets flagged, whose claim is delayed. At that point somebody has to be able to explain the decision, and somebody has to be able to challenge it.",
+      "We align the work to Australia's AI Ethics Principles and to recognised frameworks, then do the unglamorous part: deciding which decisions need a human in the loop, what gets disclosed, and how a person contests an outcome and reaches someone with the authority to change it.",
     ],
     outcomes: [
-      "Faster detection and response across the environment",
-      "Routine, high-volume alerts handled automatically",
-      "Analysts working real threats instead of false positives",
-      "Capabilities aligned to zero trust and compliance obligations",
+      "Impact assessments for the uses that actually affect people",
+      "Meaningful human oversight where the stakes justify it",
+      "Disclosure and contestability paths that work in practice",
+      "A defensible position when a regulator, board or customer asks",
     ],
     steps: [
-      { name: "Assess", body: "Review current detection, response and security posture." },
-      { name: "Design", body: "Decide where automation helps and where a human must stay in the loop." },
-      { name: "Implement", body: "Deploy into your existing stack rather than alongside it." },
-      { name: "Operate", body: "Tune against real signal, and keep tuning." },
+      { name: "Identify", body: "Find the uses with human consequence, and rank them by impact." },
+      { name: "Assess", body: "Work through fairness, transparency, privacy and contestability for each." },
+      { name: "Design", body: "Set oversight, disclosure and appeal paths proportionate to the impact." },
+      { name: "Review", body: "Establish the cadence that keeps the position current as things change." },
+    ],
+    deliverables: [
+      "AI impact assessment template and completed first assessments",
+      "Human oversight and disclosure standard",
+      "Contestability and appeal process",
+      "Review cadence and owners",
     ],
   },
   {
-    slug: "ai-ready-devices",
-    title: "AI-Ready Devices",
-    stage: "prepare",
-    kicker: "Fleet",
+    slug: "securing-ai",
+    title: "Securing AI",
+    stage: "govern",
+    kicker: "Zero trust",
     summary:
-      "Copilot+ PCs and Microsoft Surface, deployed securely — with the old fleet retired responsibly.",
+      "Protecting the AI you deploy — data boundaries, agent permissions, prompt injection and shadow AI.",
     intro: [
-      "On-device AI is where the technology meets the everyday. It also fails quietly when the hardware underneath it cannot run the models.",
-      "We match silicon to roles, deploy zero-touch, and retire what is replaced with certified data destruction — the lifecycle discipline Virtu has applied since long before AI.",
+      "An assistant inherits the permissions of whoever is using it, which means an over-shared drive becomes a data incident the first week Copilot-class tooling is switched on. An agent with tool access widens that again: it can be talked into acting by content it merely reads.",
+      "This is security work, not policy work. We tighten permissions before the rollout rather than after it, constrain what agents can reach, test for prompt injection and exfiltration, and surface the AI already in use that nobody approved.",
     ],
     outcomes: [
-      "A fleet ready for Copilot and on-device AI, matched to each role",
-      "Faster, more private inference running on the device's NPU",
-      "Zero-touch secure deployment via Windows Autopilot and Intune",
-      "Old hardware retired sustainably, with certified data destruction",
+      "Permissions corrected before an assistant is switched on, not after",
+      "Agent access scoped to the minimum each task needs",
+      "Tested resistance to prompt injection and data exfiltration",
+      "Visibility of shadow AI, and a route to bring it inside the tent",
     ],
     steps: [
-      { name: "Assess", body: "Audit the fleet, the roles and the Windows estate to map who needs what, and when." },
-      { name: "Specify", body: "Match AI silicon to actual workloads rather than to a single standard build." },
-      { name: "Deploy", body: "Zero-touch provisioning through Autopilot and Intune." },
-      { name: "Retire", body: "Sustainable disposal with certified data destruction and reporting." },
+      { name: "Expose", body: "Map what an assistant would be able to read today, per user and per site." },
+      { name: "Contain", body: "Remediate over-sharing and scope agent credentials to least privilege." },
+      { name: "Test", body: "Adversarial testing for injection, leakage and unintended tool use." },
+      { name: "Monitor", body: "Detection for shadow AI and for agent behaviour that drifts." },
+    ],
+    deliverables: [
+      "Data exposure and permissions report",
+      "Least-privilege access model for agents",
+      "Adversarial test findings and fixes",
+      "Shadow AI discovery and monitoring",
     ],
   },
-  {
-    slug: "ai-collaboration",
-    title: "AI Collaboration",
-    stage: "prepare",
-    kicker: "Rooms",
-    summary:
-      "Meeting rooms where every voice is recognised, every word attributed, and the recap is worth reading.",
-    intro: [
-      "Hybrid meetings fail in the room, not in the software. A full room with one microphone produces a transcript nobody trusts and a recap nobody reads.",
-      "We inspect each space, design to a certified standard, and set up consent and retention properly before anything records a word.",
-    ],
-    outcomes: [
-      "Rooms your people choose over their desks",
-      "Accurate, speaker-attributed transcripts and recaps, even with a full room",
-      "One certified room standard across every space and platform",
-      "Biometric consent, retention and recording governance handled from day one",
-    ],
-    steps: [
-      { name: "Inspect", body: "On site within two business days to assess each room and what is reusable." },
-      { name: "Design", body: "A certified design per space, consistent across your platform mix." },
-      { name: "Deliver", body: "Installation and integration to a single standard." },
-      { name: "Enable", body: "Turn on the AI features, with consent and retention configured first." },
-    ],
-  },
-  {
-    slug: "ai-90-day-accelerator",
-    title: "90-Day AI Accelerator",
-    stage: "implement",
-    kicker: "90 days",
-    summary:
-      "One high-value use case, live and in daily use within ninety days — measured, governed, and ready to repeat.",
-    intro: [
-      "The gap between a roadmap and a working capability is where most AI programmes quietly end. The accelerator exists to close it once, visibly, so the second one is easier to fund.",
-      "A joint squad, a fixed scope, and guardrails built in rather than bolted on at review.",
-    ],
-    outcomes: [
-      "One high-value use case live and in daily use within ninety days",
-      "Security, governance and guardrails built in from the start",
-      "Measured business impact you can take to your board",
-      "A repeatable playbook for the next use case",
-    ],
-    steps: [
-      { name: "Mobilise", body: "Confirm the use case, the success measures, the guardrails and the joint squad." },
-      { name: "Build", body: "Ship working capability in short increments, reviewed as it goes." },
-      { name: "Adopt", body: "Put it in front of real users and support the change." },
-      { name: "Measure", body: "Report honestly against the measures agreed on day one, then scale." },
-    ],
-  },
+
+  /* ----------------------------------------------------------------- build */
   {
     slug: "ai-agents",
     title: "AI Agents",
-    stage: "implement",
-    kicker: "Autonomy",
+    stage: "build",
+    kicker: "Autonomous",
     summary:
-      "Agents that do real work across IT, HR, finance and service — grounded, guardrailed and under your control.",
+      "Agents that do real work across your systems, with the limits and oversight to let them.",
     intro: [
-      "An agent that impresses in a demo and cannot be trusted with a real decision is a liability, not a capability.",
-      "We scope agents against work that genuinely repeats, ground them in your own knowledge, and define exactly where a person must confirm before anything happens.",
+      "An agent is only useful when it can act — read the ticket, check the system of record, take the step, and hand back what it could not finish. That is also exactly when it stops being a demo and starts being something you have to govern.",
+      "We design, build and deploy agents against a specific process you can measure, with scoped credentials, defined authority limits and a clean handover to a person when the agent reaches the edge of what it should decide.",
     ],
     outcomes: [
-      "Agents that complete real, valuable tasks rather than demonstrations",
-      "Grounded, accurate responses drawn from your own knowledge",
-      "Guardrails, approvals and audit trails built in",
-      "A safe path from assisted to autonomous",
+      "Agents deployed against a named process, with a measured baseline",
+      "Scoped permissions and explicit limits on consequential actions",
+      "Clean escalation to a person, with the context they need",
+      "A running cost you can forecast before you scale it",
     ],
     steps: [
-      { name: "Scope", body: "Choose high-value use cases and set the human-oversight boundaries." },
-      { name: "Ground", body: "Connect the agent to your knowledge, with permissions respected." },
-      { name: "Guardrail", body: "Define approvals, limits and the audit trail before deployment." },
-      { name: "Deploy", body: "Release to real users, evaluate against real outcomes, and tune." },
+      { name: "Select", body: "Choose a process where the work is high-volume and the success test is objective." },
+      { name: "Design", body: "Map the steps, the tools, the authority limits and the handover points." },
+      { name: "Build", body: "Implement against your systems, then evaluate against real cases, not samples." },
+      { name: "Operate", body: "Deploy with monitoring, cost controls and a review cadence." },
+    ],
+    deliverables: [
+      "Process baseline and success measures",
+      "Agent design with authority limits",
+      "Evaluation results against real cases",
+      "Runbook, monitoring and unit-cost model",
     ],
   },
   {
     slug: "ai-workflow-automation",
-    title: "AI Workflow Automation",
-    stage: "implement",
+    title: "Workflow Automation",
+    stage: "build",
     kicker: "Throughput",
     summary:
-      "Automating document, approval and service workflows with the Power Platform and modern AI.",
+      "Removing the repetitive middle of document, approval and service workflows.",
     intro: [
-      "Most organisations know exactly which process wastes the most time. What stops them is that automating it properly touches three systems and two teams.",
-      "We quantify the cost first, then build automations that integrate with what you already run — governed, monitored and handed over.",
+      "Most of the time lost in an organisation is not lost to hard problems. It is lost to re-keying, chasing, checking and routing — work that is too varied for a rule and too dull for a person.",
+      "We automate that middle: intake and classification, extraction from documents, routing and approval, and the service requests that arrive the same way a thousand times a year. The measure is cycle time and rework, not how clever the model is.",
     ],
     outcomes: [
-      "Hours of manual work removed from high-volume processes",
-      "Fewer errors and faster turnaround on approvals and requests",
-      "Automations that integrate with the systems you already run",
-      "A governed automation practice you can expand yourself",
+      "Cycle time reduced on a workflow you already measure",
+      "Fewer handoffs, and less rework caused by them",
+      "Exceptions routed to people with the context already assembled",
+      "A pattern the next workflow can reuse cheaply",
     ],
     steps: [
-      { name: "Discover", body: "Map candidate processes and quantify the time and error cost." },
-      { name: "Design", body: "Choose what to automate, what to simplify, and what to leave alone." },
-      { name: "Build", body: "Deliver into your existing platforms with monitoring in place." },
-      { name: "Scale", body: "Hand over the practice so your team can extend it." },
+      { name: "Map", body: "Trace the workflow as it actually runs, including the workarounds." },
+      { name: "Target", body: "Pick the steps where volume and variance both justify automating." },
+      { name: "Automate", body: "Build, integrate and test against live volume." },
+      { name: "Measure", body: "Compare against the baseline and tune what the numbers show." },
+    ],
+    deliverables: [
+      "Current-state workflow map with timings",
+      "Automation built and integrated",
+      "Exception handling and escalation design",
+      "Before-and-after measurement",
     ],
   },
   {
-    slug: "ai-service-desk",
-    title: "AI-Powered Service Desk",
-    stage: "implement",
-    kicker: "Support",
+    slug: "agentic-engineering",
+    title: "Agentic Engineering",
+    stage: "build",
+    kicker: "Claude Code, Codex",
     summary:
-      "AI triage, self-service and assisted resolution that cut ticket times without losing the human touch.",
+      "Getting agentic coding tools into your engineering org safely, and getting real throughput out of them.",
     intro: [
-      "Service desks fail on volume and repetition, not on capability. The same twenty questions consume the time that the difficult ones deserve.",
-      "We start from your ticket data, automate what genuinely repeats, and give agents suggested answers for everything else.",
+      "Agentic coding tools change how software gets built, and most engineering organisations are adopting them one developer at a time, with no shared standard for what the agent may touch, what gets reviewed, and what never leaves the machine.",
+      "We set that up deliberately: which repositories and environments agents can reach, how their changes are reviewed, what the secrets and data rules are, and how the team works so the tool raises throughput instead of raising review load.",
     ],
     outcomes: [
-      "More tickets resolved without a human, accurately",
-      "Faster triage, routing and first response",
-      "Agents equipped with suggested answers and next actions",
-      "Higher satisfaction for users and staff alike",
+      "Agentic coding adopted with a standard, not one developer at a time",
+      "Clear rules on repository access, secrets and what leaves the environment",
+      "Review practice adapted so throughput rises rather than review queues",
+      "Measured change in cycle time and change failure rate",
     ],
     steps: [
-      { name: "Assess", body: "Analyse ticket data to find the highest-volume, best-fit use cases." },
-      { name: "Design", body: "Decide what is deflected, what is assisted, and what always reaches a person." },
-      { name: "Integrate", body: "Connect to your service management platform and knowledge base." },
-      { name: "Optimise", body: "Tune deflection against satisfaction, not just against volume." },
+      { name: "Assess", body: "Review the codebase, the environments, and how the team already works." },
+      { name: "Scope", body: "Set access boundaries, secret handling and the review standard." },
+      { name: "Enable", body: "Roll out with the team, working on real tickets rather than exercises." },
+      { name: "Measure", body: "Track cycle time, review load and change failure rate against baseline." },
+    ],
+    deliverables: [
+      "Agent access and secrets standard",
+      "Review and merge practice for agent-authored change",
+      "Enablement with the engineering team",
+      "Baseline and post-adoption measurement",
     ],
   },
+
+  /* ----------------------------------------------------------------- adopt */
   {
-    slug: "ai-physical-security",
-    title: "AI Physical Security",
-    stage: "implement",
-    kicker: "Seconds",
-    summary:
-      "Natural-language video search across every camera you already own, turning passive surveillance into response.",
-    intro: [
-      "Most CCTV estates are recording far more than anyone can watch. The footage is there; finding the moment that matters is the problem.",
-      "Security staff describe who they are looking for in plain English, every camera is searched at once, and an operator confirms each match before anything is acted on.",
-    ],
-    outcomes: [
-      "People and incidents located in seconds rather than minutes of screen-scanning",
-      "Security teams freed to respond instead of watch",
-      "Access-control anomalies surfaced as they happen",
-      "Privacy-conscious design with human oversight of every action",
-    ],
-    steps: [
-      { name: "Assess", body: "Review the CCTV and access-control estate, control-room workflow and priorities." },
-      { name: "Design", body: "Decide what is searched, what is retained, and who may act on it." },
-      { name: "Implement", body: "Deploy against the cameras already installed wherever possible." },
-      { name: "Enable", body: "Train the control room and set the privacy governance." },
-    ],
-  },
-  {
-    slug: "microsoft-copilot-adoption",
-    title: "Microsoft Copilot Adoption",
+    slug: "ai-native-work",
+    title: "AI-Native Knowledge Work",
     stage: "adopt",
-    kicker: "Microsoft 365",
+    kicker: "Ways of working",
     summary:
-      "Turning Copilot licences into measurable productivity — with the data readiness and change management that decide whether it lands.",
+      "Rebuilding how a team actually works around AI-native tools, rather than bolting them onto the old process.",
     intro: [
-      "Copilot rarely fails for technical reasons. It fails because the tenant overshares, the data is untrustworthy, or nobody showed people what it is actually for.",
-      "We fix the permissions before go-live, build role-based use cases people recognise, and measure whether anyone is still using it in month three.",
+      "The tools are on everyone's desk and almost nobody's work has changed. That is the honest state of most AI rollouts: licences issued, training delivered, and the same process running underneath at the same speed.",
+      "This is the work of changing the process itself. We take a specific team and a specific set of deliverables, rebuild how that work is produced with AI-native tooling in the middle of it, and leave the team with a way of working they can defend to their own peers.",
     ],
     outcomes: [
-      "Copilot deployed on a secure, correctly permissioned tenant",
-      "Sensitive data protected from oversharing before go-live",
-      "Role-based use cases that show people exactly how it helps them",
-      "Measured productivity gains rather than activated licences",
+      "A named team producing its actual deliverables a different way",
+      "Prompts, context and shared practice that belong to the team, not to individuals",
+      "The quality bar defined, so faster does not quietly mean worse",
+      "An internal example that makes the next team cheaper to move",
     ],
     steps: [
-      { name: "Assess", body: "Review licences, tenant configuration, data access and the top use cases." },
-      { name: "Secure", body: "Close oversharing and fix permissions before anyone is switched on." },
-      { name: "Enable", body: "Role-based enablement, so people learn it against their own work." },
-      { name: "Measure", body: "Track real usage and outcomes, and act on what the numbers say." },
+      { name: "Choose", body: "Pick one team and one recurring deliverable with a real quality bar." },
+      { name: "Rebuild", body: "Redesign how that deliverable gets produced, with the team in the room." },
+      { name: "Embed", body: "Run it live for a cycle, and fix what breaks in practice." },
+      { name: "Spread", body: "Capture the practice so the next team starts from it." },
+    ],
+    deliverables: [
+      "Redesigned workflow for a real deliverable",
+      "Shared prompt and context library",
+      "Quality standard and review approach",
+      "Written practice for the next team",
     ],
   },
   {
@@ -376,26 +356,64 @@ export const services: Service[] = [
     stage: "adopt",
     kicker: "Capability",
     summary:
-      "Role-based workshops and enablement that build lasting capability, not one-off enthusiasm.",
+      "Practical capability across executives, managers and the people doing the work — pitched differently for each.",
     intro: [
-      "Adoption fails on change management far more often than on technology. A tool nobody was taught to use is indistinguishable from a tool that does not work.",
-      "We teach against the work people actually do, build a network of champions who sustain it, and brief leaders so they can guide rather than mandate.",
+      "Generic AI training produces enthusiasm and very little change. Executives need to make investment and risk decisions, managers need to redesign how their team works, and practitioners need to be good at the thing in front of them. Those are three different sessions.",
+      "We run all three against your own work, not worked examples, and leave champions inside the business who can carry it after we go.",
     ],
     outcomes: [
-      "People who know how to use AI safely and effectively",
-      "Role-based skills that apply to real, daily work",
-      "A network of champions who sustain adoption after we leave",
-      "Leaders equipped to guide AI in their teams",
+      "Executives able to judge an AI proposal and its risk",
+      "Managers able to redesign a workflow rather than just permit a tool",
+      "Practitioners competent on the work they actually do",
+      "Named champions with the material to keep it going",
     ],
     steps: [
-      { name: "Assess", body: "Understand roles, tools and current confidence levels." },
-      { name: "Design", body: "Build the curriculum around real tasks, not features." },
-      { name: "Deliver", body: "Workshops, literacy sessions and executive briefings." },
-      { name: "Sustain", body: "Stand up champions and a centre of excellence to keep it going." },
+      { name: "Pitch", body: "Set the level and content for each audience against their real decisions." },
+      { name: "Deliver", body: "Run the sessions using your own documents, tickets and cases." },
+      { name: "Apply", body: "Follow up on live work, where the difficult questions actually appear." },
+      { name: "Sustain", body: "Equip champions and hand over the material." },
+    ],
+    deliverables: [
+      "Role-specific session material",
+      "Practice library built from your own work",
+      "Champion enablement pack",
+      "Follow-up clinic schedule",
+    ],
+  },
+
+  /* ------------------------------------------------------------------- run */
+  {
+    slug: "ai-infrastructure",
+    title: "AI Infrastructure & Workstations",
+    stage: "run",
+    kicker: "Compute",
+    summary:
+      "The GPUs, workstations and inference capacity underneath the work — sized for what you run, and what it costs to run it.",
+    intro: [
+      "Some AI work cannot leave the building. Sensitive data, sovereignty obligations, or simply the cost of inference at volume all push work back onto compute you control — and that is a different purchasing decision from a laptop refresh.",
+      "We size and specify it against the workloads you actually intend to run: GPU capacity, AI workstations for the teams doing the heaviest work, and the choice between local, cloud and hybrid inference made on cost and obligation rather than on habit.",
+    ],
+    outcomes: [
+      "Compute specified against real workloads, not vendor configurations",
+      "A defensible split between local, cloud and hybrid inference",
+      "Forecastable cost per unit of work, before you commit",
+      "Capacity that matches demand, rather than idling or throttling",
+    ],
+    steps: [
+      { name: "Profile", body: "Characterise the workloads: model sizes, volumes, latency and data constraints." },
+      { name: "Model", body: "Compare local, cloud and hybrid on total cost and on obligation." },
+      { name: "Specify", body: "Size GPU capacity and workstations against the profile." },
+      { name: "Operate", body: "Set the utilisation and cost measures that keep it honest." },
+    ],
+    deliverables: [
+      "Workload profile and sizing model",
+      "Local versus cloud versus hybrid comparison",
+      "Specification for GPU capacity and workstations",
+      "Utilisation and unit-cost reporting",
     ],
   },
 ];
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
-export const servicesByStage = (stage: string) => services.filter((s) => s.stage === stage);
 export const getStage = (slug: string) => stages.find((s) => s.slug === slug);
+export const servicesByStage = (stage: string) => services.filter((s) => s.stage === stage);

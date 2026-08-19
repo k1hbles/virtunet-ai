@@ -14,21 +14,38 @@
  * pasted in, not a rewrite or a machine transcription.
  */
 
+/**
+ * Services that still exist. The old site had them at the root, so these
+ * point at their home under /services.
+ */
 const services = [
-  "ai-90-day-accelerator",
   "ai-agents",
-  "ai-collaboration",
-  "ai-cybersecurity",
   "ai-governance",
-  "ai-physical-security",
   "ai-readiness-assessment",
-  "ai-ready-devices",
-  "ai-service-desk",
   "ai-strategy-day",
   "ai-training-enablement",
   "ai-workflow-automation",
-  "microsoft-copilot-adoption",
 ];
+
+/**
+ * Services retired in the repositioning, and where each one's audience should
+ * land now. These are redirected from BOTH the old root path and the
+ * /services path, because this site published the /services versions itself —
+ * so both are live URLs somebody may have followed or indexed.
+ *
+ * Physical security has no equivalent: cameras and access control are
+ * virtu.net's business, not this one's, so it goes to the services index
+ * rather than being mapped to something it is not.
+ */
+const retiredServices: Record<string, string> = {
+  "ai-cybersecurity": "/services/securing-ai",
+  "ai-ready-devices": "/services/ai-infrastructure",
+  "ai-collaboration": "/services/ai-native-work",
+  "microsoft-copilot-adoption": "/services/ai-native-work",
+  "ai-service-desk": "/services/ai-workflow-automation",
+  "ai-90-day-accelerator": "/services/ai-agents",
+  "ai-physical-security": "/services",
+};
 
 const industries = ["corporate", "education", "enterprise", "government", "healthcare", "not-for-profit"];
 
@@ -62,6 +79,10 @@ const categories = [
 
 export const legacyRedirects = [
   ...services.map((s) => ({ source: `/${s}`, destination: `/services/${s}`, permanent: true })),
+  ...Object.entries(retiredServices).flatMap(([slug, destination]) => [
+    { source: `/${slug}`, destination, permanent: true },
+    { source: `/services/${slug}`, destination, permanent: true },
+  ]),
   ...industries.map((s) => ({ source: `/${s}`, destination: `/industries/${s}`, permanent: true })),
   ...articles.map((s) => ({ source: `/${s}`, destination: `/insights/${s}`, permanent: true })),
   ...categories.map((c) => ({ source: `/category/${c}`, destination: "/insights", permanent: true })),
