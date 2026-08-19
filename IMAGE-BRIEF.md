@@ -29,44 +29,62 @@ That has to go: this site is vendor-neutral, and a third-party trademark
 baked into illustrative art reads as a claim about that vendor. It is also
 too busy — conveyor, shelving, bins, boxes and loose components all at once.
 
-## Image A — "Prepare your workplace for AI."
+## Image A — "Prepare your workplace for AI."  (second pass)
 
-Replaces `public/img/ai-ready-workplace.webp`.
+Replaces `public/img/ai-workplace-desk.webp`.
 
-**Deliver 2048 × 1075 (aspect 1.90).**
+**Deliver 2048 × 1078 (aspect 1.90).**
 
-Composition is constrained by how it is displayed, so this matters more than
-the subject:
+### Why the first replacement is being replaced
 
-- It is a full-bleed background with a left-to-right black scrim. The **left
-  35% is 96%→78% black** — the heading and body sit there. Put nothing you
-  care about in the left third.
-- On mobile the box becomes **portrait (aspect 0.51)** and `object-cover`
-  shows only the **centre 28.5% of the width — from 36% to 64% across**.
-- So the subject must sit centred around **55–62% across**: far enough right
-  to clear the scrim, central enough to survive the mobile crop. Detail may
-  extend right; nothing essential past 80%.
+It is a product still life, and the page already has three of those: the hero
+is a close crop of a compute unit, the AI services section runs a scrubbed
+clip of a chassis opening, and the Procure capability card is devices on a
+dark surface. A fourth adds nothing, and "desk with devices" is not the same
+statement as "workplace". The rack aisle in Image B works because it is
+architectural — depth, scale, atmosphere — and this section can carry the
+same register at human scale.
+
+Also drop the blue underglow beneath the laptop. Light spilling out from
+under a device reads as gaming hardware, not as enterprise IT.
+
+### Composition constraints (unchanged, and they are strict)
+
+- Full-bleed background with a left-to-right black scrim: the **left 35% is
+  96%→78% black** and carries the heading and body. Keep it empty and dark.
+- On mobile the box becomes **portrait (0.51)** and object-cover shows only
+  the **centre 28.5% of the width — 36% to 64% across**. Whatever matters
+  most has to live inside that window.
+- So: the lit focal point sits around **55–62% across**, depth and detail
+  extend right, and nothing essential goes past 80%.
+
+Do not repeat Image B's dead-centre one-point perspective — that section is
+directly below this one and two symmetrical vanishing-point shots in a row
+will read as the same photograph twice. Use an off-axis three-quarter view.
 
 > **Prompt**
 >
-> A dark, minimal workplace scene photographed on a near-black set. A single
-> slim aluminium laptop, open, sitting on a smooth charcoal desk surface, with
-> one thin external monitor behind it slightly out of focus. Everything is
-> brushed aluminium and matte graphite — no wood, no fabric, no plants, no
-> people. The screens are almost entirely dark, showing only a faint cool blue
-> glow with no discernible interface, no charts, no waveforms and no readable
-> text. Lighting is a single soft key from the upper right, raking across the
-> metal so the edges catch a cool platinum highlight, plus one restrained blue
-> rim light. The left third of the frame falls off to pure black. Colour is
-> strictly monochrome graphite and platinum with one accent of blue (#1678FF);
-> no green, no amber, no teal, no rainbow colour. Shallow depth of field,
-> shot on an 85mm lens at f/2, high-end product photography, quiet and
-> expensive, deep blacks, no glow bloom, no lens flare.
+> A wide, quiet view across an empty open-plan office at night, shot from one
+> corner at a three-quarter angle rather than straight down the middle. The
+> room is almost entirely dark. A single workstation two-thirds into the
+> frame is lit by one soft pool of light from above — a slim laptop and a thin
+> external display on a plain dark desk, screens dim and showing no readable
+> interface. Beyond it, rows of empty desks recede into shadow, their edges
+> catching faint cool platinum highlights. Floor-to-ceiling glazing along the
+> far wall shows a night skyline reduced to a few distant cool lights, heavily
+> darkened. Architecture is minimal and modern: matte charcoal surfaces,
+> brushed metal edges, a polished concrete floor with soft reflections. No
+> plants, no timber, no soft furnishing, no clutter, no people. The left third
+> of the frame falls away to near-black. Colour is graphite and cool platinum
+> with a single restrained blue accent (#1678FF) in the screen glow. Shot on a
+> 24mm lens at f/4, architectural interior photography, deep blacks, natural
+> falloff, no bloom, no lens flare, no light spilling from under furniture.
 >
-> **Negative:** plants, greenery, wood, warm light, orange, yellow, green,
-> teal, rainbow, heatmap, data visualisation, wavy lines, charts, dashboards,
-> readable text, logos, brand marks, people, hands, faces, busy background,
-> office clutter, HDR, oversaturated.
+> **Negative:** plants, greenery, wood, warm light, amber, orange, yellow,
+> green, teal, rainbow, RGB lighting, underglow, glowing edges, gaming setup,
+> data visualisation, charts, dashboards, wavy lines, readable text, logos,
+> brand marks, people, hands, faces, clutter, cables, coffee cups, symmetrical
+> one-point perspective, HDR, oversaturated.
 
 ## Image B — "Progress that lasts beyond deployment."
 
