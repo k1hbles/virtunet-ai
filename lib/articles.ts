@@ -35,7 +35,7 @@ export const articles: Article[] = [
     category: "Governance",
     title: "No AI Act for Australia: what light-touch regulation really asks of boards",
     summary:
-      "Australia rejected an EU-style AI Act in favour of existing law and voluntary guidance. That is not a reprieve — the first hard deadline lands 10 December 2026.",
+      "Australia rejected an EU-style AI Act in favour of existing law and voluntary guidance. That is not a reprieve. The first hard deadline lands 10 December 2026.",
     facts: [
       "National AI Plan released December 2025",
       "Rejects a standalone AI Act in the European mould",
@@ -65,13 +65,13 @@ export const articles: Article[] = [
       { kind: "h2", text: "Why voluntary guidance still binds you" },
       {
         kind: "p",
-        text: "Australia's voluntary instruments — the AI Ethics Principles and the National AI Centre's Guidance for AI Adoption — carry no penalties. They are nonetheless becoming the benchmark against which regulators, courts, insurers and customers assess whether an organisation acted reasonably when a system caused harm.",
+        text: "Australia's voluntary instruments (the AI Ethics Principles and the National AI Centre's Guidance for AI Adoption) carry no penalties. They are nonetheless becoming the benchmark against which regulators, courts, insurers and customers assess whether an organisation acted reasonably when a system caused harm.",
       },
       { kind: "h2", text: "What boards should do with this" },
       {
         kind: "list",
         items: [
-          "Inventory automated decisions now. Map where algorithms make or substantially assist decisions affecting individuals — the December obligation depends on it.",
+          "Inventory automated decisions now. Map where algorithms make or substantially assist decisions affecting individuals. The December obligation depends on it.",
           "Assign ownership. Existing-law liability means AI risk already sits with the board, whether or not anyone has been named to hold it.",
           "Align to the national guidance. Mapping your programme to the AI Ethics Principles is cheap insurance and a genuine trust signal.",
           "Watch the horizon. The government has kept the door open to harder rules if harms emerge. Organisations already aligned will barely feel that transition.",
@@ -88,7 +88,7 @@ export const articles: Article[] = [
     category: "Cost",
     title: "Agentic AI's first budget shock: the year cost discipline arrived",
     summary:
-      "Enterprises that raced into agentic AI burned annual budgets in months. The fix is not less AI — it is routing, right-sizing, and measuring cost per outcome.",
+      "Enterprises that raced into agentic AI burned annual budgets in months. The fix is not less AI. It is routing, right-sizing, and measuring cost per outcome.",
     facts: [
       "Through the first half of 2026, enterprises deploying autonomous agents found annual AI budgets could evaporate in months",
       "Uber reportedly consumed its annual budget by April and imposed monthly caps on AI coding tools",
@@ -105,7 +105,7 @@ export const articles: Article[] = [
       { kind: "h2", text: "Why agentic costs behave differently" },
       {
         kind: "p",
-        text: "A chatbot answers a question and stops. An agent plans, calls tools, reads results, reconsiders and iterates — and every step consumes tokens. Industry analyses this year put agentic workflows at five to thirty times the token consumption of a simple chat query for the same nominal task.",
+        text: "A chatbot answers a question and stops. An agent plans, calls tools, reads results, reconsiders and iterates, and every step consumes tokens. Industry analyses this year put agentic workflows at five to thirty times the token consumption of a simple chat query for the same nominal task.",
       },
       { kind: "h2", text: "What the large buyers learned" },
       {
@@ -120,9 +120,9 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Route by task, not by habit. Most enterprise calls do not need a frontier model — AT&T's AI leadership has pointed to savings of up to 90% from steering routine work to smaller models and reserving premium models for genuinely hard reasoning.",
+          "Route by task, not by habit. Most enterprise calls do not need a frontier model. AT&T's AI leadership has pointed to savings of up to 90% from steering routine work to smaller models and reserving premium models for genuinely hard reasoning.",
           "Right-size the whole workflow. Caching, context management and orchestration often move the cost needle more than model choice does.",
-          "Measure value, not volume. Tasks completed, hours saved, rework avoided — cost per outcome, not cost per million tokens.",
+          "Measure value, not volume. Tasks completed, hours saved, rework avoided. Cost per outcome, not cost per million tokens.",
           "Give AI spend an owner. Variable cost needs the FinOps treatment cloud eventually got: visibility, budgets per use case, and someone accountable when the curve bends.",
         ],
       },
@@ -147,7 +147,7 @@ export const articles: Article[] = [
     body: [
       {
         kind: "p",
-        text: "On 22 June 2026 the cyber security agencies of the Five Eyes alliance — including Australia's Signals Directorate and the Australian Cyber Security Centre — issued a rare joint statement on frontier AI. Their assessment is blunt: models capable of transforming both cyber attack and cyber defence are arriving on a timeline measured in months.",
+        text: "On 22 June 2026 the cyber security agencies of the Five Eyes alliance (including Australia's Signals Directorate and the Australian Cyber Security Centre) issued a rare joint statement on frontier AI. Their assessment is blunt: models capable of transforming both cyber attack and cyber defence are arriving on a timeline measured in months.",
       },
       { kind: "h2", text: "What the agencies said" },
       {
@@ -190,10 +190,10 @@ export const articles: Article[] = [
     summary:
       "Governance is not the brake on AI. It is what lets an organisation move faster, because the questions that stall pilots have already been answered.",
     facts: [
-      "ISO/IEC 42001 — international standard for AI management systems",
+      "ISO/IEC 42001: international standard for AI management systems",
       "NIST AI Risk Management Framework",
       "Australia's AI Ethics Principles",
-      "The EU AI Act — relevant to organisations operating in or selling into European markets",
+      "The EU AI Act: relevant to organisations operating in or selling into European markets",
     ],
     body: [
       {
@@ -213,9 +213,9 @@ export const articles: Article[] = [
       {
         kind: "list",
         items: [
-          "Low risk — productivity assistance with a human firmly in the loop. Light-touch guidance and an acceptable-use policy.",
-          "Elevated risk — AI informing decisions affecting customers, finances or staff. Documented oversight, accuracy testing, an accountable owner.",
-          "High risk — automated or near-automated decisions in regulated or safety-relevant contexts. Formal assessment, audit trails, human override, board visibility.",
+          "Low risk: productivity assistance with a human firmly in the loop. Light-touch guidance and an acceptable-use policy.",
+          "Elevated risk: AI informing decisions affecting customers, finances or staff. Documented oversight, accuracy testing, an accountable owner.",
+          "High risk: automated or near-automated decisions in regulated or safety-relevant contexts. Formal assessment, audit trails, human override, board visibility.",
         ],
       },
       { kind: "h2", text: "The standards your board should know" },
@@ -248,7 +248,7 @@ export const articles: Article[] = [
     category: "Efficiency",
     title: "The discipline that cuts AI cost cuts its carbon",
     summary:
-      "The same engineering discipline that cuts AI cost cuts its carbon. Right-sizing is not a compromise between the two — it is the move that serves both.",
+      "The same engineering discipline that cuts AI cost cuts its carbon. Right-sizing is not a compromise between the two. It is the move that serves both.",
     facts: [
       "FinOps and GreenOps as applied disciplines for AI workloads",
     ],

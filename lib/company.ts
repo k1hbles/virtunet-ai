@@ -14,9 +14,9 @@ export const company = {
     "An Australian technology partner since 2008, now bringing the same discipline to artificial intelligence.",
 
   story: [
-    "Virtu has spent since 2008 helping more than 5,000 Australian organisations, schools and government agencies modernise their technology — modern workplace, security, cloud, networking and collaboration — sustainably and at scale.",
+    "Virtu has spent since 2008 helping more than 5,000 Australian organisations, schools and government agencies modernise their technology sustainably and at scale, across modern workplace, security, cloud, networking and collaboration.",
     "The AI practice is not a pivot. It stands on eighteen years of delivery for organisations that cannot afford for technology to fail, and it inherits the same habits: cybersecurity first, vendor neutral, and measured against outcomes rather than activity.",
-    "It is also a separate business. Hardware, procurement and licensing remain at virtu.net. What sits here is the work of making AI useful — strategy, governance, agents, adoption, and the compute they run on.",
+    "It is also a separate business. Hardware, procurement and licensing remain at virtu.net. What sits here is the work of making AI useful: strategy, governance, agents, adoption, and the compute they run on.",
   ],
 
   vision: "To empower people and organisations in pushing the limits of sustainable growth.",
@@ -38,7 +38,7 @@ export const company = {
 
   /** The promise, and the evidence for it. */
   track: [
-    "Enterprise clients onboarded in our earliest days — organisations of a thousand staff and more — are still with us over ten years later.",
+    "Enterprise clients onboarded in our earliest days, organisations of a thousand staff and more, are still with us over ten years later.",
     "A ten-minute response time, and a habit of hand-delivering urgent work outside business hours. We look for a way rather than a reason it cannot be done.",
   ],
 
@@ -58,7 +58,7 @@ export const company = {
   differentiators: [
     {
       title: "Advisor first, not a reseller",
-      body: "We start with outcomes rather than products — independent advice that maps technology to your strategy, not to what we happen to sell.",
+      body: "We start with outcomes rather than products. Independent advice that maps technology to your strategy, not to what we happen to sell.",
     },
     {
       title: "Cybersecurity-led",
@@ -74,7 +74,7 @@ export const company = {
     },
     {
       title: "Sustainable by default",
-      body: "Sustainability, security and scalability in every decision — including the energy and running cost of inference as usage grows.",
+      body: "Sustainability, security and scalability in every decision, including the energy and running cost of inference as usage grows.",
     },
     {
       title: "People-first change",

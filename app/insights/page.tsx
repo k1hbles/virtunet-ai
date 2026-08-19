@@ -8,7 +8,7 @@ import { CtaBand } from "@/components/page/cta-band";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Straight thinking on AI that works — governance, cost discipline, security and sustainable IT for Australian organisations.",
+    "Straight thinking on AI that works: governance, cost discipline, security and efficiency for Australian organisations.",
   alternates: { canonical: "/insights" },
 };
 
@@ -21,7 +21,7 @@ export default function InsightsPage() {
       <PageHero
         eyebrow="Insights"
         title="Straight thinking on AI that works."
-        lead="Written for the people who have to sign off on it — boards, risk teams and the executives holding the budget."
+        lead="Written for the people who have to sign off on it: boards, risk teams and the executives holding the budget."
       />
 
       <section className="border-b border-line bg-canvas">

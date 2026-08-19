@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Partnerships",
   description:
-    "The platforms, silicon, data infrastructure and security tooling Virtu builds AI on — and the accreditations behind them.",
+    "The platforms, silicon, data infrastructure and security tooling Virtu builds AI on, and the accreditations behind them.",
   alternates: { canonical: "/partnerships" },
 };
 
@@ -45,7 +45,7 @@ export default function PartnershipsPage() {
           <SectionHead
             eyebrow="By layer"
             title="Grouped by what they do, not by who sells them."
-            lead="virtu.net publishes partnerships with more than a hundred vendors. These are the ones an AI programme actually touches — the rest are that business, not this one."
+            lead="virtu.net publishes partnerships with more than a hundred vendors. These are the ones an AI programme actually touches. The rest are that business, not this one."
           />
 
           <div className="mt-16 flex flex-col gap-20">
@@ -95,7 +95,7 @@ export default function PartnershipsPage() {
           */}
           <p className="reveal mt-20 max-w-3xl border-t border-line pt-8 text-[0.95rem] leading-7 text-ink-muted">
             This list covers the vendors Virtu holds accreditations with. Where we deploy a model or
-            a tool without a formal partnership behind it — which is most of the frontier — we say
+            a tool without a formal partnership behind it, which is most of the frontier, we say
             so, and we recommend on fit rather than on the relationship.
           </p>
         </div>

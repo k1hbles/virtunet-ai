@@ -59,7 +59,7 @@ export function LeadForm({ tool, summary }: { tool: "readiness" | "roi"; summary
     return (
       <div className="border-t border-line pt-10">
         <p className="text-[1.1rem] leading-8 text-ink">
-          Sent. We will be in touch within one business day — and there is no obligation attached to
+          Sent. We will be in touch within one business day, and there is no obligation attached to
           this.
         </p>
       </div>
@@ -72,7 +72,7 @@ export function LeadForm({ tool, summary }: { tool: "readiness" | "roi"; summary
         Want this sent to you?
       </h3>
       <p className="mt-3 max-w-xl text-[0.98rem] leading-6 text-ink-muted">
-        Optional. Your result is already on screen and yours to keep — this only sends a copy and
+        Optional. Your result is already on screen and yours to keep. This only sends a copy and
         lets us follow up if you want us to.
       </p>
 

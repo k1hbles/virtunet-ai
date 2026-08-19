@@ -39,7 +39,7 @@ export const partnerCategories: PartnerCategory[] = [
   {
     slug: "data",
     name: "Data & platform",
-    blurb: "Storage, virtualisation and recovery — the layer an AI programme inherits rather than builds.",
+    blurb: "Storage, virtualisation and recovery. The layer an AI programme inherits rather than builds.",
   },
   {
     slug: "security",

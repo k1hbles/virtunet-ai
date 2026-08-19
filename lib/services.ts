@@ -110,7 +110,7 @@ export const services: Service[] = [
     stage: "orient",
     kicker: "Evidence",
     summary:
-      "A structured read on whether your data, permissions, governance and people can carry AI — with a costed plan to close the gaps.",
+      "A structured read on whether your data, permissions, governance and people can carry AI, with a costed plan to close the gaps.",
     intro: [
       "Readiness is the question that decides whether an AI programme becomes capability or a series of stalled pilots. It is also the question most organisations answer by instinct.",
       "We assess against evidence rather than opinion: interviews, a platform and permissions review, and a look at what your data would actually expose to an assistant that can read everything a user can. The gaps come back in priority order, with what it costs to close each one.",
@@ -174,7 +174,7 @@ export const services: Service[] = [
     summary:
       "Fairness, transparency and contestability built into the decision, not reviewed after it.",
     intro: [
-      "Ethics becomes concrete the moment an AI system affects a person — who gets shortlisted, who gets flagged, whose claim is delayed. At that point somebody has to be able to explain the decision, and somebody has to be able to challenge it.",
+      "Ethics becomes concrete the moment an AI system affects a person: who gets shortlisted, who gets flagged, whose claim is delayed. At that point somebody has to be able to explain the decision, and somebody has to be able to challenge it.",
       "We align the work to Australia's AI Ethics Principles and to recognised frameworks, then do the unglamorous part: deciding which decisions need a human in the loop, what gets disclosed, and how a person contests an outcome and reaches someone with the authority to change it. The position this is built on is set out in full on our responsible AI page.",
     ],
     outcomes: [
@@ -202,7 +202,7 @@ export const services: Service[] = [
     stage: "govern",
     kicker: "Zero trust",
     summary:
-      "Protecting the AI you deploy — data boundaries, agent permissions, prompt injection and shadow AI.",
+      "Protecting the AI you deploy: data boundaries, agent permissions, prompt injection and shadow AI.",
     intro: [
       "An assistant inherits the permissions of whoever is using it, which means an over-shared drive becomes a data incident the first week an assistant is switched on. An agent with tool access widens that again: it can be talked into acting by content it merely reads.",
       "This is security work, not policy work. We tighten permissions before the rollout rather than after it, constrain what agents can reach, test for prompt injection and exfiltration, and surface the AI already in use that nobody approved.",
@@ -236,7 +236,7 @@ export const services: Service[] = [
     summary:
       "Agents that do real work across your systems, with the limits and oversight to let them.",
     intro: [
-      "An agent is only useful when it can act — read the ticket, check the system of record, take the step, and hand back what it could not finish. That is also exactly when it stops being a demo and starts being something you have to govern.",
+      "An agent is only useful when it can act: read the ticket, check the system of record, take the step, and hand back what it could not finish. That is also exactly when it stops being a demo and starts being something you have to govern.",
       "We design, build and deploy agents against a specific process you can measure, with scoped credentials, defined authority limits and a clean handover to a person when the agent reaches the edge of what it should decide.",
     ],
     outcomes: [
@@ -266,7 +266,7 @@ export const services: Service[] = [
     summary:
       "Removing the repetitive middle of document, approval and service workflows.",
     intro: [
-      "Most of the time lost in an organisation is not lost to hard problems. It is lost to re-keying, chasing, checking and routing — work that is too varied for a rule and too dull for a person.",
+      "Most of the time lost in an organisation is not lost to hard problems. It is lost to re-keying, chasing, checking and routing: work that is too varied for a rule and too dull for a person.",
       "We automate that middle: intake and classification, extraction from documents, routing and approval, and the service requests that arrive the same way a thousand times a year. The measure is cycle time and rework, not how clever the model is.",
     ],
     outcomes: [
@@ -356,7 +356,7 @@ export const services: Service[] = [
     stage: "adopt",
     kicker: "Capability",
     summary:
-      "Practical capability across executives, managers and the people doing the work — pitched differently for each.",
+      "Practical capability across executives, managers and the people doing the work, pitched differently for each.",
     intro: [
       "Generic AI training produces enthusiasm and very little change. Executives need to make investment and risk decisions, managers need to redesign how their team works, and practitioners need to be good at the thing in front of them. Those are three different sessions.",
       "We run all three against your own work, not worked examples, and leave champions inside the business who can carry it after we go.",
@@ -388,9 +388,9 @@ export const services: Service[] = [
     stage: "run",
     kicker: "Compute",
     summary:
-      "The GPUs, workstations and inference capacity underneath the work — sized for what you run, and what it costs to run it.",
+      "The GPUs, workstations and inference capacity underneath the work, sized for what you run and what it costs to run it.",
     intro: [
-      "Some AI work cannot leave the building. Sensitive data, sovereignty obligations, or simply the cost of inference at volume all push work back onto compute you control — and that is a different purchasing decision from a laptop refresh.",
+      "Some AI work cannot leave the building. Sensitive data, sovereignty obligations, or simply the cost of inference at volume all push work back onto compute you control. That is a different purchasing decision from a laptop refresh.",
       "We size and specify it against the workloads you actually intend to run: GPU capacity, AI workstations for the teams doing the heaviest work, and the choice between local, cloud and hybrid inference made on cost and obligation rather than on habit.",
     ],
     outcomes: [

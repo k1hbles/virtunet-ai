@@ -10,7 +10,7 @@ export const site = {
   name: "Virtu",
   title: "Virtu | The AI services partner for an AI-native future",
   description:
-    "Virtu helps Australian organisations put AI to work — strategy and readiness, agent governance and ethics, agents and automation built into the work, and the compute underneath it.",
+    "Virtu helps Australian organisations put AI to work: strategy and readiness, agent governance and ethics, agents and automation built into the work, and the compute underneath it.",
   tagline:
     "Strategy, governance, agents and adoption for organisations putting AI to work.",
   closing: "Empowering sustainable growth through technology.",
@@ -42,7 +42,7 @@ export const navLinks = [
 export const hero = {
   title: "The technology partner for an AI-native future.",
   subtitle:
-    "Strategy, governance, agents and adoption — for organisations that have the tools but not yet the results.",
+    "Strategy, governance, agents and adoption. For organisations that have the tools but not yet the results.",
   cta: { label: "Speak to our specialists", href: routes.contact },
   image: {
     src: "/img/hero-ai-edge.webp",
@@ -102,7 +102,7 @@ export const aiServices = {
   beats: [
     {
       title: "Adopt AI with confidence.",
-      body: "Virtu takes organisations from an honest read on readiness through to governed agents doing real work — strategy, governance and delivery from one team.",
+      body: "Virtu takes organisations from an honest read on readiness through to governed agents doing real work, with strategy, governance and delivery from one team.",
     },
     {
       title: "Every layer accounted for.",
@@ -115,7 +115,7 @@ export const aiServices = {
   ],
   title: "Adopt AI with confidence.",
   intro:
-    "Virtu takes organisations from an honest read on readiness through to governed agents doing real work — strategy, governance and delivery from one team.",
+    "Virtu takes organisations from an honest read on readiness through to governed agents doing real work, with strategy, governance and delivery from one team.",
   /**
    * `group` clusters these nine into three, so the section reads as three areas
    * rather than nine equal cards. It shows a selection, not the full thirteen
@@ -132,7 +132,7 @@ export const aiServices = {
   groupOrder: ["Orient & govern", "Build", "Adopt & run"],
   items: [
     { kicker: "One day", title: "AI Strategy Day", group: "Orient & govern", body: "Turn AI ambition into a plan your board can fund, in a single facilitated day.", href: "/services/ai-strategy-day" },
-    { kicker: "Evidence", title: "AI Readiness Assessment", group: "Orient & govern", body: "Whether your data, permissions and people can carry AI — and what it costs to close the gaps.", href: "/services/ai-readiness-assessment" },
+    { kicker: "Evidence", title: "AI Readiness Assessment", group: "Orient & govern", body: "Whether your data, permissions and people can carry AI, and what it costs to close the gaps.", href: "/services/ai-readiness-assessment" },
     { kicker: "Guardrails", title: "AI & Agent Governance", group: "Orient & govern", body: "Decide what an agent may do, and be able to show why afterwards.", href: "/services/ai-governance" },
     { kicker: "Defensible", title: "Responsible AI & Ethics", group: "Orient & govern", body: "Fairness, transparency and contestability built into the decision, not reviewed after it.", href: "/services/ai-ethics" },
     { kicker: "Zero trust", title: "Securing AI", group: "Orient & govern", body: "Data boundaries, agent permissions, prompt injection and the shadow AI nobody approved.", href: "/services/securing-ai" },
@@ -140,7 +140,7 @@ export const aiServices = {
     { kicker: "Throughput", title: "Workflow Automation", group: "Build", body: "Remove the repetitive middle of document, approval and service workflows.", href: "/services/ai-workflow-automation" },
     { kicker: "Claude Code, Codex", title: "Agentic Engineering", group: "Build", body: "Agentic coding adopted with a standard, and measured in cycle time.", href: "/services/agentic-engineering" },
     { kicker: "Ways of working", title: "AI-Native Knowledge Work", group: "Adopt & run", body: "Rebuild how a team works around AI-native tools, rather than bolting them on.", href: "/services/ai-native-work" },
-    { kicker: "Capability", title: "AI Training & Enablement", group: "Adopt & run", body: "Executives, managers and practitioners — pitched differently, against your own work.", href: "/services/ai-training-enablement" },
+    { kicker: "Capability", title: "AI Training & Enablement", group: "Adopt & run", body: "Executives, managers and practitioners, pitched differently against your own work.", href: "/services/ai-training-enablement" },
     { kicker: "Compute", title: "AI Infrastructure & Workstations", group: "Adopt & run", body: "GPUs, workstations and inference sized for what you run and what it costs.", href: "/services/ai-infrastructure" },
   ],
 } as const;
@@ -158,7 +158,7 @@ export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
   title: "Most organisations try to run first.",
   intro:
-    "The three stages are not a maturity badge to collect. They are three different risk profiles, and the thing that breaks is different at each one — which is why the stage that gets skipped is usually the one that causes the incident.",
+    "The three stages are not a maturity badge to collect. They are three different risk profiles, and the thing that breaks is different at each one. That is why the stage that gets skipped is usually the one that causes the incident.",
   stages: [
     {
       name: "Crawl",
@@ -174,7 +174,7 @@ export const crawlWalkRun = {
     },
     {
       name: "Run",
-      shape: "Agents act inside limits — reading the record, taking the step, stopping at the edge of their remit.",
+      shape: "Agents act inside limits: reading the record, taking the step, stopping at the edge of their remit.",
       needs: "Authority limits set per action, logging you can reconstruct months later, and a cost per run you can forecast.",
       breaks: "Authority and cost. An agent that works and cannot be afforded at volume is not a solution.",
     },
@@ -187,7 +187,7 @@ export const crawlWalkRun = {
 export const aiWorkplace = {
   title: "Where the work actually changes.",
   body:
-    "Most AI rollouts issue licences and stop there. Virtu rebuilds how a team produces its work with AI-native tooling in the middle of it — Claude Code and Codex in engineering, agentic assistants in knowledge work — and leaves behind a practice the next team can start from.",
+    "Most AI rollouts issue licences and stop there. Virtu rebuilds how a team produces its work with AI-native tooling in the middle of it: Claude Code and Codex in engineering, agentic assistants in knowledge work. What it leaves behind is a practice the next team can start from.",
   cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
     src: "/img/ai-workplace-desk.webp",

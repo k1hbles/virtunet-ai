@@ -28,10 +28,10 @@ export const industryList: Industry[] = [
     name: "Corporate",
     title: "AI for corporate and business",
     summary:
-      "Productivity that shows up in the numbers, for ambitious Australian businesses — adopted safely and measured honestly.",
+      "Productivity that shows up in the numbers, for ambitious Australian businesses, adopted safely and measured honestly.",
     intro: [
       "For most businesses the first real win from AI is unglamorous: give people their time back. Assistants that draft, summarise and analyse, plus automation of the repetitive work behind them.",
-      "The failure mode is equally predictable — licences bought, nobody trained, no measurement, quiet abandonment by month three. We treat adoption as the deliverable, not the rollout.",
+      "The failure mode is equally predictable: licences bought, nobody trained, no measurement, quiet abandonment by month three. We treat adoption as the deliverable, not the rollout.",
     ],
     useCases: [
       { name: "Everyday productivity", body: "Assistants that draft, summarise and analyse across every team." },
@@ -51,10 +51,10 @@ export const industryList: Industry[] = [
     name: "Government",
     title: "AI for government and the public sector",
     summary:
-      "Compliant, sovereign and secure AI — better services without lowering the bar on trust or accountability.",
+      "Compliant, sovereign and secure AI. Better services without lowering the bar on trust or accountability.",
     intro: [
       "Public-sector organisations carry a dual mandate: deliver better, faster services, and do it with transparency, security and data sovereignty intact. AI can serve both, but only when adopted deliberately.",
-      "We help agencies apply AI to real workloads while meeting data-residency, security and accountability requirements — with explainability designed in rather than argued about later.",
+      "We help agencies apply AI to real workloads while meeting data-residency, security and accountability requirements, with explainability designed in rather than argued about later.",
     ],
     useCases: [
       { name: "Citizen services", body: "Faster, more consistent responses to high-volume enquiries." },
@@ -74,10 +74,10 @@ export const industryList: Industry[] = [
     name: "Education",
     title: "AI for the education sector",
     summary:
-      "Age-appropriate AI for schools, universities and training providers — easing staff workload while protecting students.",
+      "Age-appropriate AI for schools, universities and training providers, easing staff workload while protecting students.",
     intro: [
       "AI is already in your students' hands. The question is no longer whether to allow it but whether the institution has a position on it that staff can actually teach.",
-      "We help education providers adopt AI responsibly — clear policy, real safeguards, and staff enablement grounded in privacy and child-safety obligations.",
+      "We help education providers adopt AI responsibly: clear policy, real safeguards, and staff enablement grounded in privacy and child-safety obligations.",
     ],
     useCases: [
       { name: "Teacher productivity", body: "Lesson planning, resource generation, and less time lost to marking and admin." },
@@ -120,7 +120,7 @@ export const industryList: Industry[] = [
     name: "Enterprise",
     title: "AI for enterprise",
     summary:
-      "Consistent controls and measurable value across complex estates — scaling AI without fragmenting governance.",
+      "Consistent controls and measurable value across complex estates, scaling AI without fragmenting governance.",
     intro: [
       "At enterprise scale the hard part is rarely the first use case. It is the fiftieth: applying consistent controls across business units that each solved the problem their own way.",
       "We build the platform and governance that lets value be proven once and then extended, rather than rediscovered in every division.",
@@ -143,7 +143,7 @@ export const industryList: Industry[] = [
     name: "Not-for-profit",
     title: "AI for not-for-profits",
     summary:
-      "More impact per dollar — AI that stretches limited resources without exposing the people you serve.",
+      "More impact per dollar. AI that stretches limited resources without exposing the people you serve.",
     intro: [
       "Lean teams feel automation benefits faster than anyone, because the admin burden falls on the same people doing the mission work.",
       "We focus on affordable, grant-friendly options, and on building enough internal confidence that the capability survives after we leave.",

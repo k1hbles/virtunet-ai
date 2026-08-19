@@ -8,7 +8,7 @@ import { CtaBand } from "@/components/page/cta-band";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "AI adapted to how your sector is actually regulated — corporate, government, education, healthcare, enterprise and not-for-profit.",
+    "AI adapted to how your sector is actually regulated: corporate, government, education, healthcare, enterprise and not-for-profit.",
   alternates: { canonical: "/industries" },
 };
 

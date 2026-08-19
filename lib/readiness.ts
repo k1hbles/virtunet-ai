@@ -71,7 +71,7 @@ export const questions: Question[] = [
     prompt: "If you switched on an assistant tomorrow, what could it read?",
     options: [
       "We genuinely do not know",
-      "Whatever each person can reach — which is more than it should be",
+      "Whatever each person can reach, which is more than it should be",
       "Broadly the right things, with known exceptions",
       "Permissions were reviewed and corrected within the last year",
     ],
@@ -185,7 +185,7 @@ export const bands: Band[] = [
     name: "Developing",
     min: 11,
     verdict:
-      "Something is moving and the intent is real, but the foundations are uneven. This is the band where pilots stall — rarely for want of technology, usually because a question about permissions or accountability has no answer.",
+      "Something is moving and the intent is real, but the foundations are uneven. This is the band where pilots stall, rarely for want of technology and usually because a question about permissions or accountability has no answer.",
     next: "Get an evidence-based read on what is actually blocking delivery, and close those gaps rather than the visible ones.",
     service: "ai-readiness-assessment",
   },
@@ -193,7 +193,7 @@ export const bands: Band[] = [
     name: "Operating",
     min: 19,
     verdict:
-      "You have something working and enough control to defend it. The constraint now is repeatability — making the second and third use case cheaper than the first, and keeping oversight intact as agents start taking actions rather than drafting them.",
+      "You have something working and enough control to defend it. The constraint now is repeatability: making the second and third use case cheaper than the first, and keeping oversight intact as agents start taking actions rather than drafting them.",
     next: "Put the governance and operating model in place that lets this scale past the people who built it.",
     service: "ai-governance",
   },
@@ -201,7 +201,7 @@ export const bands: Band[] = [
     name: "Scaling",
     min: 25,
     verdict:
-      "This is genuine capability — running, measured and governed. The question shifts from whether AI works to whether cost, consistency and oversight hold as more of the work moves to agents.",
+      "This is genuine capability: running, measured and governed. The question shifts from whether AI works to whether cost, consistency and oversight hold as more of the work moves to agents.",
     next: "Extend into the processes where an agent has to act, not just answer, with the limits that makes necessary.",
     service: "ai-agents",
   },

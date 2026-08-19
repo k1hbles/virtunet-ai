@@ -179,7 +179,7 @@ export default function AboutPage() {
           <SectionHead
             eyebrow="Responsible AI"
             title="Ethics is a design choice, not an afterthought."
-            lead="Aligned to Australia's AI Ethics Principles, and informed by ISO/IEC 42001 and the NIST AI Risk Management Framework — tailored to your size, sector and risk appetite rather than bolted on."
+            lead="Aligned to Australia's AI Ethics Principles, and informed by ISO/IEC 42001 and the NIST AI Risk Management Framework, tailored to your size, sector and risk appetite rather than bolted on."
           />
           <ul className="reveal-group mt-12 grid border-t border-line md:grid-cols-2">
             {company.responsibleAi.map((r, i) => (

@@ -64,7 +64,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div className="rounded-2xl border border-line bg-surface p-8 md:p-12">
-        <p className="text-[1.4rem] font-medium tracking-[-0.02em] text-ink">Thank you — that&apos;s with us.</p>
+        <p className="text-[1.4rem] font-medium tracking-[-0.02em] text-ink">Thank you. That&apos;s with us.</p>
         <p className="mt-4 max-w-md text-[1.02rem] leading-7 text-ink-muted">
           We reply within one business day. If it is urgent, the phone number on this page is
           answered during business hours.

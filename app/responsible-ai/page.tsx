@@ -8,7 +8,7 @@ import { TextLink } from "@/components/ui/pill-button";
 export const metadata: Metadata = {
   title: "Responsible AI",
   description:
-    "Aligned to Australia's AI Ethics Principles and informed by ISO/IEC 42001 and the NIST AI Risk Management Framework — applied to the decisions your organisation actually makes.",
+    "Aligned to Australia's AI Ethics Principles and informed by ISO/IEC 42001 and the NIST AI Risk Management Framework, applied to the decisions your organisation actually makes.",
   alternates: { canonical: "/responsible-ai" },
 };
 
@@ -47,7 +47,7 @@ const principles = [
   },
   {
     name: "Accountability",
-    body: "A named person is answerable for each system. AI does not absorb responsibility — it concentrates it.",
+    body: "A named person is answerable for each system. AI does not absorb responsibility. It concentrates it.",
   },
 ];
 

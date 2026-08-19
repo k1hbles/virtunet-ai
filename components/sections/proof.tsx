@@ -34,10 +34,10 @@ export function Proof() {
               <SplitWords text="An AI practice standing on eighteen years of delivery." />
             </h2>
             <p className="reveal mt-7 max-w-md text-lg leading-8 text-ink-muted">
-              Most firms in this category started with AI. Virtu started with the organisations —
-              schools, agencies and enterprises where technology failing is not an inconvenience —
-              and brought the same habits to AI: security first, vendor neutral, measured against
-              outcomes rather than activity.
+              Most firms in this category started with AI. Virtu started with the organisations that
+              cannot afford for technology to fail: schools, agencies and enterprises. The same
+              habits came with it. Security first, vendor neutral, and measured against outcomes
+              rather than activity.
             </p>
             <div className="reveal mt-8">
               <TextLink href="/about">The full story</TextLink>

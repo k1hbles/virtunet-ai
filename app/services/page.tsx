@@ -8,7 +8,7 @@ import { CtaBand } from "@/components/page/cta-band";
 export const metadata: Metadata = {
   title: "AI services",
   description:
-    "Thirteen services across one delivery model — strategy, governance, preparation, implementation and adoption. Start at any stage, stop after any stage.",
+    "Eleven services across one delivery model: orient, govern, build, adopt and run. Start at any stage, stop after any stage.",
   alternates: { canonical: "/services" },
 };
 
@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="AI services"
         title="One journey. Start where you are."
-        lead="Every service is a stage on the same path, not an item in a catalogue. Most organisations begin with strategy or readiness, with governance running alongside everything else."
+        lead="Every service is a stage on the same path, not an item in a catalogue. Most organisations begin at orient, and governance runs alongside everything that follows."
       />
 
       {stages.map((stage) => {

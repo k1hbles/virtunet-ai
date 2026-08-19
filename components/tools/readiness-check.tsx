@@ -47,7 +47,7 @@ export function ReadinessCheck() {
   if (done) {
     const service = getService(result.band.service);
     const summary = [
-      `Score: ${result.score} of ${MAX_SCORE} — ${result.band.name}`,
+      `Score: ${result.score} of ${MAX_SCORE}, ${result.band.name}`,
       "",
       ...result.byDimension.map((d) => `${d.name}: ${d.score}/${d.max}`),
       "",

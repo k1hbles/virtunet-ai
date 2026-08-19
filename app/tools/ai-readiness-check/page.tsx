@@ -7,7 +7,7 @@ import { ReadinessCheck } from "@/components/tools/readiness-check";
 export const metadata: Metadata = {
   title: "AI Readiness Check",
   description:
-    "Ten questions across five dimensions, and an instant read on how ready your organisation actually is — with the gaps worth closing first. Free, about two minutes.",
+    "Ten questions across five dimensions, and an instant read on how ready your organisation actually is, with the gaps worth closing first. Free, about two minutes.",
   alternates: { canonical: "/tools/ai-readiness-check" },
 };
 
@@ -17,7 +17,7 @@ export default function ReadinessCheckPage() {
       <PageHero
         eyebrow="Free tool"
         title="See where you actually stand."
-        lead="Ten questions you can answer from what you already know — not from how you feel about it. You get the score and the breakdown immediately, with no email required and nothing sent anywhere."
+        lead="Ten questions you can answer from what you already know, not from how you feel about it. You get the score and the breakdown immediately, with no email required and nothing sent anywhere."
       />
 
       <section className="border-b border-line bg-canvas">
@@ -35,7 +35,7 @@ export default function ReadinessCheckPage() {
             <p className="mt-3 max-w-xl text-[1rem] leading-7 text-ink-muted">
               This is a self-assessment, and self-assessments are generous. The full readiness
               assessment scores the same dimensions against interviews, platform review and your
-              actual data — then costs the remediation.
+              actual data, then costs the remediation.
             </p>
           </div>
           <Link
