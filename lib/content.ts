@@ -91,9 +91,9 @@ export const aiServices = {
    * keyframe so arbitrary seeks are instant. See VIDEO-BRIEF.md.
    */
   video: {
-    src: "/video/ai-stack.mp4",
-    poster: "/video/ai-stack-poster.jpg",
-    alt: "An AI compute chassis opening to reveal its internal architecture",
+    src: "/video/ai-accelerator.mp4",
+    poster: "/video/ai-accelerator-poster.jpg",
+    alt: "An AI accelerator card separating into its layers: shrouds, heatsinks, chassis and board",
   },
   /**
    * Copy beats mapped onto the clip's arc. Each holds for most of its third
