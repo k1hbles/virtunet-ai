@@ -211,8 +211,8 @@ export const aiWorkplace = {
     "Most AI rollouts issue licences and stop there. Virtu rebuilds how a team produces its work with AI-native tooling in the middle of it: Claude Code and Codex in engineering, agentic assistants in knowledge work. What it leaves behind is a practice the next team can start from.",
   cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
-    src: "/img/ai-workplace-desk.webp",
-    alt: "A laptop, external display and a compact AI compute unit on a dark desk, lit in blue",
+    src: "/img/ai-workplace-coldplate.webp",
+    alt: "A precision-machined aluminium cold plate for AI accelerators, its cooling fins receding into shadow",
   },
 } as const;
 
