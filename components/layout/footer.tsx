@@ -1,4 +1,4 @@
-import { footer, legal, site } from "@/lib/content";
+import { footer, legal, routes, site } from "@/lib/content";
 import { SmartLink } from "@/components/ui/smart-link";
 import { Logo } from "@/components/ui/logo";
 
@@ -10,6 +10,23 @@ export function Footer() {
           <div>
             <Logo height={30} />
             <p className="mt-4 max-w-sm text-sm leading-6 text-ink-muted">{site.tagline}</p>
+            {/*
+              The sibling signpost. This site is AI services only; hardware,
+              procurement and licensing are a different business under the same
+              name. Rather than leave a visitor looking for those to conclude
+              Virtu does not do them, say where they live — once, here, instead
+              of linking into virtu.net from the body of the site.
+            */}
+            <p className="mt-6 max-w-sm text-sm leading-6 text-ink-muted">
+              Looking for hardware, procurement or licensing?{" "}
+              <SmartLink
+                href={routes.virtuNet}
+                className="text-ink underline underline-offset-4 transition-colors hover:text-accent"
+              >
+                That is virtu.net
+              </SmartLink>
+              .
+            </p>
           </div>
 
           {footer.columns.map((col) => (

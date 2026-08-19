@@ -25,14 +25,12 @@ export const routes = {
   about: "/about",
   contact: "/contact",
   /**
-   * virtu.net remains the parent site for the non-AI practice — modern
-   * workplace, procurement, lifecycle. Those links stay external on purpose;
-   * this site replaces virtunet.ai, not virtu.net.
+   * virtu.net is a sibling, not a parent, and this site no longer links into
+   * its product pages — hardware, procurement and licensing are its business
+   * and not described here at all. One signpost is kept so a visitor who
+   * wants that has somewhere to go.
    */
-  solutions: "https://virtu.net/solutions/",
-  products: "https://virtu.net/corp-buying-guide/",
-  sustainability: "https://virtu.net/about/sustainability/",
-  workplace: "https://virtu.net/modern-workplace-solution/",
+  virtuNet: "https://virtu.net/",
 } as const;
 
 export const navLinks = [
@@ -118,20 +116,20 @@ export const aiServices = {
   beats: [
     {
       title: "Adopt AI with confidence.",
-      body: "Virtu brings together strategy, security and hands-on implementation, turning early AI assessments into governed agents running in production.",
+      body: "Virtu takes organisations from an honest read on readiness through to governed agents doing real work — strategy, governance and delivery from one team.",
     },
     {
       title: "Every layer accounted for.",
-      body: "Data, security, skills and process are examined before anything ships. You see what is inside the stack, not just what runs on top of it.",
+      body: "Data, permissions, ethics and skills are examined before anything ships. You see what is underneath the stack, not only what runs on top of it.",
     },
     {
-      title: "One delivery model across every service.",
-      body: "Strategy through to enablement, delivered by the people who scoped it. Start anywhere, stop after any stage.",
+      title: "One delivery model, Orient to Run.",
+      body: "Five stages, eleven services, delivered by the people who scoped them. Start anywhere, stop after any stage.",
     },
   ],
   title: "Adopt AI with confidence.",
   intro:
-    "Virtu brings together strategy, security and hands-on implementation, turning early AI assessments into governed agents running in production.",
+    "Virtu takes organisations from an honest read on readiness through to governed agents doing real work — strategy, governance and delivery from one team.",
   /**
    * `group` clusters these nine into three, so the section reads as three areas
    * rather than nine equal cards. It shows a selection, not the full thirteen
@@ -161,59 +159,36 @@ export const aiServices = {
   ],
 } as const;
 
-export type CapabilityCard = {
-  title: string;
-  body: string;
-  href: string;
-  /** Optional artwork; cards without it get a radial glow instead. */
-  image?: string;
-  /** Spans the full grid width and both rows. */
-  feature?: boolean;
-};
-
-export const capabilities: {
-  title: string;
-  intro: string;
-  cta: { label: string; href: string };
-  items: CapabilityCard[];
-} = {
-  title: "Technology, made to work.",
-  intro:
-    "Virtu works across the full technology lifecycle, helping organisations choose the right products and licences, then deploy, secure and sustain them.",
-  cta: { label: "Explore all solutions", href: routes.solutions },
-  /** `feature: true` spans the full grid width and carries artwork. */
-  items: [
-    { title: "Procure", body: "Strategic technology procurement and AI-ready devices from leading global partners.", href: routes.solutions, image: "/img/procurement-devices.webp", feature: true },
-    { title: "License", body: "Software and licence services designed around the way your organisation works.", href: "https://virtu.net/software-solutions/" },
-    { title: "Deploy", body: "Professional deployment programs, project management and cloud transformation.", href: "https://virtu.net/it-consulting-services/" },
-    { title: "Secure", body: "Cybersecurity, networking and connectivity for resilient operations.", href: "https://virtu.net/cybersecurity-solutions/", image: "/img/secure-connectivity.webp" },
-    { title: "Sustain", body: "IT asset lifecycle management and sustainable infrastructure for long-term value.", href: "https://virtu.net/it-asset-lifecycle-management/" },
-  ],
-};
-
 export const aiWorkplace = {
-  title: "Prepare your workplace for AI.",
-  body: "AI readiness is more than a device upgrade. Virtu helps align the products, licences, cloud, security and workplace foundations your people need to move forward with confidence.",
-  cta: { label: "Explore digital workplace", href: routes.workplace },
+  title: "Where the work actually changes.",
+  body:
+    "Most AI rollouts issue licences and stop there. Virtu rebuilds how a team produces its work with AI-native tooling in the middle of it — Claude Code and Codex in engineering, agentic assistants in knowledge work — and leaves behind a practice the next team can start from.",
+  cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
     src: "/img/ai-workplace-desk.webp",
     alt: "A laptop, external display and a compact AI compute unit on a dark desk, lit in blue",
   },
 } as const;
 
+/**
+ * Sustainability kept, reframed to AI. Device lifecycle and e-waste are
+ * virtu.net's story; the version that belongs here is the running cost and
+ * energy of inference, which is a live concern for anyone scaling agents and
+ * one no competitor in this category is currently claiming.
+ */
 export const sustainability = {
-  title: "Progress that lasts beyond deployment.",
+  title: "What it costs to keep running.",
   intro:
-    "Virtu brings sustainability into every stage of the technology lifecycle, across product selection, resilient infrastructure and responsible end-of-life asset management.",
-  cta: { label: "Our sustainability commitment", href: routes.sustainability },
+    "Inference is a running cost, not a purchase. Virtu sizes models and compute against the work they actually do, so energy and spend stay proportionate as usage grows rather than scaling with it.",
+  cta: { label: "Explore AI infrastructure", href: "/services/ai-infrastructure" },
   image: {
     src: "/img/sustainability-rack-aisle.webp",
     alt: "A maintenance aisle between server racks, with one rack drawn open on its rails",
   },
   pillars: [
-    { title: "Choose", body: "Technology selected for performance, longevity and impact." },
-    { title: "Operate", body: "Secure, resilient foundations that support long-term growth." },
-    { title: "Renew", body: "Lifecycle services that help assets retain value beyond first use." },
+    { title: "Right-size", body: "The smallest model that clears the quality bar, rather than the largest one available." },
+    { title: "Place", body: "Local, cloud or hybrid, decided on cost and obligation rather than on habit." },
+    { title: "Measure", body: "A unit cost per task you can forecast before usage scales." },
   ],
 } as const;
 
@@ -259,7 +234,7 @@ export const footer = {
         { label: "About", href: routes.about },
         { label: "Partnerships", href: "/partnerships" },
         { label: "Contact", href: routes.contact },
-        { label: "Sustainability", href: routes.sustainability },
+        { label: "Responsible AI", href: "/responsible-ai" },
         { label: "Careers", href: "https://virtu.net/careers/" },
       ],
     },
