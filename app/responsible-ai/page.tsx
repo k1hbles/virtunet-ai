@@ -56,8 +56,8 @@ export default function ResponsibleAiPage() {
     <>
       <PageHero
         eyebrow="Responsible AI"
-        title="Ethics is a design choice, not an afterthought."
-        lead="AI creates real value, but only when it is used safely, fairly and transparently. We help organisations adopt it in line with recognised ethical principles, so innovation does not come at the cost of trust."
+        title="What gets AI approved for the work that matters."
+        lead="In regulated work the bottleneck is approval, not technology. Virtu builds the evidence that lets AI into decisions affecting real people: how an outcome was reached, who is accountable, and how it can be challenged."
       />
 
       <section className="border-b border-line bg-canvas">
@@ -137,7 +137,7 @@ export default function ResponsibleAiPage() {
         </div>
       </section>
 
-      <CtaBand title="Adopt AI with a clear conscience." />
+      <CtaBand title="Ready to get AI into the work that matters?" />
     </>
   );
 }

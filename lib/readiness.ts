@@ -177,7 +177,7 @@ export const bands: Band[] = [
     name: "Exploring",
     min: 0,
     verdict:
-      "There is interest here, not yet a programme. That is the ordinary starting point, and the risk at this stage is buying something before anyone has agreed which problem it solves.",
+      "AI is interest here rather than a programme, which is the ordinary starting point. The cheapest return available to you is agreement: one hour of leadership alignment is worth more right now than any tool you could buy.",
     next: "Get the leadership team to the same answer on where AI earns its place here, before anything is bought.",
     service: "ai-strategy-day",
   },
@@ -185,7 +185,7 @@ export const bands: Band[] = [
     name: "Developing",
     min: 11,
     verdict:
-      "Something is moving and the intent is real, but the foundations are uneven. This is the band where pilots stall, rarely for want of technology and usually because a question about permissions or accountability has no answer.",
+      "Something is moving and the intent is real. The gains from here are mostly unclaimed rather than unavailable: the work is knowing which foundation is actually holding you back, so the next pilot reaches production instead of joining the others.",
     next: "Get an evidence-based read on what is actually blocking delivery, and close those gaps rather than the visible ones.",
     service: "ai-readiness-assessment",
   },
@@ -193,7 +193,7 @@ export const bands: Band[] = [
     name: "Operating",
     min: 19,
     verdict:
-      "You have something working and enough control to defend it. The constraint now is repeatability: making the second and third use case cheaper than the first, and keeping oversight intact as agents start taking actions rather than drafting them.",
+      "You have something working and enough control to defend it. The return now comes from repeatability: making the second and third use case cheaper than the first, so each one adds capacity rather than another project.",
     next: "Put the governance and operating model in place that lets this scale past the people who built it.",
     service: "ai-governance",
   },
@@ -201,7 +201,7 @@ export const bands: Band[] = [
     name: "Scaling",
     min: 25,
     verdict:
-      "This is genuine capability: running, measured and governed. The question shifts from whether AI works to whether cost, consistency and oversight hold as more of the work moves to agents.",
+      "This is genuine capability, running and measured. The upside from here is scale: moving work to agents that act rather than assist, with a unit cost you can forecast before you commit to it.",
     next: "Extend into the processes where an agent has to act, not just answer, with the limits that makes necessary.",
     service: "ai-agents",
   },

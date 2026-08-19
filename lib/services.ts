@@ -32,7 +32,7 @@ export const stages: Stage[] = [
     slug: "govern",
     name: "Govern",
     index: 2,
-    summary: "Decide what an agent is allowed to do, and be able to show why afterwards.",
+    summary: "Hand agents real authority, and be able to prove it was handled properly.",
   },
   {
     slug: "build",
@@ -142,9 +142,9 @@ export const services: Service[] = [
     stage: "govern",
     kicker: "Guardrails",
     summary:
-      "Policy, controls and oversight for systems that now act, not just answer.",
+      "The authority model that lets agents do consequential work, and the record that keeps it defensible.",
     intro: [
-      "Governance written for chatbots does not survive contact with agents. An assistant that drafts an email is a different risk from one that can send it, move money, change a record or call another system on your behalf.",
+      "Agents only pay for themselves when they can act: send the email, move the record, close the ticket. That is a bigger step than drafting, and the organisations that decide deliberately how much authority to hand over move faster than the ones still arguing about whether to.",
       "We put the guardrails in place for both: an acceptable-use standard people can actually follow, a register of what is running, and defined limits on what each agent may do, with whom, and under whose authority.",
     ],
     outcomes: [
@@ -172,9 +172,9 @@ export const services: Service[] = [
     stage: "govern",
     kicker: "Defensible",
     summary:
-      "Fairness, transparency and contestability built into the decision, not reviewed after it.",
+      "The evidence that gets AI approved for work that matters, instead of stalled at the pilot.",
     intro: [
-      "Ethics becomes concrete the moment an AI system affects a person: who gets shortlisted, who gets flagged, whose claim is delayed. At that point somebody has to be able to explain the decision, and somebody has to be able to challenge it.",
+      "In regulated work, approval is the bottleneck rather than the technology. The organisations that get AI into decisions affecting customers are the ones that can show how a decision was reached and how it can be challenged, before anyone asks.",
       "We align the work to Australia's AI Ethics Principles and to recognised frameworks, then do the unglamorous part: deciding which decisions need a human in the loop, what gets disclosed, and how a person contests an outcome and reaches someone with the authority to change it. The position this is built on is set out in full on our responsible AI page.",
     ],
     outcomes: [
@@ -202,9 +202,9 @@ export const services: Service[] = [
     stage: "govern",
     kicker: "Zero trust",
     summary:
-      "Protecting the AI you deploy: data boundaries, agent permissions, prompt injection and shadow AI.",
+      "Permissions fixed and agents scoped up front, so a security review does not become the thing that stops the rollout.",
     intro: [
-      "An assistant inherits the permissions of whoever is using it, which means an over-shared drive becomes a data incident the first week an assistant is switched on. An agent with tool access widens that again: it can be talked into acting by content it merely reads.",
+      "The security review is where AI rollouts stall, and it stalls them late, after the licences are bought. Doing the work first means the answer is already yes: permissions correct, agent access scoped, and evidence that both hold.",
       "This is security work, not policy work. We tighten permissions before the rollout rather than after it, constrain what agents can reach, test for prompt injection and exfiltration, and surface the AI already in use that nobody approved.",
     ],
     outcomes: [
