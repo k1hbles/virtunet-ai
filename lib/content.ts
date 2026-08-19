@@ -159,24 +159,53 @@ export const crawlWalkRun = {
   title: "Most organisations try to run first.",
   intro:
     "The three stages are not a maturity badge to collect. They are three different risk profiles, and the thing that breaks is different at each one. That is why the stage that gets skipped is usually the one that causes the incident.",
+  /**
+   * `flow` is the schematic drawn above each stage: the four things involved,
+   * and which of them the AI is actually connected to. It is the honest
+   * difference between the stages — at crawl nothing reaches your systems, at
+   * walk a person clears every step, at run the gate is a set of limits
+   * rather than a human. Drawing it makes the escalation legible in a way
+   * three paragraphs of text does not.
+   */
   stages: [
     {
       name: "Crawl",
       shape: "People use AI to draft, summarise and research. Nothing touches your systems.",
       needs: "Permissions corrected first, because an assistant can read whatever the person using it can read.",
       breaks: "Data exposure. The over-shared drive nobody had looked at in five years is now searchable in plain language.",
+      flow: [
+        { label: "You", state: "on" },
+        { label: "AI", state: "on" },
+        { label: "No gate", state: "off" },
+        { label: "Systems", state: "off" },
+      ],
+      note: "Nothing is written back.",
     },
     {
       name: "Walk",
       shape: "AI sits inside a real workflow, and a person approves each step before it lands.",
       needs: "An agreed quality bar and a measured baseline, so the comparison is against something.",
       breaks: "Quality drift, unnoticed. Faster quietly becomes worse because nobody wrote down what good looked like.",
+      flow: [
+        { label: "You", state: "on" },
+        { label: "AI", state: "on" },
+        { label: "Approval", state: "on" },
+        { label: "Systems", state: "on" },
+      ],
+      note: "A person clears every step.",
     },
     {
       name: "Run",
       shape: "Agents act inside limits: reading the record, taking the step, stopping at the edge of their remit.",
       needs: "Authority limits set per action, logging you can reconstruct months later, and a cost per run you can forecast.",
       breaks: "Authority and cost. An agent that works and cannot be afforded at volume is not a solution.",
+      flow: [
+        { label: "You", state: "muted" },
+        { label: "AI", state: "on" },
+        { label: "Limits", state: "on" },
+        { label: "Systems", state: "on" },
+      ],
+      note: "A person is called on handback.",
     },
   ],
   footnote:

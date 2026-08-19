@@ -467,3 +467,66 @@ html.lenis body {
 [data-mode="pinned"] .ai-rail { position: absolute; inset-inline: 0; bottom: 0; margin-top: 0; }
 /* The rail reports scrub progress, so it means nothing when nothing scrubs. */
 [data-mode="static"] .ai-rail { display: none; }
+
+/* ============================================================
+   Crawl / walk / run schematic.
+
+   The rail draws left to right as each card enters, so the three stages read
+   as an escalation rather than as three boxes. It rides the same `view()`
+   timeline as everything else and inherits the same reduced-motion guard,
+   which collapses it to its finished state rather than leaving it undrawn.
+   ============================================================ */
+.stage-node {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.42rem 0.55rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-line);
+}
+.stage-node[data-state="on"] { color: var(--color-ink); border-color: oklch(45% 0 0); }
+.stage-node[data-state="muted"] { color: var(--color-ink-muted); }
+.stage-node[data-state="off"] {
+  color: oklch(45% 0 0);
+  border-style: dashed;
+}
+/* the connector carries the state of the node it leads into, so an inactive
+   leg of the flow is visibly not connected rather than merely unlabelled */
+.stage-line {
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 0.5rem;
+  background: oklch(45% 0 0);
+  transform-origin: left;
+}
+.stage-line[data-state="off"] {
+  background: repeating-linear-gradient(
+    to right,
+    oklch(35% 0 0) 0 3px,
+    transparent 3px 6px
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes rail-draw {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    .stage-line {
+      animation: rail-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 22%;
+    }
+    @keyframes node-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .stage-node {
+      animation: node-in linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 20%;
+    }
+  }
+}
