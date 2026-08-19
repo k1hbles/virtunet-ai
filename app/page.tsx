@@ -1,5 +1,6 @@
 
 import { Hero } from "@/components/sections/hero";
+import { Proof } from "@/components/sections/proof";
 import { AiServices } from "@/components/sections/ai-services";
 import { AiWorkplace } from "@/components/sections/ai-workplace";
 import { Sustainability } from "@/components/sections/sustainability";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
         <Hero />
+        <Proof />
         <AiServices />
         <AiWorkplace />
         <Sustainability />
