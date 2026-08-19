@@ -469,64 +469,70 @@ html.lenis body {
 [data-mode="static"] .ai-rail { display: none; }
 
 /* ============================================================
-   Crawl / walk / run schematic.
+   Crawl / walk / run track.
 
-   The rail draws left to right as each card enters, so the three stages read
-   as an escalation rather than as three boxes. It rides the same `view()`
-   timeline as everything else and inherits the same reduced-motion guard,
-   which collapses it to its finished state rather than leaving it undrawn.
+   Dots on a rule rather than pills in a row. The pill treatment read as
+   another card grid, which the page already uses twice; a track reads as a
+   distance travelled, which is what the three stages are.
+
+   The track is the same width in every row, so the point where the line stops
+   being solid lands in a different place each time and the escalation is
+   legible down the column without reading a word.
    ============================================================ */
-.stage-node {
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding: 0.42rem 0.55rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--color-line);
-}
-.stage-node[data-state="on"] { color: var(--color-ink); border-color: oklch(45% 0 0); }
-.stage-node[data-state="muted"] { color: var(--color-ink-muted); }
-.stage-node[data-state="off"] {
-  color: oklch(45% 0 0);
-  border-style: dashed;
-}
-/* the connector carries the state of the node it leads into, so an inactive
-   leg of the flow is visibly not connected rather than merely unlabelled */
-.stage-line {
-  flex: 1 1 auto;
+.track { --dot: 0.5rem; }
+
+.track-seg {
+  flex: 1 1 0;
   height: 1px;
-  min-width: 0.5rem;
-  background: oklch(45% 0 0);
+  background: oklch(52% 0 0);
   transform-origin: left;
 }
-.stage-line[data-state="off"] {
-  background: repeating-linear-gradient(
-    to right,
-    oklch(35% 0 0) 0 3px,
-    transparent 3px 6px
-  );
+.track-seg[data-state="off"] {
+  background: repeating-linear-gradient(to right, oklch(34% 0 0) 0 4px, transparent 4px 8px);
 }
+
+.track-dot {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 999px;
+  flex: 0 0 auto;
+  background: var(--color-ink);
+  box-shadow: 0 0 0 4px var(--color-canvas);
+}
+.track-dot[data-state="muted"] { background: oklch(58% 0 0); }
+.track-dot[data-state="off"] {
+  background: transparent;
+  border: 1px solid oklch(40% 0 0);
+}
+
+.track-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+.track-label[data-state="off"] { color: oklch(42% 0 0); }
 
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    @keyframes rail-draw {
+    @keyframes track-draw {
       from { transform: scaleX(0); }
       to   { transform: scaleX(1); }
     }
-    .stage-line {
-      animation: rail-draw linear both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 22%;
-    }
-    @keyframes node-in {
-      from { opacity: 0; transform: translateY(6px); }
+    @keyframes dot-in {
+      from { opacity: 0; transform: scale(0.4); }
       to   { opacity: 1; transform: none; }
     }
-    .stage-node {
-      animation: node-in linear both;
+    .track-seg {
+      animation: track-draw linear both;
       animation-timeline: view();
-      animation-range: entry 5% cover 20%;
+      animation-range: entry 15% cover 30%;
+    }
+    .track-dot {
+      animation: dot-in linear both;
+      animation-timeline: view();
+      animation-range: entry 12% cover 26%;
     }
   }
 }

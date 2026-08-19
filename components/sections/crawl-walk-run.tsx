@@ -4,12 +4,16 @@ import { SplitWords } from "@/components/ui/split-words";
 import { TextLink } from "@/components/ui/pill-button";
 
 /**
- * The three stages, each shown with what it needs and what breaks.
+ * The three stages, as three full-width rows rather than three columns.
  *
- * The schematic above each stage is the point of the section. Crawl, walk and
- * run are otherwise three paragraphs that all sound reasonable; drawing what
- * the AI is connected to at each one makes the escalation visible, and makes
- * the risk that comes with it obvious without having to assert it.
+ * Columns put the stages side by side, which reads as parallel options; these
+ * are sequential, and a reader moves down them the way an organisation moves
+ * through them. The row also gives the copy a wider measure, so the same
+ * content stops feeling like six stacked blocks in a narrow card.
+ *
+ * The track is the dominant element on purpose. Every row's track is the same
+ * width, so where the solid line gives way to the dashed one lands further
+ * right each time, and the escalation is readable without the words.
  */
 export function CrawlWalkRun() {
   return (
@@ -25,48 +29,74 @@ export function CrawlWalkRun() {
           </p>
         </div>
 
-        <ol className="reveal-group mt-16 grid gap-px overflow-clip rounded-2xl border border-line bg-line md:grid-cols-3">
+        <ol className="reveal-group mt-16 border-t border-line">
           {crawlWalkRun.stages.map((stage, i) => (
-            <li key={stage.name} className="reveal flex flex-col gap-7 bg-canvas p-7 md:p-8">
-              <div className="flex items-baseline gap-4">
-                <span className="font-mono text-sm text-ink-muted">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-[1.7rem] font-medium tracking-[-0.03em] text-ink">
-                  {stage.name}
-                </h3>
-              </div>
-
-              {/* what the AI is actually wired to at this stage */}
+            <li
+              key={stage.name}
+              className="reveal grid gap-10 border-b border-line py-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-14"
+            >
+              {/* the stage itself */}
               <div>
-                <div className="flex items-center">
-                  {stage.flow.map((node, n) => (
-                    <Fragment key={node.label}>
-                      {n > 0 && <span className="stage-line" data-state={node.state} aria-hidden />}
-                      <span className="stage-node" data-state={node.state}>
-                        {node.label}
-                      </span>
-                    </Fragment>
-                  ))}
+                <div className="flex items-baseline gap-5">
+                  <span className="font-mono text-sm text-ink-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[clamp(2rem,3.4vw,2.9rem)] font-medium leading-none tracking-[-0.04em] text-ink">
+                    {stage.name}
+                  </h3>
                 </div>
-                <p className="mt-3.5 text-xs leading-5 text-ink-muted">{stage.note}</p>
+                <p className="mt-6 max-w-md text-[1.08rem] leading-7 text-ink">{stage.shape}</p>
+                <p className="mt-4 text-sm leading-6 text-ink-muted">{stage.note}</p>
               </div>
 
-              <p className="text-[1.02rem] leading-7 text-ink">{stage.shape}</p>
+              <div className="flex flex-col gap-10">
+                {/* what the AI is wired to at this stage */}
+                <div className="track pb-7">
+                  <div className="flex items-center">
+                    {stage.flow.map((node, n) => (
+                      <Fragment key={node.label}>
+                        {n > 0 && (
+                          <span className="track-seg" data-state={node.state} aria-hidden />
+                        )}
+                        {/* the label is anchored to its own dot rather than
+                            distributed across the row, so it stays under the
+                            stop it names; the end labels align inward so they
+                            do not hang off the track */}
+                        <span className="relative flex-none">
+                          <span className="track-dot block" data-state={node.state} aria-hidden />
+                          <span
+                            className={[
+                              "track-label absolute top-[calc(100%+0.85rem)]",
+                              n === 0
+                                ? "left-0"
+                                : n === stage.flow.length - 1
+                                  ? "right-0"
+                                  : "left-1/2 -translate-x-1/2",
+                            ].join(" ")}
+                            data-state={node.state}
+                          >
+                            {node.label}
+                          </span>
+                        </span>
+                      </Fragment>
+                    ))}
+                  </div>
+                </div>
 
-              <div className="mt-auto flex flex-col gap-5 border-t border-line pt-6">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
-                    What it needs
-                  </p>
-                  <p className="mt-2.5 text-[0.97rem] leading-6 text-ink-muted">{stage.needs}</p>
-                </div>
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
-                    What breaks
-                  </p>
-                  <p className="mt-2.5 text-[0.97rem] leading-6 text-ink-muted">{stage.breaks}</p>
-                </div>
+                <dl className="grid gap-8 border-t border-line pt-7 sm:grid-cols-2">
+                  <div>
+                    <dt className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
+                      What it needs
+                    </dt>
+                    <dd className="mt-3 text-[0.97rem] leading-6 text-ink">{stage.needs}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
+                      What breaks
+                    </dt>
+                    <dd className="mt-3 text-[0.97rem] leading-6 text-ink-muted">{stage.breaks}</dd>
+                  </div>
+                </dl>
               </div>
             </li>
           ))}
