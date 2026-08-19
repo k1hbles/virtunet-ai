@@ -247,7 +247,7 @@ export default function AboutPage() {
           </ul>
           <Link
             href="/responsible-ai"
-            className="group reveal mt-10 inline-flex items-center gap-2 text-[1rem] font-medium text-ink transition-colors hover:text-accent"
+            className="group reveal mt-10 inline-flex items-center gap-2 text-[1rem] font-medium text-ink transition-colors hover:text-accent-ink"
           >
             The full Responsible AI position
             <ArrowUpRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

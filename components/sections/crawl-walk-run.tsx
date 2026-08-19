@@ -22,7 +22,7 @@ export function CrawlWalkRun() {
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-end lg:gap-16">
           <div>
-            <p className="eyebrow text-accent">{crawlWalkRun.eyebrow}</p>
+            <p className="eyebrow text-accent-ink">{crawlWalkRun.eyebrow}</p>
             <h2 className="drift section-title mt-6 text-balance">
               <SplitWords text={crawlWalkRun.title} />
             </h2>

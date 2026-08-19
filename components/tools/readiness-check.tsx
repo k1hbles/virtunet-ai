@@ -64,7 +64,7 @@ export function ReadinessCheck() {
               <span className="text-ink-muted"> / {MAX_SCORE}</span>
             </p>
           </div>
-          <p className="text-[clamp(1.6rem,3vw,2.4rem)] font-medium tracking-[-0.03em] text-accent">
+          <p className="text-[clamp(1.6rem,3vw,2.4rem)] font-medium tracking-[-0.03em] text-accent-ink">
             {result.band.name}
           </p>
         </div>
@@ -100,7 +100,7 @@ export function ReadinessCheck() {
           {service && (
             <Link
               href={`/services/${service.slug}`}
-              className="group mt-4 inline-flex items-center gap-2 text-[0.98rem] font-medium text-accent"
+              className="group mt-4 inline-flex items-center gap-2 text-[0.98rem] font-medium text-accent-ink"
             >
               {service.title}
               <ArrowRight size={15} aria-hidden className="transition-transform group-hover:translate-x-0.5" />

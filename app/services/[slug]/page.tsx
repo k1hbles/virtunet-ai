@@ -89,7 +89,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   i % 2 === 1 ? "md:border-l" : "",
                 ].join(" ")}
               >
-                <Check size={17} aria-hidden className="mt-1 shrink-0 text-accent" />
+                <Check size={17} aria-hidden className="mt-1 shrink-0 text-accent-ink" />
                 <span className="text-[1.02rem] leading-7 text-ink">{o}</span>
               </li>
             ))}
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   i % 4 === 0 ? "lg:border-l-0" : "lg:border-l",
                 ].join(" ")}
               >
-                <span className="font-mono text-sm tabular-nums text-accent">
+                <span className="font-mono text-sm tabular-nums text-accent-ink">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 text-[1.25rem] font-medium tracking-[-0.02em] text-ink">
@@ -154,17 +154,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   key={s.slug}
                   href={`/services/${s.slug}`}
                   className={[
-                    "group flex items-baseline justify-between gap-6 border-b border-line py-6 transition-colors hover:text-accent md:px-7",
+                    "group flex items-baseline justify-between gap-6 border-b border-line py-6 transition-colors hover:text-accent-ink md:px-7",
                     i % 2 === 1 ? "md:border-l" : "",
                   ].join(" ")}
                 >
-                  <span className="text-[1.1rem] text-ink transition-colors group-hover:text-accent">
+                  <span className="text-[1.1rem] text-ink transition-colors group-hover:text-accent-ink">
                     {s.title}
                   </span>
                   <ArrowUpRight
                     size={16}
                     aria-hidden
-                    className="shrink-0 translate-y-1 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                    className="shrink-0 translate-y-1 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent-ink"
                   />
                 </Link>
               ))}

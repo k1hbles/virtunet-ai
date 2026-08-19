@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   <ArrowUpRight
                     size={16}
                     aria-hidden
-                    className="shrink-0 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                    className="shrink-0 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-ink"
                   />
                 </div>
                 <h3 className="mt-6 text-balance text-[1.05rem] font-medium leading-[1.3] tracking-[-0.02em] text-ink">

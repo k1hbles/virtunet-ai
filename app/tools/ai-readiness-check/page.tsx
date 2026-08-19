@@ -40,7 +40,7 @@ export default function ReadinessCheckPage() {
           </div>
           <Link
             href="/services/ai-readiness-assessment"
-            className="group inline-flex items-center gap-2 justify-self-start text-[1rem] font-medium text-ink transition-colors hover:text-accent md:justify-self-end"
+            className="group inline-flex items-center gap-2 justify-self-start text-[1rem] font-medium text-ink transition-colors hover:text-accent-ink md:justify-self-end"
           >
             AI Readiness Assessment
             <ArrowUpRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

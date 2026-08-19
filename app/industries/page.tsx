@@ -37,7 +37,7 @@ export default function IndustriesPage() {
                 <ArrowUpRight
                   size={17}
                   aria-hidden
-                  className="self-end text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                  className="self-end text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-ink"
                 />
                 <div>
                   <h2 className="text-[1.5rem] font-medium tracking-[-0.03em] text-ink">{ind.name}</h2>

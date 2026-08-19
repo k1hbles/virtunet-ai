@@ -14,14 +14,14 @@ export function Insights() {
       <div className="wrap">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="eyebrow text-accent">{insights.eyebrow}</p>
+            <p className="eyebrow text-accent-ink">{insights.eyebrow}</p>
             <h2 className="drift section-title mt-6 text-balance">
               <SplitWords text={insights.title} />
             </h2>
           </div>
           <a
             href={insights.cta.href}
-            className="reveal hidden items-center gap-2 text-sm text-ink transition-colors hover:text-accent md:inline-flex"
+            className="reveal hidden items-center gap-2 text-sm text-ink transition-colors hover:text-accent-ink md:inline-flex"
           >
             {insights.cta.label}
             <ArrowRight size={15} aria-hidden />

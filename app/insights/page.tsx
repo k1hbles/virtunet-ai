@@ -42,7 +42,7 @@ export default function InsightsPage() {
                   <ArrowUpRight
                     size={17}
                     aria-hidden
-                    className="shrink-0 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                    className="shrink-0 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-ink"
                   />
                 </div>
                 <div>

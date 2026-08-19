@@ -52,14 +52,14 @@ export default function ContactPage() {
                 <p className="eyebrow text-ink-muted">{label}</p>
                 <a
                   href={primary.href}
-                  className="mt-5 block text-[1.35rem] font-medium tracking-[-0.025em] text-ink transition-colors hover:text-accent"
+                  className="mt-5 block text-[1.35rem] font-medium tracking-[-0.025em] text-ink transition-colors hover:text-accent-ink"
                 >
                   {primary.label}
                 </a>
                 <p className="mt-1 text-[0.88rem] text-ink-muted">{primary.note}</p>
                 <a
                   href={secondary.href}
-                  className="mt-4 block text-[1rem] text-ink-muted transition-colors hover:text-accent"
+                  className="mt-4 block text-[1rem] text-ink-muted transition-colors hover:text-accent-ink"
                 >
                   {secondary.label}
                 </a>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 href={contact.address.href}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-block text-[0.92rem] text-ink-muted underline underline-offset-4 transition-colors hover:text-accent"
+                className="mt-4 inline-block text-[0.92rem] text-ink-muted underline underline-offset-4 transition-colors hover:text-accent-ink"
               >
                 Get directions
               </a>

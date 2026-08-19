@@ -9,7 +9,7 @@ export function Sustainability() {
       <div className="wrap">
         <div className="grid items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="eyebrow text-accent">{sustainability.eyebrow}</p>
+            <p className="eyebrow text-accent-ink">{sustainability.eyebrow}</p>
             <h2 className="drift section-title mt-6 text-balance"><SplitWords text={sustainability.title} /></h2>
             <p className="reveal mt-7 max-w-xl text-lg leading-8 text-ink-muted">{sustainability.intro}</p>
             <div className="reveal mt-8">

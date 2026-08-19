@@ -31,7 +31,7 @@ export function Proof() {
       <div className="wrap">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
           <div>
-            <p className="eyebrow text-accent">Proof</p>
+            <p className="eyebrow text-accent-ink">Proof</p>
             <h2 className="drift section-title mt-6 text-balance">
               <SplitWords text={firstClient.claim} />
             </h2>

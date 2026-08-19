@@ -95,7 +95,7 @@ export default function ResponsibleAiPage() {
                   i % 2 === 1 ? "md:border-l" : "",
                 ].join(" ")}
               >
-                <span className="font-mono text-sm tabular-nums text-accent">
+                <span className="font-mono text-sm tabular-nums text-accent-ink">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="mt-4 text-[1.25rem] font-medium tracking-[-0.025em] text-ink">

@@ -28,7 +28,7 @@ export function PageHero({
         }}
       />
       <div className="wrap relative z-10 pb-16 pt-40 md:pb-24 md:pt-48">
-        <p className="eyebrow text-accent">{eyebrow}</p>
+        <p className="eyebrow text-accent-ink">{eyebrow}</p>
         <h1 className="mt-6 max-w-[17ch] text-balance text-[clamp(2.6rem,5.6vw,4.8rem)] font-medium leading-[1.0] tracking-[-0.045em] text-ink">
           <SplitWords text={title} />
         </h1>

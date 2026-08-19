@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
                 <div>
                   <dt className="text-ink-muted">Email</dt>
                   <dd>
-                    <a href={company.contact.email.href} className="text-ink underline underline-offset-4 hover:text-accent">
+                    <a href={company.contact.email.href} className="text-ink underline underline-offset-4 hover:text-accent-ink">
                       {company.contact.email.label}
                     </a>
                   </dd>
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
                 <div>
                   <dt className="text-ink-muted">Contact number</dt>
                   <dd>
-                    <a href={company.contact.phone.href} className="text-ink underline underline-offset-4 hover:text-accent">
+                    <a href={company.contact.phone.href} className="text-ink underline underline-offset-4 hover:text-accent-ink">
                       {company.contact.phone.label}
                     </a>
                   </dd>
@@ -102,7 +102,7 @@ export default function PrivacyPolicyPage() {
               version is at{" "}
               <a
                 href={PRIVACY_SOURCE}
-                className="text-ink underline underline-offset-4 hover:text-accent"
+                className="text-ink underline underline-offset-4 hover:text-accent-ink"
                 rel="noreferrer"
               >
                 virtu.net/privacy-policy

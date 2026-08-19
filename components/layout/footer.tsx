@@ -21,7 +21,7 @@ export function Footer() {
               Looking for hardware, procurement or licensing?{" "}
               <SmartLink
                 href={routes.virtuNet}
-                className="text-ink underline underline-offset-4 transition-colors hover:text-accent"
+                className="text-ink underline underline-offset-4 transition-colors hover:text-accent-ink"
               >
                 That is virtu.net
               </SmartLink>
@@ -39,7 +39,7 @@ export function Footer() {
                   <SmartLink
                     key={l.label}
                     href={l.href}
-                    className="text-sm text-ink transition-colors hover:text-accent"
+                    className="text-sm text-ink transition-colors hover:text-accent-ink"
                   >
                     {l.label}
                   </SmartLink>
@@ -77,7 +77,7 @@ export function Footer() {
           <span>
             © {new Date().getFullYear()} {legal.entity}. All rights reserved. ABN {legal.abn}.
           </span>
-          <SmartLink href="/privacy-policy" className="transition-colors hover:text-accent">
+          <SmartLink href="/privacy-policy" className="transition-colors hover:text-accent-ink">
             Privacy Policy
           </SmartLink>
         </div>

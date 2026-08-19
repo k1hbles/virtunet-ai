@@ -57,7 +57,7 @@ export default function ServicesPage() {
                       <ArrowUpRight
                         size={17}
                         aria-hidden
-                        className="text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                        className="text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-ink"
                       />
                     </div>
                     <div>

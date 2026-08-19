@@ -47,7 +47,7 @@ export function TextLink({
   children: React.ReactNode;
   hover?: "accent" | "green";
 }) {
-  const hoverClass = hover === "green" ? "hover:text-accent-green" : "hover:text-accent";
+  const hoverClass = hover === "green" ? "hover:text-accent-green" : "hover:text-accent-ink";
   return (
     <SmartLink
       href={href}

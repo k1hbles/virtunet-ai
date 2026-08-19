@@ -25,7 +25,7 @@ export default function NotFound() {
         }}
       />
       <div className="wrap relative z-10 grid min-h-[70svh] content-center py-32">
-        <p className="eyebrow text-accent">Error 404</p>
+        <p className="eyebrow text-accent-ink">Error 404</p>
         <h1 className="mt-6 max-w-[16ch] text-balance text-[clamp(2.6rem,5.6vw,4.6rem)] font-medium leading-[1.0] tracking-[-0.045em] text-ink">
           <SplitWords text="That page isn't here." />
         </h1>
@@ -44,7 +44,7 @@ export default function NotFound() {
               <Link
                 href={s.href}
                 className={[
-                  "group flex items-baseline justify-between gap-4 border-b border-line py-4 text-[1.02rem] text-ink transition-colors hover:text-accent",
+                  "group flex items-baseline justify-between gap-4 border-b border-line py-4 text-[1.02rem] text-ink transition-colors hover:text-accent-ink",
                   i % 2 === 1 ? "sm:border-l sm:pl-6" : "sm:pr-6",
                 ].join(" ")}
               >
@@ -52,7 +52,7 @@ export default function NotFound() {
                 <ArrowUpRight
                   size={15}
                   aria-hidden
-                  className="shrink-0 translate-y-0.5 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                  className="shrink-0 translate-y-0.5 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent-ink"
                 />
               </Link>
             </li>

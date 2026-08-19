@@ -24,15 +24,21 @@
   --color-ink: oklch(98% 0.005 90);
   --color-ink-muted: oklch(68% 0.01 260);
   --color-line: oklch(24% 0 0);
-  /* Virtu blue, from the brand guidelines, verbatim rather than as an oklch
-     approximation of it. Note what it is good at: under white it is 7.06:1,
-     so it is an excellent button. On black it is 2.98:1, so as 12px type it
-     is below the 4.5:1 AA floor, and no weight or size fixes that because the
-     large-text exemption does not start until 24px. Only lightening it does,
-     and lightening it to 4.5:1 lands within a hair of the blue it replaced. */
-  --color-accent: #0350C7;
-  --color-accent-warm: oklch(84% 0.18 91);
-  --color-accent-green: oklch(72% 0.19 151);
+  /* The brand palette, as hex, because these are constants from the guidelines
+     rather than points chosen on a colour axis.
+
+     Virtu Blue is a fill: under white it is 6.49:1, so it is a good button. On
+     black it is 3.24:1, which clears the 3:1 floor for rules, borders and
+     indicators but not the 4.5:1 one for type, and no weight or size fixes
+     that because the large-text exemption does not begin until 24px.
+
+     The guidelines already solve it. Their own 80% tint of Virtu Blue is
+     5.03:1 on black, so accent-ink is that tint rather than a colour invented
+     to pass. Blue for what is filled, the tint for what is read. */
+  --color-accent: #265DAB;
+  --color-accent-ink: #517DBC;
+  --color-accent-warm: #F8D46E;
+  --color-accent-green: #68BE60;
   --color-on-accent: oklch(100% 0 0);
 
   /* platinum: the cool silver the hero is built on */
@@ -42,7 +48,7 @@
   /* the lit face each filled button takes on hover — one step up the
      lightness axis, same hue, so the button brightens rather than shifts */
   --color-platinum-lift: oklch(94% 0.006 250);
-  --color-accent-lift: oklch(53% 0.235 264);
+  --color-accent-lift: #2E6BC1;
 
   /* the original resolved --font-heading/body to the system stack */
   --font-sans: system-ui, sans-serif, -apple-system;

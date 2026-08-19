@@ -112,7 +112,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   <ArrowUpRight
                     size={17}
                     aria-hidden
-                    className="self-end text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                    className="self-end text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-ink"
                   />
                   <div>
                     <h3 className="text-[1.2rem] font-medium tracking-[-0.025em] text-ink">{s!.title}</h3>

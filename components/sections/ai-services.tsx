@@ -226,7 +226,7 @@ export function AiServices() {
           <div className="wrap grid w-full items-center gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
             {/* ---- copy beats ---- */}
             <div className="relative order-2 lg:order-1 lg:min-h-[26rem]">
-              <p className="eyebrow mb-7 text-accent">{aiServices.eyebrow}</p>
+              <p className="eyebrow mb-7 text-accent-ink">{aiServices.eyebrow}</p>
 
               <div className="ai-beats relative">
                 {beats.map((beat, i) => (
@@ -307,7 +307,7 @@ export function AiServices() {
                   <li key={svc.slug}>
                     <a
                       href={`/services/${svc.slug}`}
-                      className="group flex items-baseline gap-1.5 border-t border-line py-2.5 text-[0.94rem] leading-snug text-ink-muted transition-colors hover:text-accent"
+                      className="group flex items-baseline gap-1.5 border-t border-line py-2.5 text-[0.94rem] leading-snug text-ink-muted transition-colors hover:text-accent-ink"
                     >
                       <span>{svc.title}</span>
                       <ArrowUpRight
