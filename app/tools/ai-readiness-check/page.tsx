@@ -17,7 +17,7 @@ export default function ReadinessCheckPage() {
       <PageHero
         eyebrow="Free tool"
         title="See where you actually stand."
-        lead="Ten questions across five dimensions. You get the score and the breakdown immediately — no email required, nothing sent anywhere."
+        lead="Ten questions you can answer from what you already know — not from how you feel about it. You get the score and the breakdown immediately, with no email required and nothing sent anywhere."
       />
 
       <section className="border-b border-line bg-canvas">

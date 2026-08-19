@@ -2,8 +2,18 @@
  * AI Readiness Check.
  *
  * Ten questions across five dimensions, each answer worth 0–3, so 30 points
- * total and 6 per dimension. Questions and answer options follow the
- * assessment on virtunet.ai; the question wording is written for this site.
+ * total and 6 per dimension.
+ *
+ * Rewritten to be answerable. The previous version asked things like "where
+ * is your AI strategy today?", which invites a flattering guess — everybody
+ * is somewhere between informal interest and a funded strategy, and nobody
+ * knows which. These questions ask about states of the world the reader can
+ * actually check: whether a document exists, what an assistant could read
+ * today, whether anything is still running, whether anyone's day has changed.
+ *
+ * The dimensions follow the service journey — Orient, Govern, Build, Adopt —
+ * so a low score in one dimension points at a specific stage rather than at a
+ * general sense of unpreparedness.
  *
  * Scoring is deliberately transparent and lives here rather than on a server:
  * the reader gets their result instantly, and nothing about the result depends
@@ -17,11 +27,11 @@ export type Dimension = {
 };
 
 export const dimensions: Dimension[] = [
-  { key: "strategy", name: "Strategy & leadership", blurb: "Whether anyone senior owns this, and whether it is funded." },
-  { key: "data", name: "Data & technology", blurb: "Whether the data underneath is in a fit state to build on." },
-  { key: "people", name: "People & adoption", blurb: "Whether anyone will actually use what gets built." },
-  { key: "governance", name: "Governance & risk", blurb: "Whether you could defend a decision an AI system made." },
-  { key: "value", name: "Value & delivery", blurb: "Whether anything has reached production and been measured." },
+  { key: "direction", name: "Direction", blurb: "Whether anyone senior owns this, and whether it is funded." },
+  { key: "access", name: "Data & access", blurb: "What an assistant could read on its first day, and whether that is intended." },
+  { key: "guardrails", name: "Guardrails", blurb: "Whether there are rules, and whether you could reconstruct a decision afterwards." },
+  { key: "delivery", name: "Delivery", blurb: "Whether anything reached production, stayed there, and is costed." },
+  { key: "adoption", name: "Adoption", blurb: "Whether anyone's actual work is done differently now." },
 ];
 
 export type Question = {
@@ -34,113 +44,113 @@ export type Question = {
 
 export const questions: Question[] = [
   {
-    id: "strategy_1",
-    dimension: "strategy",
-    prompt: "Where is your AI strategy today?",
+    id: "direction_1",
+    dimension: "direction",
+    prompt: "Who signs off an AI project today?",
     options: [
-      "No strategy or discussion yet",
-      "Informal interest, nothing documented",
-      "A strategy is actively being developed",
-      "A funded strategy with executive ownership",
+      "Nothing has needed signing off yet",
+      "Whoever is paying for it decides",
+      "A manager or a committee reviews them",
+      "A named executive owns AI, and there is a budget line",
     ],
   },
   {
-    id: "strategy_2",
-    dimension: "strategy",
-    prompt: "Who owns AI in your organisation?",
+    id: "direction_2",
+    dimension: "direction",
+    prompt: "Is there a written plan with dates against it?",
     options: [
-      "No one in particular",
-      "Individual enthusiasts",
-      "A manager or single team",
-      "Executive or board level",
+      "Nothing written down",
+      "A deck, from a while ago",
+      "A plan, but without owners or dates",
+      "A funded plan with named owners and dates",
     ],
   },
   {
-    id: "data_1",
-    dimension: "data",
-    prompt: "How accessible is the data AI would need?",
+    id: "access_1",
+    dimension: "access",
+    prompt: "If you switched on an assistant tomorrow, what could it read?",
     options: [
-      "Scattered and hard to access",
-      "Siloed but mostly available",
-      "Largely centralised and accessible",
-      "Well governed, accessible, high quality",
+      "We genuinely do not know",
+      "Whatever each person can reach — which is more than it should be",
+      "Broadly the right things, with known exceptions",
+      "Permissions were reviewed and corrected within the last year",
     ],
   },
   {
-    id: "data_2",
-    dimension: "data",
-    prompt: "Where does your technology estate sit?",
+    id: "access_2",
+    dimension: "access",
+    prompt: "Where does the data an AI would need actually sit?",
     options: [
-      "Mostly legacy or on-premises",
-      "Mixed, with some cloud",
-      "Mostly cloud (Microsoft 365 / Azure)",
-      "Cloud-first and well integrated",
+      "Scattered, and largely undocumented",
+      "We know where it is, but it is siloed across systems",
+      "Mostly centralised and reachable",
+      "Catalogued, governed and reachable through supported interfaces",
     ],
   },
   {
-    id: "people_1",
-    dimension: "people",
-    prompt: "How widely is AI actually used today?",
+    id: "guardrails_1",
+    dimension: "guardrails",
+    prompt: "Is there a written rule about what staff may put into an AI tool?",
     options: [
-      "Not at all",
-      "A few individuals, unofficially",
-      "Several teams, with some support",
-      "Widely, with training and champions",
+      "No rule of any kind",
+      "People have been told informally",
+      "Drafted, but not yet communicated",
+      "Published, communicated, and applied when it is breached",
     ],
   },
   {
-    id: "people_2",
-    dimension: "people",
-    prompt: "How do your people feel about it?",
+    id: "guardrails_2",
+    dimension: "guardrails",
+    prompt: "If an AI system took an action you disagreed with, could you find out why?",
     options: [
-      "Significant resistance",
-      "Cautious and uncertain",
-      "Generally open to it",
-      "Eager, with change capability in place",
+      "No",
+      "Someone could probably reconstruct it, with effort",
+      "It is logged, but nobody reviews the logs",
+      "Logged and reviewed, with a named owner accountable for it",
     ],
   },
   {
-    id: "governance_1",
-    dimension: "governance",
-    prompt: "Do you have an AI policy people can follow?",
-    options: [
-      "None at all",
-      "Informal or verbal only",
-      "Drafted and partly rolled out",
-      "Established and communicated",
-    ],
-  },
-  {
-    id: "governance_2",
-    dimension: "governance",
-    prompt: "How is AI risk being managed?",
-    options: [
-      "Not yet considered",
-      "Aware but unmanaged",
-      "Some controls in place",
-      "Controls aligned to a recognised framework",
-    ],
-  },
-  {
-    id: "value_1",
-    dimension: "value",
-    prompt: "What has actually reached production?",
+    id: "delivery_1",
+    dimension: "delivery",
+    prompt: "What has reached production and is still running?",
     options: [
       "Nothing yet",
-      "Experiments or demos only",
-      "One or two use cases in production",
-      "Multiple in production, and measured",
+      "Things were trialled and then stopped",
+      "One use case is running",
+      "Several are running, each with an owner",
     ],
   },
   {
-    id: "value_2",
-    dimension: "value",
-    prompt: "How do you measure the value it returns?",
+    id: "delivery_2",
+    dimension: "delivery",
+    prompt: "Do you know what a single AI task or agent run costs you?",
     options: [
-      "We don't",
-      "Anecdotally",
-      "Some metrics",
-      "Clear return tracked against a baseline",
+      "No",
+      "We see a total on a monthly bill",
+      "We can attribute cost to a use case",
+      "We track cost per outcome, and have changed something because of it",
+    ],
+  },
+  {
+    id: "adoption_1",
+    dimension: "adoption",
+    prompt: "Whose day-to-day work is genuinely done differently now?",
+    options: [
+      "Nobody's",
+      "A few enthusiasts, in their own time",
+      "One team's, for one kind of work",
+      "Several teams', with the process itself redesigned",
+    ],
+  },
+  {
+    id: "adoption_2",
+    dimension: "adoption",
+    prompt: "If the person driving this left next month, what would happen?",
+    options: [
+      "It would stop",
+      "It would fade out over a few months",
+      "Two or three others could carry it",
+      "It is in how the team works; it would continue",
     ],
   },
 ];
@@ -160,39 +170,39 @@ export type Band = {
 /**
  * Bands describe where an organisation actually is, without flattery. A low
  * score is a normal place to be, and saying so is more useful than grading
- * generously.
+ * generously. Each band names one next move rather than a list.
  */
 export const bands: Band[] = [
   {
     name: "Exploring",
     min: 0,
     verdict:
-      "AI is not yet a programme here — it is interest. That is a perfectly normal starting point, and the risk at this stage is committing budget before anyone has agreed what problem is being solved.",
-    next: "Start by aligning leadership on where value actually is, before anything is bought.",
+      "There is interest here, not yet a programme. That is the ordinary starting point, and the risk at this stage is buying something before anyone has agreed which problem it solves.",
+    next: "Get the leadership team to the same answer on where AI earns its place here, before anything is bought.",
     service: "ai-strategy-day",
   },
   {
     name: "Developing",
     min: 11,
     verdict:
-      "The intent is real and something is moving, but the foundations are uneven. This is the band where pilots stall — not from lack of technology, but because a question about data or accountability has no answer.",
-    next: "Get an evidence-based read on the gaps, and close the ones that actually block delivery.",
+      "Something is moving and the intent is real, but the foundations are uneven. This is the band where pilots stall — rarely for want of technology, usually because a question about permissions or accountability has no answer.",
+    next: "Get an evidence-based read on what is actually blocking delivery, and close those gaps rather than the visible ones.",
     service: "ai-readiness-assessment",
   },
   {
     name: "Operating",
     min: 19,
     verdict:
-      "You have working capability and enough governance to defend it. The constraint now is repeatability: making the second and third use case cheaper than the first.",
-    next: "Put the guardrails and operating model in place that let this scale past its champions.",
+      "You have something working and enough control to defend it. The constraint now is repeatability — making the second and third use case cheaper than the first, and keeping oversight intact as agents start taking actions rather than drafting them.",
+    next: "Put the governance and operating model in place that lets this scale past the people who built it.",
     service: "ai-governance",
   },
   {
     name: "Scaling",
     min: 25,
     verdict:
-      "This is a genuine capability, measured and governed. The risk shifts from whether AI works to whether cost, consistency and oversight hold as it spreads.",
-    next: "Extend what works to the next team, with controls that stay consistent across them.",
+      "This is genuine capability — running, measured and governed. The question shifts from whether AI works to whether cost, consistency and oversight hold as more of the work moves to agents.",
+    next: "Extend into the processes where an agent has to act, not just answer, with the limits that makes necessary.",
     service: "ai-agents",
   },
 ];
