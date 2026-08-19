@@ -90,11 +90,21 @@ export const aiServices = {
    * into its internals as the reader scrolls. Re-encoded with every frame a
    * keyframe so arbitrary seeks are instant. See VIDEO-BRIEF.md.
    */
-  video: {
-    src: "/video/ai-accelerator.mp4",
-    poster: "/video/ai-accelerator-poster.jpg",
-    alt: "An AI accelerator card separating into its layers: shrouds, heatsinks, chassis and board",
-  },
+  /**
+   * The stage's artwork, as a discriminated union.
+   *
+   * It is a still for now because the clip that was here had a problem. The
+   * scrub machinery is intact and gated on `kind`, so putting a video back is
+   * a change to this object and nothing else: set kind to "video" with a src
+   * and poster, and the pinned stage starts scrubbing it again.
+   */
+  media: {
+    kind: "image",
+    src: "/img/ai-accelerator-exploded.webp",
+    alt: "An AI accelerator card separated into its layers: shrouds, heatsinks, chassis and board",
+  } as
+    | { kind: "image"; src: string; alt: string }
+    | { kind: "video"; src: string; poster: string; alt: string },
   /**
    * Copy beats mapped onto the clip's arc. Each holds for most of its third
    * of the scroll and crossfades only in the gaps, so there is time to read.

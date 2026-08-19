@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { aiServices } from "@/lib/content";
 import { SplitWords } from "@/components/ui/split-words";
@@ -15,7 +16,7 @@ export function AiServices() {
   const beats = aiServices.beats;
 
   /**
-   * Server-renders "static": video visible, all beats stacked as ordinary
+   * Server-renders "static": artwork visible, all beats stacked as ordinary
    * prose, nothing pinned. The scrubbed stage only engages once the client
    * confirms a wide viewport and no reduced-motion preference.
    */
@@ -31,10 +32,13 @@ export function AiServices() {
    * The clip is the heaviest asset on the site. The section sits only ~1,400px
    * down, so proximity alone fires immediately and the video races the hero
    * for bandwidth. Waiting for the load event first lets the fonts, hero image
-   * and JS finish, then fetches during idle — still far enough ahead of the
+   * and JS finish, then fetches during idle, still far enough ahead of the
    * reader that it is buffered before they arrive.
+   *
+   * Inert while the stage shows a still: the effect bails on the first line.
    */
   useEffect(() => {
+    if (aiServices.media.kind !== "video") return;
     const el = trackRef.current;
     const video = videoRef.current;
     if (!el || !video) return;
@@ -47,7 +51,7 @@ export function AiServices() {
           /* Chrome begins buffering as soon as a src attribute exists,
              whatever `preload` says — so the src is withheld until here
              rather than merely hinted at. */
-          video.src = aiServices.video.src;
+          video.src = aiServices.media.src;
           video.preload = "auto";
           video.load();
           io?.disconnect();
@@ -231,17 +235,28 @@ export function AiServices() {
               </div>
             </div>
 
-            {/* ---- the clip ---- */}
+            {/* ---- the artwork: a still today, a scrubbed clip when one exists ---- */}
             <div className="order-1 lg:order-2 lg:scale-[1.12]">
-              <video
-                ref={videoRef}
-                poster={aiServices.video.poster}
-                muted
-                playsInline
-                preload="metadata"
-                aria-label={aiServices.video.alt}
-                className="w-full"
-              />
+              {aiServices.media.kind === "video" ? (
+                <video
+                  ref={videoRef}
+                  poster={aiServices.media.poster}
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label={aiServices.media.alt}
+                  className="w-full"
+                />
+              ) : (
+                <Image
+                  src={aiServices.media.src}
+                  alt={aiServices.media.alt}
+                  width={1720}
+                  height={969}
+                  sizes="(max-width: 1024px) 90vw, 55vw"
+                  className="h-auto w-full"
+                />
+              )}
             </div>
           </div>
         </div>
