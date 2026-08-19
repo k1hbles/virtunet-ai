@@ -50,7 +50,6 @@ const retiredServices: Record<string, string> = {
 const industries = ["corporate", "education", "enterprise", "government", "healthcare", "not-for-profit"];
 
 const articles = [
-  "5-steps-to-a-safe-microsoft-copilot-rollout",
   "agentic-ai-cost-discipline",
   "ai-governance-guardrails-before-gas-pedal",
   "australia-national-ai-plan-boards",
@@ -91,6 +90,12 @@ const retiredOutcomes = [
 ];
 
 const retiredAreas: Record<string, string> = {
+  /* The Copilot walkthrough was substantially Microsoft-specific — Purview,
+     SharePoint, Conditional Access. Its argument, that an assistant surfaces
+     whatever a user can already reach, is now the Securing AI service, so the
+     traffic goes there rather than to the insights index. */
+  "/5-steps-to-a-safe-microsoft-copilot-rollout": "/services/securing-ai",
+  "/insights/5-steps-to-a-safe-microsoft-copilot-rollout": "/services/securing-ai",
   "/tools/ai-roi-calculator": "/tools/ai-readiness-check",
   "/client-outcomes": "/services",
   "/partnerships": "/about",

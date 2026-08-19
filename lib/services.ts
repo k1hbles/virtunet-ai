@@ -204,7 +204,7 @@ export const services: Service[] = [
     summary:
       "Protecting the AI you deploy — data boundaries, agent permissions, prompt injection and shadow AI.",
     intro: [
-      "An assistant inherits the permissions of whoever is using it, which means an over-shared drive becomes a data incident the first week Copilot-class tooling is switched on. An agent with tool access widens that again: it can be talked into acting by content it merely reads.",
+      "An assistant inherits the permissions of whoever is using it, which means an over-shared drive becomes a data incident the first week an assistant is switched on. An agent with tool access widens that again: it can be talked into acting by content it merely reads.",
       "This is security work, not policy work. We tighten permissions before the rollout rather than after it, constrain what agents can reach, test for prompt injection and exfiltration, and surface the AI already in use that nobody approved.",
     ],
     outcomes: [

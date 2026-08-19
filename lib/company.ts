@@ -16,6 +16,7 @@ export const company = {
   story: [
     "Virtu has spent since 2008 helping more than 5,000 Australian organisations, schools and government agencies modernise their technology — modern workplace, security, cloud, networking and collaboration — sustainably and at scale.",
     "The AI practice is not a pivot. It stands on eighteen years of delivery for organisations that cannot afford for technology to fail, and it inherits the same habits: cybersecurity first, vendor neutral, and measured against outcomes rather than activity.",
+    "It is also a separate business. Hardware, procurement and licensing remain at virtu.net. What sits here is the work of making AI useful — strategy, governance, agents, adoption, and the compute they run on.",
   ],
 
   vision: "To empower people and organisations in pushing the limits of sustainable growth.",
@@ -46,11 +47,11 @@ export const company = {
     "Technology and AI aligned to the business, not to a product roadmap",
     "Solutions that support work-life balance rather than quietly erode it",
     "Streamlined workflow, and productivity you can point at",
-    "Support that helps busy IT teams get things done",
+    "Support that helps busy technology teams get things done",
     "Simple, uncomplicated solutions that do what they say",
-    "Help growing your own internal IT and AI capability",
-    "Sustainable management of your whole technology lifecycle",
-    "Making IT work for you, simply and quickly",
+    "Help growing your own internal AI capability, so the dependency shrinks",
+    "Running costs that stay proportionate as usage grows",
+    "AI that works in your context, not in a demo",
   ],
 
   /** Why organisations choose Virtu over the alternatives. */
@@ -69,11 +70,11 @@ export const company = {
     },
     {
       title: "Vendor neutral, ecosystem deep",
-      body: "We work across the Microsoft, Cisco, HP, Lenovo and Dell ecosystems, and recommend what fits your goals.",
+      body: "We work across the major model providers, cloud platforms and agent frameworks, and recommend what fits your goals rather than what we happen to sell.",
     },
     {
       title: "Sustainable by default",
-      body: "Sustainability, security and scalability in every decision — including responsible device lifecycle and e-waste.",
+      body: "Sustainability, security and scalability in every decision — including the energy and running cost of inference as usage grows.",
     },
     {
       title: "People-first change",
@@ -134,53 +135,3 @@ export const company = {
     responseTime: "We reply within one business day.",
   },
 } as const;
-
-/** Sectors. Detail pages follow; the index is live now so nothing dead-ends. */
-export const industries = [
-  { slug: "corporate", name: "Corporate", body: "Move quickly without creating risk the board has to explain later." },
-  { slug: "government", name: "Government", body: "Sovereign delivery and public-sector procurement, handled properly." },
-  { slug: "education", name: "Education", body: "Safe AI for students and staff, with duty of care built in." },
-  { slug: "healthcare", name: "Healthcare", body: "Protect patient data while giving clinicians time back." },
-  { slug: "enterprise", name: "Enterprise", body: "Scale across estates and business units without fragmenting control." },
-  { slug: "not-for-profit", name: "Not-for-profit", body: "More impact per dollar, and sustainable by default." },
-] as const;
-
-/** Published thinking. Full articles follow. */
-export const insights = [
-  {
-    slug: "australia-national-ai-plan-boards",
-    category: "Governance",
-    title: "No AI Act for Australia: what light-touch regulation really asks of boards",
-    body: "Less prescription does not mean less accountability. What directors still have to be able to evidence.",
-  },
-  {
-    slug: "agentic-ai-cost-discipline",
-    category: "Cost",
-    title: "Agentic AI's first budget shock: the year cost discipline arrived",
-    body: "Agent runs are not free. How to design for a unit cost you can forecast.",
-  },
-  {
-    slug: "five-eyes-ai-cyber-risk-months-not-years",
-    category: "Security",
-    title: "Five Eyes to boards: AI will reshape cyber risk in months, not years",
-    body: "What the joint guidance means for organisations still planning an annual test cycle.",
-  },
-  {
-    slug: "5-steps-to-a-safe-microsoft-copilot-rollout",
-    category: "Microsoft AI",
-    title: "Five steps to a safe Microsoft Copilot rollout",
-    body: "The permissions work that decides whether Copilot is useful or a data incident.",
-  },
-  {
-    slug: "ai-governance-guardrails-before-gas-pedal",
-    category: "Governance",
-    title: "Guardrails before the gas pedal",
-    body: "Why governance is what lets an organisation move faster, not slower.",
-  },
-  {
-    slug: "sustainable-it-meets-the-ai-era",
-    category: "Sustainable IT",
-    title: "Sustainable IT meets the AI era",
-    body: "What a device refresh cycle looks like when inference moves onto the endpoint.",
-  },
-] as const;

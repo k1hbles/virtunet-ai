@@ -28,7 +28,7 @@ export const industryList: Industry[] = [
     name: "Corporate",
     title: "AI for corporate and business",
     summary:
-      "Productivity and a modern workplace for ambitious Australian businesses, adopted safely and measured honestly.",
+      "Productivity that shows up in the numbers, for ambitious Australian businesses — adopted safely and measured honestly.",
     intro: [
       "For most businesses the first real win from AI is unglamorous: give people their time back. Assistants that draft, summarise and analyse, plus automation of the repetitive work behind them.",
       "The failure mode is equally predictable — licences bought, nobody trained, no measurement, quiet abandonment by month three. We treat adoption as the deliverable, not the rollout.",
@@ -44,7 +44,7 @@ export const industryList: Industry[] = [
       { name: "Adoption, not licences", body: "Value comes from people actually using it, which makes change management the work." },
       { name: "Cost discipline", body: "Spend right-sized against outcomes you can measure, not against enthusiasm." },
     ],
-    services: ["microsoft-copilot-adoption", "ai-workflow-automation", "ai-readiness-assessment"],
+    services: ["ai-native-work", "ai-workflow-automation", "ai-readiness-assessment"],
   },
   {
     slug: "government",
@@ -67,7 +67,7 @@ export const industryList: Industry[] = [
       { name: "Transparency and accountability", body: "Decisions that can be explained and contested, because public trust depends on it." },
       { name: "Compliance", body: "Aligned to government security and privacy frameworks from the outset." },
     ],
-    services: ["ai-governance", "ai-cybersecurity", "ai-readiness-assessment"],
+    services: ["ai-governance", "securing-ai", "ai-readiness-assessment"],
   },
   {
     slug: "education",
@@ -90,7 +90,7 @@ export const industryList: Industry[] = [
       { name: "Academic integrity", body: "Clear, teachable expectations for how students may use AI." },
       { name: "Equity of access", body: "Benefits reaching all students, not only those already advantaged." },
     ],
-    services: ["ai-governance", "ai-physical-security", "ai-training-enablement"],
+    services: ["ai-governance", "ai-ethics", "ai-training-enablement"],
   },
   {
     slug: "healthcare",
@@ -113,7 +113,7 @@ export const industryList: Industry[] = [
       { name: "Safety and reliability", body: "A human stays in the loop for anything clinical, without exception." },
       { name: "Compliance", body: "Health privacy and records obligations met and evidenced." },
     ],
-    services: ["ai-governance", "ai-cybersecurity", "ai-workflow-automation"],
+    services: ["ai-governance", "securing-ai", "ai-workflow-automation"],
   },
   {
     slug: "enterprise",
@@ -136,7 +136,7 @@ export const industryList: Industry[] = [
       { name: "Governance at scale", body: "Consistent controls across every business unit, not per-team improvisation." },
       { name: "Value management", body: "Proving value once, then scaling it across many business cases." },
     ],
-    services: ["ai-agents", "ai-governance", "ai-cybersecurity"],
+    services: ["ai-agents", "ai-governance", "securing-ai"],
   },
   {
     slug: "not-for-profit",

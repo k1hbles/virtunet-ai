@@ -193,11 +193,18 @@ export const sustainability = {
 export const insights = {
   title: "Ideas for what comes next.",
   cta: { label: "View all insights", href: routes.insights },
-  /** `rule` picks the accent bar colour, cycling blue / yellow / green. */
+  /**
+   * `rule` picks the accent bar colour, cycling blue / yellow / green.
+   *
+   * These are the real published articles, linked to their own pages. The
+   * previous three were placeholders left from the old site — AI PCs, a
+   * Windows 11 upgrade guide, VR in education — and all three pointed at the
+   * index rather than at anything.
+   */
   items: [
-    { title: "How to maximise workforce productivity with AI PCs", body: "A practical look at how AI-ready devices can help Australian workplaces work smarter.", href: routes.insights, rule: "accent" },
-    { title: "Windows 11 upgrade guide", body: "What to consider across compatibility, cybersecurity and AI-powered productivity.", href: routes.insights, rule: "warm" },
-    { title: "AI, VR and AR in education", body: "How emerging technology is reshaping learning experiences for schools.", href: routes.insights, rule: "green" },
+    { title: "Agentic AI's first budget shock", body: "Enterprises that raced into agentic AI burned annual budgets in months. Routing, right-sizing and cost per outcome are the fix.", href: "/insights/agentic-ai-cost-discipline", rule: "accent" },
+    { title: "No AI Act for Australia", body: "Light-touch regulation is not a reprieve. What directors still have to be able to evidence, and when.", href: "/insights/australia-national-ai-plan-boards", rule: "warm" },
+    { title: "AI will reshape cyber risk in months, not years", body: "A rare joint statement from all five national cyber agencies, aimed at boards rather than security teams.", href: "/insights/five-eyes-ai-cyber-risk-months-not-years", rule: "green" },
   ],
 } as const;
 

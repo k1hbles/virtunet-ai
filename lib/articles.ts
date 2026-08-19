@@ -184,61 +184,6 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "5-steps-to-a-safe-microsoft-copilot-rollout",
-    category: "Microsoft AI",
-    title: "Five steps to a safe Microsoft Copilot rollout",
-    summary:
-      "Copilot does not introduce new data. It surfaces what your people can already reach — which is exactly why permissions decide whether it is useful or an incident.",
-    facts: [
-      "Microsoft Purview sensitivity labels and data loss prevention policies",
-      "Recommended pilot cohort of 50 to 150 users across two or three high-friction workflows",
-      "Multi-factor authentication and Conditional Access as prerequisites",
-    ],
-    body: [
-      {
-        kind: "p",
-        text: "Microsoft 365 Copilot puts a capable assistant in front of every employee. The technology is ready. The question most CIOs and CISOs are actually asking is whether the organisation is.",
-      },
-      { kind: "h2", text: "Why switching it on fails" },
-      {
-        kind: "p",
-        text: "Copilot does not introduce new data. It surfaces the data your people can already access, faster and in natural language. That is precisely why rushed rollouts go wrong: a permissions model that was good enough when finding a file took effort becomes a liability the moment an assistant can retrieve it instantly.",
-      },
-      { kind: "h2", text: "Get the data estate in order" },
-      {
-        kind: "p",
-        text: "Copilot is only as trustworthy as what it draws on. Before the first prompt, audit where sensitive content lives and who can reach it. The most common failure is oversharing — sites and Teams set to everyone, stale guest accounts, and links shared with the whole company.",
-      },
-      {
-        kind: "list",
-        items: [
-          "Run a sensitivity and access review across SharePoint, OneDrive and Teams.",
-          "Apply Microsoft Purview sensitivity labels and data loss prevention policies so confidential material is classified and protected.",
-          "Remediate broad-access sites and tighten guest and external sharing defaults.",
-        ],
-      },
-      {
-        kind: "p",
-        text: "This step returns value even if you never deploy Copilot. It is not optional before you do.",
-      },
-      { kind: "h2", text: "Treat readiness as an identity programme" },
-      {
-        kind: "p",
-        text: "Enforce multi-factor authentication and Conditional Access, adopt least-privilege access, and clean up the legacy security groups that quietly grant more than anyone intended. The principle is simple: if a user should not see a document, Copilot should not either.",
-      },
-      { kind: "h2", text: "Pilot with purpose, not novelty" },
-      {
-        kind: "p",
-        text: "Resist giving five thousand people a licence and hoping. Select a focused cohort of fifty to a hundred and fifty users across two or three high-friction workflows — proposal drafting, meeting follow-ups, finance reporting — and define what success looks like, with baselines, before you start.",
-      },
-      { kind: "h2", text: "Govern, monitor, and measure adoption" },
-      {
-        kind: "p",
-        text: "Then keep measuring. The number that matters is not licences activated; it is whether anyone is still using it in month three, and whether the time it returns shows up anywhere you can point at.",
-      },
-    ],
-  },
-  {
     slug: "ai-governance-guardrails-before-gas-pedal",
     category: "Governance",
     title: "Guardrails before the gas pedal",
@@ -300,8 +245,8 @@ export const articles: Article[] = [
   },
   {
     slug: "sustainable-it-meets-the-ai-era",
-    category: "Sustainable IT",
-    title: "Sustainable IT meets the AI era",
+    category: "Efficiency",
+    title: "The discipline that cuts AI cost cuts its carbon",
     summary:
       "The same engineering discipline that cuts AI cost cuts its carbon. Right-sizing is not a compromise between the two — it is the move that serves both.",
     facts: [
