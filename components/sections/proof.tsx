@@ -3,52 +3,43 @@ import { SplitWords } from "@/components/ui/split-words";
 import { TextLink } from "@/components/ui/pill-button";
 
 /**
- * The credibility band, sitting where the partner strip used to.
+ * The proof section.
  *
- * Removing the strip left nothing between the hero and the services sequence,
- * and this is the one claim a new AI practice usually cannot make: the
- * delivery record predates the category. Every figure here is verified and
- * comes from lib/company.ts — nothing is estimated, and the recognitions are
- * reproduced as published rather than summarised.
+ * It used to be credentials: a founding year, a client count and a row of
+ * awards. All true, and all things any established firm can say. What it
+ * could not say was that Virtu had done the thing it sells.
+ *
+ * It can now. Virtu rebuilt its own operations AI-native, and that is better
+ * evidence than a case study: it is first-hand, it is recent, and it carries
+ * no confidentiality problem because the client is Virtu. The credentials
+ * stay, demoted to a single line, because eighteen years of delivery is the
+ * reason to believe the rest.
  */
 export function Proof() {
-  /*
-   * The third figure is deliberately not "18 years" — that is the same fact
-   * as 2008 stated twice, and a panel of three should carry three claims.
-   * The response time is the more distinctive one, and it is Virtu's own
-   * published commitment rather than a category platitude.
-   */
-  const figures = [
-    { value: String(company.since), label: "Australian technology delivery since" },
-    { value: company.organisationsHelped, label: "organisations, schools and agencies helped" },
-    { value: "10 min", label: "response time, with urgent work hand-delivered out of hours" },
-  ];
+  const { firstClient } = company;
 
   return (
     <section className="border-y border-line bg-canvas py-20 md:py-28">
       <div className="wrap">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
           <div>
-            <p className="eyebrow text-ink-muted">Why Virtu</p>
-            <h2 className="drift mt-6 text-balance text-[clamp(1.9rem,3.2vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.035em] text-ink">
-              <SplitWords text="An AI practice standing on eighteen years of delivery." />
+            <p className="eyebrow text-accent">Proof</p>
+            <h2 className="drift section-title mt-6 text-balance">
+              <SplitWords text={firstClient.claim} />
             </h2>
-            <p className="reveal mt-7 max-w-md text-lg leading-8 text-ink-muted">
-              Most firms in this category started with AI. Virtu started with the organisations that
-              cannot afford for technology to fail: schools, agencies and enterprises. The same
-              habits came with it. Security first, vendor neutral, and measured against outcomes
-              rather than activity.
-            </p>
-            <div className="reveal mt-8">
-              <TextLink href="/about">The full story</TextLink>
-            </div>
+            <blockquote className="reveal mt-8 max-w-lg border-l border-line pl-6 text-[1.08rem] leading-8 text-ink">
+              &ldquo;{firstClient.quote}&rdquo;
+              <footer className="mt-4 text-sm not-italic text-ink-muted">
+                {company.leader.name}, {company.leader.role}
+              </footer>
+            </blockquote>
           </div>
 
-          <div className="reveal-group">
+          <div className="reveal-group flex flex-col gap-10">
             <dl className="grid gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-3">
-              {figures.map((f) => (
-                <div key={f.label} className="reveal bg-canvas p-7">
-                  <dt className="text-[2.4rem] font-medium leading-none tracking-[-0.04em] text-ink">
+              {firstClient.facts.map((f) => (
+                <div key={f.label} className="reveal bg-canvas p-6">
+                  <dt className="text-[1.9rem] font-medium leading-none tracking-[-0.035em] text-ink">
                     {f.value}
                   </dt>
                   <dd className="mt-3 text-sm leading-6 text-ink-muted">{f.label}</dd>
@@ -56,15 +47,36 @@ export function Proof() {
               ))}
             </dl>
 
-            <ul className="reveal-group mt-8 flex flex-wrap gap-x-8 gap-y-3">
-              {company.recognition.map((r) => (
-                <li key={r} className="reveal text-sm leading-6 text-ink-muted">
-                  {r}
-                </li>
-              ))}
-            </ul>
+            <div className="reveal">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
+                What it runs
+              </p>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {firstClient.built.map((b) => (
+                  <li
+                    key={b}
+                    className="relative pl-6 text-[1.02rem] leading-7 text-ink before:absolute before:left-0 before:top-[0.85em] before:h-px before:w-3 before:bg-ink-muted"
+                  >
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 max-w-xl text-[0.98rem] leading-7 text-ink-muted">
+                {firstClient.outcome}
+              </p>
+              <div className="mt-7">
+                <TextLink href="/about">How we did it</TextLink>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* the older credentials, kept but demoted: they are the reason to
+            believe the story above, not the story itself */}
+        <p className="reveal mt-16 border-t border-line pt-7 text-sm leading-7 text-ink-muted">
+          Australian technology delivery since {company.since}. {company.organisationsHelped}{" "}
+          organisations, schools and agencies. {company.recognition[0]}.
+        </p>
       </div>
     </section>
   );

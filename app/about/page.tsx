@@ -36,6 +36,57 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/*
+        The argument, and the evidence that Virtu has applied it to itself.
+        Placed straight after the company record, because that is what turns
+        eighteen years of delivery from history into a reason to choose them
+        for this specific thing. Quotations are Martin's, reproduced as
+        published.
+      */}
+      <section className="border-b border-line bg-canvas">
+        <div className="wrap py-16 md:py-24">
+          <SectionHead
+            eyebrow="The shift"
+            title="From AI-enabled to AI-native."
+            lead={company.aiNative.stakes}
+          />
+
+          <div className="reveal-group mt-12 grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <p className="reveal text-[1.15rem] leading-8 text-ink">
+                {company.aiNative.definition}
+              </p>
+              <p className="reveal mt-8 border-l border-line pl-6 text-[1.05rem] leading-8 text-ink-muted">
+                The question we ask first:{" "}
+                <span className="text-ink">{company.aiNative.question}</span>
+              </p>
+            </div>
+
+            <div className="reveal">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-ink-muted">
+                {company.firstClient.claim}
+              </p>
+              <p className="mt-5 text-[1.05rem] leading-8 text-ink-muted">
+                Over a few weeks, Martin and a small team used AI agents to build the internal
+                platform Virtu now runs on. {company.firstClient.outcome}
+              </p>
+              <blockquote className="mt-7 text-[1.05rem] leading-8 text-ink">
+                &ldquo;{company.firstClient.directed}&rdquo;
+              </blockquote>
+            </div>
+          </div>
+
+          {/* the governance position in his words rather than ours: it is the
+              sharper version, and it is attributable */}
+          <blockquote className="reveal mt-16 max-w-3xl border-t border-line pt-10 text-[1.3rem] leading-9 text-ink">
+            &ldquo;{company.aiNative.governance}&rdquo;
+            <footer className="mt-5 text-sm not-italic text-ink-muted">
+              {company.leader.name}, {company.leader.role}
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
       <section className="border-b border-line bg-canvas">
         <div className="wrap grid gap-10 py-16 md:py-20 md:grid-cols-2 md:gap-16">
           <div className="reveal">

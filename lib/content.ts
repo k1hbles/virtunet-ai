@@ -199,10 +199,19 @@ export const crawlWalkRun = {
   cta: { label: "Find out which stage you are at", href: "/tools/ai-readiness-check" },
 } as const;
 
+/**
+ * The distinction the practice is built on, in Martin's framing.
+ *
+ * The section used to open on "most AI rollouts issue licences and stop
+ * there", which is true but is somebody else's line. The AI-enabled versus
+ * AI-native distinction is Virtu's own, it is sharper, and it explains why
+ * the work is a redesign rather than a deployment. The definition is
+ * reproduced as published.
+ */
 export const aiWorkplace = {
-  title: "Where the work actually changes.",
+  title: "AI-enabled, or AI-native.",
   body:
-    "Most AI rollouts issue licences and stop there. Virtu rebuilds how a team produces its work with AI-native tooling in the middle of it: Claude Code and Codex in engineering, agentic assistants in knowledge work. What it leaves behind is a practice the next team can start from.",
+    "AI-enabled is adding AI to the way your business already works. AI-native is redesigning how people, processes and technology work together around what AI now makes possible. Virtu rebuilds how a team produces its work with agentic tooling in the middle of it, and leaves behind a practice the next team can start from.",
   cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
     src: "/img/ai-workplace-coldplate.webp",

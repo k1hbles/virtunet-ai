@@ -36,6 +36,56 @@ export const company = {
       "We're here to empower people and organisations in pushing the limits of sustainable growth — to ultimately bring lasting transformations to our planet, people and communities.",
   },
 
+  /**
+   * The distinction the whole practice rests on, in Martin's words.
+   *
+   * This is the argument that separates Virtu from firms selling AI features:
+   * not adding AI to how a business already works, but redesigning how it
+   * works around what AI now makes possible. Quotations are reproduced as
+   * published and must not be rewritten for tone.
+   */
+  aiNative: {
+    definition:
+      "AI-enabled is adding AI to the way your business already works. AI-native is redesigning how people, processes and technology work together around what AI now makes possible.",
+    question:
+      "If you were building the business today, with AI and agents available from day one, what would you design differently?",
+    stakes:
+      "The question is how established businesses compete with companies designed around AI from day one.",
+    fatigue:
+      "For many organisations, AI has meant a chatbot or copilot. If that's your experience, I can understand why the excitement wears off. But I think we're still only scratching the surface.",
+    governance:
+      "We want our clients to be adventurous with AI, but adventurous within a safe environment. Good governance shouldn't stop innovation. It should give people the confidence to innovate faster.",
+    order:
+      "The conversation should never begin with AI. It should begin with people, governance and business outcomes.",
+  },
+
+  /**
+   * Virtu's own AI-native rebuild, used as proof in place of client case
+   * studies. It is the strongest evidence available and carries no
+   * confidentiality problem, because the client is Virtu.
+   *
+   * Every fact here is from Martin's own account. Nothing is estimated.
+   */
+  firstClient: {
+    claim: "Our first AI-native client was us.",
+    quote:
+      "We realised we had been dipping our toes into AI too. So we decided to go deeper and treat Virtu as our first AI-native client.",
+    built: [
+      "The weekly operating rhythm and scorecards",
+      "HR reviews and expenses",
+      "A client-facing portal",
+    ],
+    facts: [
+      { value: "Weeks", label: "to build, not quarters" },
+      { value: "One", label: "platform replacing work spread across several systems" },
+      { value: "Zero", label: "software development background on the person who directed it" },
+    ],
+    outcome:
+      "Work that had been spread across several systems now sits in one internal platform, and some subscriptions have been retired.",
+    directed:
+      "For years, I could see a problem and imagine the solution, but there was still a gap between the idea and being able to build it myself. That changed this year. The distance between an idea and a working digital product suddenly became much smaller.",
+  },
+
   /** The promise, and the evidence for it. */
   track: [
     "Enterprise clients onboarded in our earliest days, organisations of a thousand staff and more, are still with us over ten years later.",
@@ -109,6 +159,7 @@ export const company = {
     "Australia's Best Workplaces in Technology 2024 — Great Place to Work",
     "Certified Great Place to Work, 2022–2024",
     "Top 10, AFR BOSS Best Places to Work 2023 — Technology",
+    "Applied agentic AI at MIT — studied by our founder, and applied here first",
   ],
 
   /**
