@@ -4,12 +4,19 @@ import { SplitWords } from "@/components/ui/split-words";
 import { TextLink } from "@/components/ui/pill-button";
 
 /**
- * Three compact rows: the stage, what it is, and what it is wired to.
+ * Three cards, each reading top to bottom: the stage, what the AI is wired
+ * to, and what that means.
  *
- * Earlier versions carried four fields per stage and ran to three thousand
- * pixels. The stages are a way in to the readiness check, not a whitepaper —
- * one line each is enough to make the progression land, and the detail lives
- * in the check itself.
+ * The previous version laid each stage out horizontally, name and copy and
+ * track side by side, which made a stage something you read across rather
+ * than an object you take in at once. Stacking inside the card puts the track
+ * directly under the name it belongs to, and the three tracks still line up
+ * across the row, so the escalation is read left to right while each stage is
+ * read downward.
+ *
+ * These are cards with a surface and a border rather than the seamless gap-px
+ * grid used by the partnership tiles, so the two do not read as the same
+ * component doing different jobs.
  */
 export function CrawlWalkRun() {
   return (
@@ -27,27 +34,23 @@ export function CrawlWalkRun() {
           </p>
         </div>
 
-        <ol className="reveal-group mt-14 border-t border-line md:mt-16">
+        <ol className="reveal-group mt-14 grid gap-4 md:mt-16 md:grid-cols-3">
           {crawlWalkRun.stages.map((stage, i) => (
             <li
               key={stage.name}
-              className="reveal grid gap-6 border-b border-line py-8 md:grid-cols-[7rem_minmax(0,1fr)_minmax(0,21rem)] md:items-center md:gap-10 md:py-7"
+              className="reveal flex flex-col rounded-2xl border border-line bg-surface p-7"
             >
               <div className="flex items-baseline gap-3">
                 <span className="font-mono text-xs text-ink-muted">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-[1.45rem] font-medium tracking-[-0.03em] text-ink">
+                <h3 className="text-[1.5rem] font-medium tracking-[-0.03em] text-ink">
                   {stage.name}
                 </h3>
               </div>
 
-              <p className="max-w-xl text-[1rem] leading-7 text-ink-muted">{stage.line}</p>
-
-              {/* what the AI is wired to, at the size of a diagram rather than
-                  a feature: it should be read at a glance across the three
-                  rows, not studied one row at a time */}
-              <div className="track pb-6">
+              {/* the track sits directly under the name it belongs to */}
+              <div className="track mt-8 pb-6">
                 <div className="flex items-center">
                   {stage.flow.map((node, n) => (
                     <Fragment key={node.label}>
@@ -72,6 +75,10 @@ export function CrawlWalkRun() {
                   ))}
                 </div>
               </div>
+
+              <p className="mt-6 border-t border-line pt-6 text-[0.98rem] leading-7 text-ink-muted">
+                {stage.line}
+              </p>
             </li>
           ))}
         </ol>
