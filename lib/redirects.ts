@@ -98,7 +98,6 @@ const retiredAreas: Record<string, string> = {
   "/insights/5-steps-to-a-safe-microsoft-copilot-rollout": "/services/securing-ai",
   "/tools/ai-roi-calculator": "/tools/ai-readiness-check",
   "/client-outcomes": "/services",
-  "/partnerships": "/about",
 };
 
 const categories = [

@@ -1,5 +1,7 @@
 
 import { Hero } from "@/components/sections/hero";
+import { PartnerStrip } from "@/components/sections/partner-strip";
+import { CrawlWalkRun } from "@/components/sections/crawl-walk-run";
 import { Proof } from "@/components/sections/proof";
 import { AiServices } from "@/components/sections/ai-services";
 import { AiWorkplace } from "@/components/sections/ai-workplace";
@@ -11,10 +13,12 @@ export default function Home() {
   return (
     <>
         <Hero />
-        <Proof />
+        <PartnerStrip />
         <AiServices />
+        <CrawlWalkRun />
         <AiWorkplace />
         <Sustainability />
+        <Proof />
         <Insights />
       <CtaBand title="Ready to build what comes next?" />
     </>

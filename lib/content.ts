@@ -53,46 +53,34 @@ export const hero = {
 } as const;
 
 /**
- * Strategic technology partnerships, taken from virtu.net/about/partnerships/
- * together with the tier that page names for each one.
+ * The partner strip.
  *
- * NVIDIA used to be listed here and has been removed: it does not appear on
- * that page, so this site cannot stand behind the claim.
+ * Every one of these is a partnership Virtu publishes on
+ * virtu.net/about/partnerships/, and every one was chosen because it is
+ * relevant to AI work rather than because it fills the row — cloud and model
+ * platforms, and the silicon and systems inference runs on. The networking,
+ * display, printing and accessories vendors on that page are virtu.net's and
+ * are not shown here.
  *
- * `aspect` is the mark's true width over height, measured after each viewBox
- * was cropped to its artwork — the marks previously sat letterboxed inside a
- * 24x24 square, which is why an emblem and a wordmark rendered at wildly
- * different optical sizes.
+ * NVIDIA, Anthropic and OpenAI are deliberately absent. None of the three
+ * appears on that partnerships page, checked directly, and a partner logo is
+ * a factual claim about another company. If those relationships exist they
+ * belong here more than anything currently listed — but they have to be
+ * confirmed first.
  *
- * `scale` is a fraction of the row height, and it is optical rather than
- * arithmetic. Equal heights do not look equal, and neither does equal ink:
- * measured, these marks span 57%–163% of the mean ink area, so equalising
- * that would have pushed Dell's thin ring to 58px beside HP's 42px disc.
- * Three rules produced the numbers instead:
- *
- *   1. The two circular emblems share a diameter, with the outline mark
- *      (Dell) a few percent larger than the solid one (HP), because an
- *      outline reads smaller than a filled shape of the same size.
- *   2. Solid geometric marks are held back — Microsoft's squares and Apple's
- *      silhouette carry more ink per pixel of height than anything else here.
- *   3. Wordmarks are matched on cap height, not overall height. Lenovo has no
- *      descender, so its full height is its cap height; Google's capital G
- *      measures 0.777 of its mark, so it is set taller to land on the same
- *      cap. Both come out at 20.2px on a 44px row.
- *
- * Lenovo is a special case of artwork rather than sizing: its mark is the
- * wordmark inside a solid box, which inverted into a white slab on black.
- * The file is the same official path with the box masked away. Google is the
- * official wordmark recoloured white, not the 'G' glyph.
+ * `aspect` and `scale` follow the same optical rules documented before: the
+ * two square emblems share a size, wordmarks are matched on cap height, and
+ * solid marks are held back against outlines.
  */
 export const partners = [
   { name: "Microsoft", tier: "Silver Partner", logo: "/logos/microsoft.svg", aspect: 1, scale: 0.8 },
-  { name: "HP", tier: "Power Partner", logo: "/logos/hp.svg", aspect: 1, scale: 0.95 },
-  { name: "Lenovo", tier: "Platinum Partner", logo: "/logos/lenovo.svg", aspect: 4.828, scale: 0.46 },
-  { name: "Dell", tier: "Gold Partner", logo: "/logos/dell.svg", aspect: 1, scale: 1 },
-  { name: "Cisco", tier: "Select Partner", logo: "/logos/cisco.svg", aspect: 1.897, scale: 0.76 },
-  { name: "Apple", tier: "Authorised Reseller", logo: "/logos/apple.svg", aspect: 0.815, scale: 0.86 },
+  { name: "AWS", tier: "Partner", logo: "/logos/aws.webp", aspect: 1.614, scale: 0.72 },
   { name: "Google", tier: "Partner", logo: "/logos/google.svg", aspect: 3.039, scale: 0.59 },
+  { name: "IBM", tier: "Partner", logo: "/logos/ibm.webp", aspect: 2.295, scale: 0.62 },
+  { name: "Intel", tier: "Partner", logo: "/logos/intel.webp", aspect: 1.468, scale: 0.85 },
+  { name: "AMD", tier: "Partner", logo: "/logos/amd.webp", aspect: 3.567, scale: 0.5 },
+  { name: "Dell", tier: "Gold Partner", logo: "/logos/dell.svg", aspect: 1, scale: 1 },
+  { name: "Hewlett Packard Enterprise", tier: "Partner", logo: "/logos/hpe.webp", aspect: 2.218, scale: 0.72 },
 ] as const;
 
 export const aiServices = {
@@ -155,6 +143,45 @@ export const aiServices = {
     { kicker: "Capability", title: "AI Training & Enablement", group: "Adopt & run", body: "Executives, managers and practitioners — pitched differently, against your own work.", href: "/services/ai-training-enablement" },
     { kicker: "Compute", title: "AI Infrastructure & Workstations", group: "Adopt & run", body: "GPUs, workstations and inference sized for what you run and what it costs.", href: "/services/ai-infrastructure" },
   ],
+} as const;
+
+/**
+ * Crawl, walk, run — the founder's framing, made specific to AI.
+ *
+ * The value of the model is not that it sounds sensible; it is that the three
+ * stages carry three different risk profiles. What breaks at each one differs,
+ * which is why skipping a stage is what turns a pilot into an incident. Each
+ * stage therefore names what it needs and what usually goes wrong, rather than
+ * just describing itself.
+ */
+export const crawlWalkRun = {
+  eyebrow: "Crawl, walk, run",
+  title: "Most organisations try to run first.",
+  intro:
+    "The three stages are not a maturity badge to collect. They are three different risk profiles, and the thing that breaks is different at each one — which is why the stage that gets skipped is usually the one that causes the incident.",
+  stages: [
+    {
+      name: "Crawl",
+      shape: "People use AI to draft, summarise and research. Nothing touches your systems.",
+      needs: "Permissions corrected first, because an assistant can read whatever the person using it can read.",
+      breaks: "Data exposure. The over-shared drive nobody had looked at in five years is now searchable in plain language.",
+    },
+    {
+      name: "Walk",
+      shape: "AI sits inside a real workflow, and a person approves each step before it lands.",
+      needs: "An agreed quality bar and a measured baseline, so the comparison is against something.",
+      breaks: "Quality drift, unnoticed. Faster quietly becomes worse because nobody wrote down what good looked like.",
+    },
+    {
+      name: "Run",
+      shape: "Agents act inside limits — reading the record, taking the step, stopping at the edge of their remit.",
+      needs: "Authority limits set per action, logging you can reconstruct months later, and a cost per run you can forecast.",
+      breaks: "Authority and cost. An agent that works and cannot be afforded at volume is not a solution.",
+    },
+  ],
+  footnote:
+    "Virtu will tell you which stage you are actually at, including when the honest answer is that you are not ready for the next one.",
+  cta: { label: "Find out which stage you are at", href: "/tools/ai-readiness-check" },
 } as const;
 
 export const aiWorkplace = {
@@ -235,6 +262,7 @@ export const footer = {
       heading: "Virtu",
       links: [
         { label: "About", href: routes.about },
+        { label: "Partnerships", href: "/partnerships" },
         { label: "Contact", href: routes.contact },
         { label: "Responsible AI", href: "/responsible-ai" },
         { label: "Careers", href: "https://virtu.net/careers/" },

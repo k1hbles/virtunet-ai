@@ -49,7 +49,7 @@ export function PartnerStrip() {
     <section className="border-y border-line bg-canvas py-12">
       <div className="wrap overflow-clip">
         <p className="reveal text-center text-[11px] font-medium uppercase tracking-[0.3em] text-ink-muted">
-          Strategic technology partnerships
+          Platforms and silicon we build on
         </p>
         {/*
           One height drives the whole row, so the logos scale together and each
