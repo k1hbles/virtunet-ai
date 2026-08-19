@@ -29,61 +29,69 @@ That has to go: this site is vendor-neutral, and a third-party trademark
 baked into illustrative art reads as a claim about that vendor. It is also
 too busy — conveyor, shelving, bins, boxes and loose components all at once.
 
-## Image A — "Where the work actually changes."  (second pass)
+## Image A — "Where the work actually changes."  (third pass)
 
 Replaces `public/img/ai-workplace-desk.webp`.
 
 **Deliver 2048 × 1078 (aspect 1.90).**
 
-### Why the first replacement is being replaced
+### Direction
 
-It is a product still life, and the page already has two of those: the hero
-is a close crop of a compute unit, and the AI services section runs a scrubbed
-clip of a chassis opening. A fourth adds nothing, and "desk with devices" is not the same
-statement as "workplace". The rack aisle in Image B works because it is
-architectural — depth, scale, atmosphere — and this section can carry the
-same register at human scale.
+Aerospace and engineered, matching the hero rather than departing from it.
+The previous brief called for an architectural interior; that is dropped.
 
-Also drop the blue underglow beneath the laptop. Light spilling out from
-under a device reads as gaming hardware, not as enterprise IT.
+The hero works because it is a machined object photographed as though it were
+an instrument: hard speculars on anodised metal, everything else falling to
+black. This section should sit in that same world.
 
-### Composition constraints (unchanged, and they are strict)
+It has to differ from the hero in scale, or the page shows the same photograph
+twice. The hero is an extreme close crop of a single edge with shallow focus.
+This one wants **depth and repetition** — a structure that recedes, so the two
+read as different views of the same engineering culture rather than as two
+crops of the same part.
+
+It must also not be a chassis opening to reveal its internals, because the AI
+services section already runs a scrubbed clip of exactly that.
+
+Thermal is the honest subject. Cooling is the defining constraint of AI
+compute, and a cold plate photographed properly looks like a turbine section,
+which is where the aerospace register comes from without pretending to be
+about aircraft.
+
+### Composition constraints (unchanged, and they decide whether it works)
 
 - Full-bleed background with a left-to-right black scrim: the **left 35% is
   96%→78% black** and carries the heading and body. Keep it empty and dark.
 - On mobile the box becomes **portrait (0.51)** and object-cover shows only
-  the **centre 28.5% of the width — 36% to 64% across**. Whatever matters
-  most has to live inside that window.
-- So: the lit focal point sits around **55–62% across**, depth and detail
-  extend right, and nothing essential goes past 80%.
-
-Do not repeat Image B's dead-centre one-point perspective — that section is
-directly below this one and two symmetrical vanishing-point shots in a row
-will read as the same photograph twice. Use an off-axis three-quarter view.
+  the **centre 28.5% of the width — 36% to 64% across**.
+- So the focal point sits around **55–62% across**, the structure recedes to
+  the right, and nothing essential goes past 80%.
 
 > **Prompt**
 >
-> A wide, quiet view across an empty open-plan office at night, shot from one
-> corner at a three-quarter angle rather than straight down the middle. The
-> room is almost entirely dark. A single workstation two-thirds into the
-> frame is lit by one soft pool of light from above — a slim laptop and a thin
-> external display on a plain dark desk, screens dim and showing no readable
-> interface. Beyond it, rows of empty desks recede into shadow, their edges
-> catching faint cool platinum highlights. Floor-to-ceiling glazing along the
-> far wall shows a night skyline reduced to a few distant cool lights, heavily
-> darkened. Architecture is minimal and modern: matte charcoal surfaces,
-> brushed metal edges, a polished concrete floor with soft reflections. No
-> plants, no timber, no soft furnishing, no clutter, no people. The left third
-> of the frame falls away to near-black. Colour is graphite and cool platinum
-> with a single restrained blue accent (#1678FF) in the screen glow. Shot on a
-> 24mm lens at f/4, architectural interior photography, deep blacks, natural
-> falloff, no bloom, no lens flare, no light spilling from under furniture.
+> A precision-machined aluminium cold plate for AI accelerators, photographed
+> like an aerospace component on a black set. Rows of micro-milled cooling fins
+> run in parallel and recede into shallow focus, each fin edge catching a hard
+> specular line. Anodised graphite surface with faint visible tool paths,
+> countersunk titanium fasteners, and a honeycomb vent panel at one end. One
+> cool blue light (#1678FF) rakes low across the fins from the right; a single
+> soft platinum key picks out the top edges. Everything else falls to pure
+> black. No text, no logos, no branding, no screens, no people. Shot on a 100mm
+> macro at f/5.6 from a low three-quarter angle, high-end aerospace product
+> photography, deep blacks, hard controlled speculars, no bloom, no lens flare.
 >
-> **Negative:** plants, greenery, wood, warm light, amber, orange, yellow,
-> green, teal, rainbow, RGB lighting, underglow, glowing edges, gaming setup,
-> data visualisation, charts, dashboards, wavy lines, readable text, logos,
-> brand marks, people, hands, faces, clutter, cables, coffee cups, symmetrical
-> one-point perspective, HDR, oversaturated.
+> **Negative:** warm light, amber, orange, yellow, green, teal, rainbow, RGB
+> lighting, underglow, gaming hardware, plastic, wood, fabric, plants, people,
+> hands, text, logos, brand marks, screens, interfaces, dust, scratches,
+> busy background, clutter, HDR, oversaturated, soft focus everywhere.
+
+### If that reads too much like the hero
+
+Second subject, same register: a radial heatsink assembly shot down its axis,
+fins fanning out like a turbine rotor, one blue rim light along the leading
+edges and the centre falling to black. Same lens, same palette, same
+constraints. Pick whichever comes back with more depth on the right-hand side
+of the frame.
 
 ## Image B — "Progress that lasts beyond deployment."
 
