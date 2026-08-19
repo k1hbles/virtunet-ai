@@ -29,7 +29,7 @@ That has to go: this site is vendor-neutral, and a third-party trademark
 baked into illustrative art reads as a claim about that vendor. It is also
 too busy — conveyor, shelving, bins, boxes and loose components all at once.
 
-## Image A — "Prepare your workplace for AI."  (second pass)
+## Image A — "Where the work actually changes."  (second pass)
 
 Replaces `public/img/ai-workplace-desk.webp`.
 
@@ -37,10 +37,9 @@ Replaces `public/img/ai-workplace-desk.webp`.
 
 ### Why the first replacement is being replaced
 
-It is a product still life, and the page already has three of those: the hero
-is a close crop of a compute unit, the AI services section runs a scrubbed
-clip of a chassis opening, and the Procure capability card is devices on a
-dark surface. A fourth adds nothing, and "desk with devices" is not the same
+It is a product still life, and the page already has two of those: the hero
+is a close crop of a compute unit, and the AI services section runs a scrubbed
+clip of a chassis opening. A fourth adds nothing, and "desk with devices" is not the same
 statement as "workplace". The rack aisle in Image B works because it is
 architectural — depth, scale, atmosphere — and this section can carry the
 same register at human scale.
