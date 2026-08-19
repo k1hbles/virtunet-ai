@@ -148,37 +148,31 @@ export const aiServices = {
 /**
  * Crawl, walk, run.
  *
- * A note on attribution, because it was nearly got wrong. This framing is not
- * MIT's — it is used across the industry, by Georgian, ScienceLogic, Microsoft
- * and others, and no single owner can be credited for it. What MIT did publish
- * is the finding the section now opens with: "The GenAI Divide: State of AI in
- * Business 2025" reports that 95% of enterprise pilots produced no measurable
- * P&L impact. That is cited as MIT's, and the staged model is not.
+ * Attribution note, because it was nearly got wrong: this framing is not
+ * MIT's. It is used across the industry, by Georgian, ScienceLogic, Microsoft
+ * and others, and no single owner can be credited for it. It is presented
+ * here as an approach, not as a cited model.
  *
- * The statistic is widely reported and also disputed in places, so it is
- * attributed precisely rather than stated as settled fact: the report is named
- * and the claim is the one the report actually makes.
+ * The section previously opened on MIT's finding that 95% of enterprise
+ * pilots produce no measurable return, set as the largest element on the
+ * page. That was a mistake in a different way from a citation error: the
+ * dominant message of a section on a site selling AI services became "AI does
+ * not work". The stall is still the reason the staged approach matters, so it
+ * stays in the intro as a subordinate clause rather than as a hero statistic.
  *
- * `flow` is the schematic drawn beside each stage: the four things involved,
- * and which of them the AI is actually connected to.
+ * Each stage is one line carrying both what it is and where the risk moves
+ * to. The earlier version split that across four fields per stage, which is
+ * what made the section enormous.
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
-  title: "Ninety-five percent of pilots never make it out.",
+  title: "Move at the pace the risk allows.",
   intro:
-    "MIT's 2025 report on the state of AI in business found that almost every enterprise pilot produced no measurable return. Not because the models were not good enough, but because the work of putting them into an organisation was skipped.",
-  stat: {
-    value: "95%",
-    claim: "of enterprise GenAI pilots produced no measurable P&L impact.",
-    source: "MIT, The GenAI Divide: State of AI in Business, 2025",
-  },
-  lead: "The ones that work move through three stages. Each carries a different risk, and the stage that gets skipped is the one that causes the incident.",
+    "Each stage puts AI closer to your systems, and each carries a different risk. Most pilots stall because a stage was skipped, so Virtu moves you through them deliberately.",
   stages: [
     {
       name: "Crawl",
-      shape: "People use AI to draft, summarise and research. Nothing touches your systems.",
-      needs: "Permissions corrected first. An assistant reads whatever the person using it can read.",
-      breaks: "Data exposure. The over-shared drive nobody had opened in five years, now searchable in plain language.",
+      line: "People draft and research with AI. Nothing is written back, so the only exposure is what it can already read.",
       flow: [
         { label: "You", state: "on" },
         { label: "AI", state: "on" },
@@ -188,9 +182,7 @@ export const crawlWalkRun = {
     },
     {
       name: "Walk",
-      shape: "AI sits inside a real workflow, and a person approves each step before it lands.",
-      needs: "An agreed quality bar and a measured baseline, so the comparison is against something.",
-      breaks: "Quality drift, unnoticed. Faster quietly becomes worse because nobody wrote down what good looked like.",
+      line: "AI works inside a real process, with a person approving every step. The risk moves to quality.",
       flow: [
         { label: "You", state: "on" },
         { label: "AI", state: "on" },
@@ -200,9 +192,7 @@ export const crawlWalkRun = {
     },
     {
       name: "Run",
-      shape: "Agents act inside limits, stopping at the edge of what they should decide alone.",
-      needs: "Authority limits per action, logging you can reconstruct months later, and a forecastable cost per run.",
-      breaks: "Authority and cost. An agent that works and cannot be afforded at volume is not a solution.",
+      line: "Agents act within set limits and stop at the edge of them. The risk becomes authority and cost.",
       flow: [
         { label: "You", state: "muted" },
         { label: "AI", state: "on" },
@@ -211,8 +201,7 @@ export const crawlWalkRun = {
       ],
     },
   ],
-  footnote:
-    "Virtu will tell you which stage you are actually at, including when the honest answer is that you are not ready for the next one.",
+  footnote: "Virtu will tell you which stage you are at, including when the answer is not the next one.",
   cta: { label: "Find out which stage you are at", href: "/tools/ai-readiness-check" },
 } as const;
 
