@@ -161,7 +161,7 @@ export const crawlWalkRun = {
   eyebrow: "The AI development lifecycle",
   title: "Each stage pays for the next one.",
   intro:
-    "Nobody agrees on one system. One team runs Pipedrive, another runs Salesforce, and neither is going to migrate. So work leaks into whatever people signed up for themselves, and none of it reports. Every stage here builds over what is already in use rather than replacing it.",
+    "Nobody agrees on one system. Two teams run two different tools for the same job, and neither is going to migrate. So work leaks into whatever people signed up for themselves, and none of it reports. Every stage here builds over what is already in use rather than replacing it.",
   stages: [
     {
       name: "Crawl",
