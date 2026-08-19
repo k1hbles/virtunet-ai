@@ -9,7 +9,6 @@ export const metadata = { title: "Page not found" };
 /** Where someone who mistyped, or followed an old link, most likely wanted. */
 const suggestions = [
   { label: "AI services", href: routes.services },
-  { label: "Client outcomes", href: routes.outcomes },
   { label: "Insights", href: routes.insights },
   { label: "About Virtu", href: routes.about },
 ];

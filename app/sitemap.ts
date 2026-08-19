@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/services";
 import { industryList } from "@/lib/industries";
-import { outcomeList } from "@/lib/outcomes";
 import { articles } from "@/lib/articles";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://virtu.net";
@@ -24,15 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((s) => at(`/services/${s.slug}`, 0.8)),
     at("/industries", 0.7),
     ...industryList.map((i) => at(`/industries/${i.slug}`, 0.6)),
-    at("/client-outcomes", 0.7),
-    ...outcomeList.map((o) => at(`/client-outcomes/${o.slug}`, 0.5)),
     at("/insights", 0.7),
     ...articles.map((a) => at(`/insights/${a.slug}`, 0.6)),
     at("/about", 0.6),
-    at("/partnerships", 0.6),
     at("/responsible-ai", 0.5),
     at("/tools/ai-readiness-check", 0.8),
-    at("/tools/ai-roi-calculator", 0.8),
     at("/contact", 0.8),
     at("/privacy-policy", 0.3),
   ];

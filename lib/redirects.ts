@@ -65,8 +65,35 @@ const nearest: Record<string, string> = {
   // partner ecosystem material lives in the company story for now
   "/ai-ecosystem": "/about",
   "/ai-readiness": "/tools/ai-readiness-check",
-  "/ai-roi-calculator": "/tools/ai-roi-calculator",
+  "/ai-roi-calculator": "/tools/ai-readiness-check",
   "/responsible-ai": "/responsible-ai",
+};
+
+/**
+ * Whole areas retired in the repositioning. Each of these was a live URL on
+ * this site, so they redirect rather than 404 — the ROI calculator to the
+ * assessment that replaced it as the entry point, and the rest to the nearest
+ * page that still answers the question the visitor arrived with.
+ *
+ * Client outcomes were removed because the case studies described hardware
+ * and lifecycle work. Partnerships was a hundred-odd hardware vendors, which
+ * is virtu.net's story; it returns when the AI partnerships are confirmed.
+ */
+const retiredOutcomes = [
+  "ai-physical-security-retail",
+  "ai-governance-healthcare",
+  "ai-app-development-recycling",
+  "agentic-ai-pentesting-education",
+  "ai-automation-manufacturing",
+  "ai-roadmap-financial-services",
+  "ai-enablement-hotel",
+  "ai-edge-content-creation-studio",
+];
+
+const retiredAreas: Record<string, string> = {
+  "/tools/ai-roi-calculator": "/tools/ai-readiness-check",
+  "/client-outcomes": "/services",
+  "/partnerships": "/about",
 };
 
 const categories = [
@@ -86,6 +113,8 @@ export const legacyRedirects = [
   ...industries.map((s) => ({ source: `/${s}`, destination: `/industries/${s}`, permanent: true })),
   ...articles.map((s) => ({ source: `/${s}`, destination: `/insights/${s}`, permanent: true })),
   ...categories.map((c) => ({ source: `/category/${c}`, destination: "/insights", permanent: true })),
+  ...Object.entries(retiredAreas).map(([source, destination]) => ({ source, destination, permanent: true })),
+  ...retiredOutcomes.map((s) => ({ source: `/client-outcomes/${s}`, destination: "/services", permanent: true })),
   ...Object.entries(nearest)
     .filter(([from, to]) => from !== to)
     .map(([source, destination]) => ({ source, destination, permanent: true })),

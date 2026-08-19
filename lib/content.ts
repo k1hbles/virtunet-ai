@@ -20,7 +20,6 @@ export const routes = {
   home: "/",
   services: "/services",
   industries: "/industries",
-  outcomes: "/client-outcomes",
   insights: "/insights",
   about: "/about",
   contact: "/contact",
@@ -36,7 +35,6 @@ export const routes = {
 export const navLinks = [
   { label: "Services", href: routes.services },
   { label: "Industries", href: routes.industries },
-  { label: "Client outcomes", href: routes.outcomes },
   { label: "Insights", href: routes.insights },
   { label: "About", href: routes.about },
 ] as const;
@@ -222,17 +220,14 @@ export const footer = {
       links: [
         { label: "All AI services", href: routes.services },
         { label: "AI Readiness Check", href: "/tools/ai-readiness-check" },
-        { label: "AI ROI Calculator", href: "/tools/ai-roi-calculator" },
         { label: "Industries", href: routes.industries },
-        { label: "Client outcomes", href: routes.outcomes },
-        { label: "Insights", href: routes.insights },
+              { label: "Insights", href: routes.insights },
       ],
     },
     {
       heading: "Virtu",
       links: [
         { label: "About", href: routes.about },
-        { label: "Partnerships", href: "/partnerships" },
         { label: "Contact", href: routes.contact },
         { label: "Responsible AI", href: "/responsible-ai" },
         { label: "Careers", href: "https://virtu.net/careers/" },
