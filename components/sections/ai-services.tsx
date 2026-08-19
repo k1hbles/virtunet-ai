@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { aiServices } from "@/lib/content";
+import { stages, servicesByStage } from "@/lib/services";
 import { SplitWords } from "@/components/ui/split-words";
 
 /** Scroll length of the pinned stage, as a fraction of viewport height. */
@@ -12,7 +13,6 @@ const STAGE_VH = 240;
 const FADE = 0.14;
 
 export function AiServices() {
-  const items = aiServices.items;
   const beats = aiServices.beats;
 
   /**
@@ -262,35 +262,49 @@ export function AiServices() {
         </div>
       </div>
 
-      {/* ---- the nine, quietly ---- */}
+      {/*
+        The catalogue, by stage.
+
+        Previously three columns holding five, three and three, which left two
+        of them stopping short and a hole under the shorter pair. That split
+        was presentational — the catalogue has five stages, not three — so the
+        fix is to stop fighting the taxonomy. Each stage is now a labelled row,
+        where an uneven number of services reads as a fact about that stage
+        rather than as a column that ran out.
+
+        Read from lib/services.ts rather than a copy in the content file, so
+        the home page cannot drift from the catalogue it links to.
+      */}
       <div className="wrap pb-24 md:pb-32">
-        <div className="grid gap-x-14 gap-y-12 border-t border-line pt-12 md:grid-cols-3">
-          {aiServices.groupOrder.map((group) => (
-            <div key={group} className="reveal">
-              <p className="eyebrow text-ink-muted">{group}</p>
-              <ul className="mt-5">
-                {items
-                  .filter((s) => s.group === group)
-                  .map((s) => (
-                    <li key={s.title}>
-                      <a
-                        href={s.href}
-                        className="group flex items-baseline justify-between gap-4 border-b border-line py-4 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
-                      >
-                        {s.title}
-                        <ArrowUpRight
-                          size={15}
-                          aria-hidden
-                          className="shrink-0 translate-y-0.5 text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0 group-hover:text-accent"
-                        />
-                      </a>
-                    </li>
-                  ))}
+        <div className="border-t border-line">
+          {stages.map((stage) => (
+            <div
+              key={stage.slug}
+              className="reveal grid gap-5 border-b border-line py-7 md:grid-cols-[11rem_1fr] md:items-baseline md:gap-12"
+            >
+              <p className="eyebrow text-ink-muted">{stage.name}</p>
+              <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+                {servicesByStage(stage.slug).map((svc) => (
+                  <li key={svc.slug}>
+                    <a
+                      href={`/services/${svc.slug}`}
+                      className="group inline-flex items-baseline gap-2 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
+                    >
+                      {svc.title}
+                      <ArrowUpRight
+                        size={15}
+                        aria-hidden
+                        className="shrink-0 translate-y-[3px] text-ink-muted transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                      />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
         </div>
       </div>
+
     </section>
   );
 }

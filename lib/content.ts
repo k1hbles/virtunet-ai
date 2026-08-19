@@ -132,27 +132,6 @@ export const aiServices = {
    * on /services, which is why no copy here commits to a number. The grouping is editorial, not taken from
    * virtunet.ai — change the strings here and the section regroups itself.
    */
-  /**
-   * `group` clusters the eleven into three columns. The grouping is
-   * presentational — the catalogue's own five stages are Orient, Govern,
-   * Build, Adopt and Run, and five columns does not lay out — but nothing is
-   * moved across a boundary it does not belong to. Securing AI stays with
-   * governance rather than being shifted to balance the columns.
-   */
-  groupOrder: ["Orient & govern", "Build", "Adopt & run"],
-  items: [
-    { kicker: "One day", title: "AI Strategy Day", group: "Orient & govern", body: "Turn AI ambition into a plan your board can fund, in a single facilitated day.", href: "/services/ai-strategy-day" },
-    { kicker: "Evidence", title: "AI Readiness Assessment", group: "Orient & govern", body: "Whether your data, permissions and people can carry AI, and what it costs to close the gaps.", href: "/services/ai-readiness-assessment" },
-    { kicker: "Guardrails", title: "AI & Agent Governance", group: "Orient & govern", body: "Decide what an agent may do, and be able to show why afterwards.", href: "/services/ai-governance" },
-    { kicker: "Defensible", title: "Responsible AI & Ethics", group: "Orient & govern", body: "Fairness, transparency and contestability built into the decision, not reviewed after it.", href: "/services/ai-ethics" },
-    { kicker: "Zero trust", title: "Securing AI", group: "Orient & govern", body: "Data boundaries, agent permissions, prompt injection and the shadow AI nobody approved.", href: "/services/securing-ai" },
-    { kicker: "Autonomous", title: "AI Agents", group: "Build", body: "Agents that do real work across your systems, with the limits to let them.", href: "/services/ai-agents" },
-    { kicker: "Throughput", title: "Workflow Automation", group: "Build", body: "Remove the repetitive middle of document, approval and service workflows.", href: "/services/ai-workflow-automation" },
-    { kicker: "Claude Code, Codex", title: "Agentic Engineering", group: "Build", body: "Agentic coding adopted with a standard, and measured in cycle time.", href: "/services/agentic-engineering" },
-    { kicker: "Ways of working", title: "AI-Native Knowledge Work", group: "Adopt & run", body: "Rebuild how a team works around AI-native tools, rather than bolting them on.", href: "/services/ai-native-work" },
-    { kicker: "Capability", title: "AI Training & Enablement", group: "Adopt & run", body: "Executives, managers and practitioners, pitched differently against your own work.", href: "/services/ai-training-enablement" },
-    { kicker: "Compute", title: "AI Infrastructure & Workstations", group: "Adopt & run", body: "GPUs, workstations and inference sized for what you run and what it costs.", href: "/services/ai-infrastructure" },
-  ],
 } as const;
 
 /**
