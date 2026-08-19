@@ -23,16 +23,22 @@ export function Hero() {
 
       {/*
         Cool silver light, drifting slowly so the frame is never quite static.
-        Sits lower than it used to: centred at 62% its upper reach fell across
-        the copy, adding light to the one band that needed less of it.
+
+        Blended, not laid on top. Painted normally this was a grey veil: the
+        artwork is mostly true black, and a translucent light grey over black
+        is fog — measured at +121 levels where it was thickest. Soft-light
+        leaves a black backdrop black however strong the source, so the light
+        can only settle on surfaces that are already lit. That is also why the
+        alphas here are far higher than they look; through soft-light they
+        land as a fraction of themselves.
       */}
       <div
         aria-hidden
-        className="hero-wash pointer-events-none absolute inset-0"
+        className="hero-wash pointer-events-none absolute inset-0 mix-blend-soft-light"
         style={{
           background:
-            "radial-gradient(66% 42% at 52% 78%, oklch(87% 0.008 250 / 0.18), transparent 72%)," +
-            "radial-gradient(38% 28% at 20% 88%, oklch(87% 0.008 250 / 0.10), transparent 74%)",
+            "radial-gradient(66% 42% at 52% 78%, oklch(87% 0.008 250 / 0.55), transparent 72%)," +
+            "radial-gradient(38% 28% at 20% 88%, oklch(87% 0.008 250 / 0.32), transparent 74%)",
         }}
       />
 
