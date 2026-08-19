@@ -198,8 +198,8 @@ export const sustainability = {
     "Virtu brings sustainability into every stage of the technology lifecycle, across product selection, resilient infrastructure and responsible end-of-life asset management.",
   cta: { label: "Our sustainability commitment", href: routes.sustainability },
   image: {
-    src: "/img/sustainable-lifecycle.webp",
-    alt: "Enterprise technology prepared for responsible reuse and lifecycle management",
+    src: "/img/sustainability-rack-aisle.webp",
+    alt: "A maintenance aisle between server racks, with one rack drawn open on its rails",
   },
   pillars: [
     { title: "Choose", body: "Technology selected for performance, longevity and impact." },
