@@ -1,128 +1,110 @@
-# Image brief
+# Image brief — two section images
 
-Prompts for the artwork the site is missing. Generate at the stated aspect,
-as large as your tool allows (2048px on the long edge is ideal — everything
-gets downscaled and re-encoded by `next/image`, so oversized is free).
+Generate these two, then hand me the files and I'll trim, convert to WebP and
+wire them in.
 
-Drop the files anywhere and tell me the paths; I'll trim, convert to WebP and
-wire them in. **PNG or WebP, no JPEG** — JPEG artefacts show badly on the
-near-black backgrounds this site uses.
+## Palette (measured from `app/globals.css`)
 
----
+| Token | Hex | Use in the image |
+|---|---|---|
+| canvas | `#000000` | the ground — most of the frame |
+| surface | `#010102` | near-black separation |
+| platinum | `#D0D5D9` | the only "bright" — specular edges, brushed metal |
+| platinum-dim | `#9C9FA2` | mid-tone metal |
+| accent | `#1678FF` | restrained blue light, the single colour accent |
+| accent-green | `#13C462` | image B only, and only as a trace |
 
-## The house style
+## What is wrong with the current two
 
-Every existing image on the site shares one look. Paste this block into every
-prompt so the new work sits alongside `procurement-devices.webp` and
-`secure-connectivity.webp` rather than beside them.
+**Both** are lit green/yellow/teal, which is off-palette — the site is
+near-black, platinum and one Apple-ish blue. They read as generic AI stock
+render, not as the calm dark direction the hero set.
 
-> Cinematic product photography, near-black background, deep shadows, shallow
-> depth of field. Cool lighting: electric blue and teal with a single warm
-> yellow-green rim accent. Industrial materials — brushed aluminium, matte
-> concrete, smoked glass. Premium enterprise technology, understated, no
-> branding. Photographed on a long lens, subject small in frame with generous
-> negative space. Moody, quiet, expensive.
+**ai-ready-workplace.webp** — a rainbow heat-map on the right monitor, wavy
+"AI visualisation" lines on every screen, two large houseplants, warm wood
+desk. Every one of those is a cliché and none of them are in the palette.
 
-**Always add as negative prompt:**
+**sustainable-lifecycle.webp** — carries **visible HP logos** on the laptops.
+That has to go: this site is vendor-neutral, and a third-party trademark
+baked into illustrative art reads as a claim about that vendor. It is also
+too busy — conveyor, shelving, bins, boxes and loose components all at once.
 
-> no text, no words, no letters, no logos, no watermarks, no visible faces,
-> no people looking at camera, no bright white backgrounds, no clutter, no
-> stock-photo handshakes, no neon cyberpunk, no purple, no orange
+## Image A — "Prepare your workplace for AI."
 
-**Why no text:** the site renders all copy as live HTML. Baked-in text can't
-be translated, read by screen readers, or kept crisp when scaled.
+Replaces `public/img/ai-ready-workplace.webp`.
 
----
+**Deliver 2048 × 1075 (aspect 1.90).**
 
-## 1. Capability cards — 3 images, 4:3 (2048 × 1536)
+Composition is constrained by how it is displayed, so this matters more than
+the subject:
 
-These three cards currently have no artwork and fall back to a radial glow,
-which is why the middle of the page reads flatter than the top.
+- It is a full-bleed background with a left-to-right black scrim. The **left
+  35% is 96%→78% black** — the heading and body sit there. Put nothing you
+  care about in the left third.
+- On mobile the box becomes **portrait (aspect 0.51)** and `object-cover`
+  shows only the **centre 28.5% of the width — from 36% to 64% across**.
+- So the subject must sit centred around **55–62% across**: far enough right
+  to clear the scrim, central enough to survive the mobile crop. Detail may
+  extend right; nothing essential past 80%.
 
-### `license.webp` — "Software and licence services"
-> House style. Overlapping translucent glass panels floating in dark space,
-> edge-lit in electric blue, suggesting layered software licences stacked in
-> depth. Faint grid etched into the glass. One panel catches a yellow-green
-> rim light. Abstract, architectural, no interface elements.
+> **Prompt**
+>
+> A dark, minimal workplace scene photographed on a near-black set. A single
+> slim aluminium laptop, open, sitting on a smooth charcoal desk surface, with
+> one thin external monitor behind it slightly out of focus. Everything is
+> brushed aluminium and matte graphite — no wood, no fabric, no plants, no
+> people. The screens are almost entirely dark, showing only a faint cool blue
+> glow with no discernible interface, no charts, no waveforms and no readable
+> text. Lighting is a single soft key from the upper right, raking across the
+> metal so the edges catch a cool platinum highlight, plus one restrained blue
+> rim light. The left third of the frame falls off to pure black. Colour is
+> strictly monochrome graphite and platinum with one accent of blue (#1678FF);
+> no green, no amber, no teal, no rainbow colour. Shallow depth of field,
+> shot on an 85mm lens at f/2, high-end product photography, quiet and
+> expensive, deep blacks, no glow bloom, no lens flare.
+>
+> **Negative:** plants, greenery, wood, warm light, orange, yellow, green,
+> teal, rainbow, heatmap, data visualisation, wavy lines, charts, dashboards,
+> readable text, logos, brand marks, people, hands, faces, busy background,
+> office clutter, HDR, oversaturated.
 
-### `deploy.webp` — "Deployment, project management, cloud transformation"
-> House style. A row of server racks receding into darkness, seen from a low
-> angle down a cold aisle. Blue status LEDs in soft focus, one rack in sharp
-> focus in the foreground. Teal ambient light, faint yellow-green glow at the
-> far end of the aisle. Empty, still, no operators.
+## Image B — "Progress that lasts beyond deployment."
 
-### `sustain.webp` — "IT asset lifecycle management"
-> House style. A refurbishment workbench in a dark facility: laptop chassis
-> laid out in an ordered grid, one opened with internals visible, tools
-> arranged neatly. Overhead task light pooling on the bench, blue-teal wash
-> beyond. Suggests careful reuse rather than disposal. No hands, no people.
+Replaces `public/img/sustainable-lifecycle.webp`.
 
----
+**Deliver 2048 × 1280 (aspect 1.60, i.e. 16:10).** The current file is 16:9
+and gets 11% cropped off top and bottom — 16:10 fixes that.
 
-## 2. Insight card headers — 3 images, 16:9 (2048 × 1152)
+It sits in a rounded, bordered card beside the text, with no scrim, so the
+whole frame is visible and the composition can be centred.
 
-The insights section is text-only. These sit above each card headline.
+The idea is *longevity*, not a recycling depot: one device, treated with
+care, built to outlast its first deployment.
 
-### `insight-ai-pcs.webp` — "Maximise workforce productivity with AI PCs"
-> House style. A single thin modern laptop three-quarter view on a dark desk,
-> screen showing abstract flowing data ribbons in blue and green, no readable
-> interface. Room dark behind, one soft window reflection on the lid.
+> **Prompt**
+>
+> A single slim aluminium laptop shown closed and in profile on a dark
+> brushed-steel surface, lit as a museum object rather than a product on a
+> shelf. Beside it, precisely arranged, two or three small components — a
+> memory module and a drive — laid out in a neat row like parts of a service
+> kit, suggesting a machine designed to be opened and kept running. Near-black
+> background falling away to pure black at the edges. Brushed metal and matte
+> graphite only. Lighting is one soft overhead key with a cool platinum
+> specular along every machined edge, and a single narrow blue accent light
+> (#1678FF) grazing from the left. One very faint, small trace of green
+> (#13C462) in a distant reflection, barely perceptible — a hint, not a theme.
+> Symmetrical, calm, generous negative space, everything in sharp focus.
+> Shot on a 50mm lens, top-down three-quarter view, high-end editorial product
+> photography, deep blacks.
+>
+> **Negative:** logos, brand marks, HP, Dell, Lenovo, Apple, any visible
+> trademark, text, labels, barcodes, green laptops, coloured devices, warehouse,
+> conveyor belt, shelving, storage bins, cardboard boxes, clutter, recycling
+> symbols, leaves, plants, people, hands, yellow, orange, teal, rainbow,
+> oversaturated, HDR.
 
-### `insight-windows-11.webp` — "Windows 11 upgrade guide"
-> House style. Three laptops of different ages arranged in a receding
-> diagonal, oldest furthest and darkest, newest nearest and sharply lit —
-> suggesting a fleet upgrade. Cool blue key light, yellow-green accent on the
-> nearest device. No visible operating system, screens abstract.
+## When you hand them back
 
-### `insight-education.webp` — "AI, VR and AR in education"
-> House style. An empty modern lecture space at night, tiered seating in
-> silhouette, a single AR headset resting on a desk in the foreground catching
-> blue rim light. Faint teal projection glow on the far wall. Nobody present.
-
----
-
-## 3. Section seam textures — 2 images, 21:9 (2560 × 1097)
-
-Full-bleed, near-abstract bands used to soften the hard cuts between
-sections. These sit at very low opacity behind section boundaries, so they
-should be almost featureless — texture, not subject.
-
-### `seam-light.webp`
-> Abstract macro photograph of brushed aluminium under raking light, almost
-> black with a soft platinum sheen sweeping across the centre. Extremely
-> subtle, no distinct forms, fine directional grain. Suitable as a background
-> texture at 15% opacity.
-
-### `seam-deep.webp`
-> Abstract long-exposure of cool blue and teal light diffusing through smoked
-> glass, dissolving to pure black at both edges. No hard shapes, no visible
-> source. Suitable as a background texture at 15% opacity.
-
----
-
-## 4. Open Graph card — 1 image, exactly 1200 × 630
-
-Currently the share preview reuses `hero-ai-ready-device.webp`, which is a
-2048×868 crop and sits awkwardly in a 1.91:1 card.
-
-### `og-card.webp`
-> House style. Wide cinematic composition, a single modern laptop slightly
-> right of centre, closed, catching a blue and yellow-green light ribbon
-> across its lid. Left third deliberately empty near-black negative space.
-> Balanced for a 1200×630 crop with nothing important near the edges.
-
-The empty left third matters — that's where the title overlays on most
-platforms.
-
----
-
-## What I am *not* asking for
-
-**A 360° render sequence.** Apple's scroll-driven spin is a video scrubbed
-against scroll position, which needs frame-to-frame consistent geometry.
-Image generation can't hold an object stable across frames, so that effect is
-out of scope. If a real 360° render or product video ever exists, the pinned
-stage built in this round is already the right container for it — wiring it up
-would be a small change, not a rebuild.
-
-**Anything with text in it.** See above.
+Any format is fine — PNG at full size is ideal. I will trim, convert to WebP,
+check them against the scrim and the mobile crop, and confirm the text still
+clears its contrast minimum over the new artwork.
