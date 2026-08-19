@@ -188,7 +188,7 @@ export const aiWorkplace = {
   cta: { label: "Explore digital workplace", href: routes.workplace },
   image: {
     src: "/img/ai-ready-workplace.webp",
-    alt: "Modern AI-ready workplace with connected enterprise devices",
+    alt: "A laptop, external display and a compact AI compute unit on a dark desk, lit in blue",
   },
 } as const;
 
