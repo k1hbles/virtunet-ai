@@ -47,7 +47,7 @@ export function Capabilities() {
                 against a near-black background.
               */}
               {!c.image && (
-                <div className="absolute inset-0 bg-[radial-gradient(125%_85%_at_78%_106%,rgba(32,96,255,.20)_0%,rgba(32,96,255,.085)_34%,rgba(32,96,255,.02)_58%,transparent_74%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(135%_100%_at_78%_106%,rgba(32,96,255,.40)_0%,rgba(32,96,255,.19)_34%,rgba(32,96,255,.05)_58%,transparent_78%)]" />
               )}
 
               <div className="relative z-10 flex h-full flex-col justify-between">
