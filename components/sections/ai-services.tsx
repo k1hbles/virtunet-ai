@@ -278,47 +278,42 @@ export function AiServices() {
       {/*
         The catalogue, by stage.
 
-        Redrawn to match the crawl / walk / run section: a monospace stage
-        marker, hairline rows, and no boxes. It also surfaces each stage's
-        summary, which existed in lib/services.ts and had never been shown
-        anywhere — the index page listed service names with no explanation of
-        what the stage was for.
+        Five columns, one per stage, which is what makes it symmetrical: the
+        earlier three-column version had to pack five stages into three, so one
+        column carried five services and the others three, and it stopped
+        short. Five equal columns of two, three, three, two and one read as a
+        table rather than as a column that ran out.
+
+        The stage summaries are deliberately not here. They were what made the
+        previous version tall, and this block's job is visibility of the
+        services themselves — the summaries belong on /services, where there
+        is room to argue.
 
         Read from lib/services.ts so the home page cannot drift from the
         catalogue it links to.
       */}
       <div className="wrap pb-24 md:pb-32">
-        <div className="border-t border-line">
+        <div className="reveal-group grid gap-x-8 gap-y-10 grid-cols-2 border-t border-line pt-10 md:grid-cols-3 lg:grid-cols-5">
           {stages.map((stage, i) => (
-            <div
-              key={stage.slug}
-              className="reveal grid gap-6 border-b border-line py-9 md:grid-cols-[6rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-12 md:py-10"
-            >
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-ink-muted md:pt-1">
-                Stage {String(i + 1).padStart(2, "0")}
+            <div key={stage.slug} className="reveal">
+              <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-ink-muted">
+                {String(i + 1).padStart(2, "0")}
               </p>
-
-              <div>
-                <h3 className="text-[1.35rem] font-medium tracking-[-0.03em] text-ink">
-                  {stage.name}
-                </h3>
-                <p className="mt-3 max-w-sm text-[0.95rem] leading-6 text-ink-muted">
-                  {stage.summary}
-                </p>
-              </div>
-
-              <ul className="flex flex-col gap-px self-start">
+              <h3 className="mt-2.5 text-[1.05rem] font-medium tracking-[-0.02em] text-ink">
+                {stage.name}
+              </h3>
+              <ul className="mt-4 flex flex-col">
                 {servicesByStage(stage.slug).map((svc) => (
                   <li key={svc.slug}>
                     <a
                       href={`/services/${svc.slug}`}
-                      className="group flex items-baseline justify-between gap-6 py-2 text-[1.02rem] leading-snug text-ink transition-colors hover:text-accent"
+                      className="group flex items-baseline gap-1.5 border-t border-line py-2.5 text-[0.94rem] leading-snug text-ink-muted transition-colors hover:text-accent"
                     >
                       <span>{svc.title}</span>
                       <ArrowUpRight
-                        size={15}
+                        size={13}
                         aria-hidden
-                        className="shrink-0 translate-y-0.5 text-ink-muted opacity-0 transition-all group-hover:translate-x-0.5 group-hover:text-accent group-hover:opacity-100"
+                        className="mt-0.5 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
                       />
                     </a>
                   </li>
