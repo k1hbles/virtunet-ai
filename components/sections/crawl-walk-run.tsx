@@ -1,7 +1,7 @@
 import { crawlWalkRun } from "@/lib/content";
 import { SplitWords } from "@/components/ui/split-words";
 import { TextLink } from "@/components/ui/pill-button";
-import { ReachDiagram } from "@/components/sections/reach-diagram";
+import { StageDiagram } from "@/components/sections/stage-diagram";
 
 /**
  * Three stages, as hairline-divided columns rather than cards.
@@ -47,7 +47,7 @@ export function CrawlWalkRun() {
                 Stage {String(i + 1).padStart(2, "0")}
               </p>
 
-              <ReachDiagram reach={stage.reach} />
+              <StageDiagram shape={stage.shape} />
 
               <div>
                 <h3 className="text-[1.5rem] font-medium tracking-[-0.03em] text-ink">

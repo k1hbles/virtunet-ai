@@ -158,28 +158,28 @@ export const aiServices = {
  * Outside them, at a gate on the boundary, or working inside them.
  */
 export const crawlWalkRun = {
-  eyebrow: "Crawl, walk, run",
+  eyebrow: "The AI development lifecycle",
   title: "Each stage pays for the next one.",
   intro:
-    "This is compounding, not caution. Every stage brings AI closer to the work and returns more than the one before it, and the controls are what make the next stage possible rather than what hold it back.",
+    "Nobody agrees on one system. One team runs Pipedrive, another runs Salesforce, and neither is going to migrate. So work leaks into whatever people signed up for themselves, and none of it reports. Every stage here builds over what is already in use rather than replacing it.",
   stages: [
     {
       name: "Crawl",
-      line: "Individuals get faster, and the AI your people are already using comes in-house: one place you can see, support and pay for once.",
-      unlocks: "a single approved surface, instead of a dozen unapproved ones.",
-      reach: "outside",
+      line: "The AI your people are already paying for on their own cards comes in-house. Nobody loses a tool, and you can finally see what is being used, by whom, and what it costs.",
+      unlocks: "one place to look, instead of a dozen personal accounts.",
+      shape: "scattered",
     },
     {
       name: "Walk",
-      line: "A process gets faster. AI runs inside real work with a person approving, so cycle time falls without accuracy slipping.",
-      unlocks: "a measured baseline, which is what makes the gain provable.",
-      reach: "gated",
+      line: "Virtu builds the layer that reads across the systems already in use, so reporting is one number rather than five exports and a spreadsheet nobody trusts.",
+      unlocks: "software built to the business, rather than bought and then worked around.",
+      shape: "joined",
     },
     {
       name: "Run",
-      line: "The organisation gains capacity. Agents do the work inside set limits, so volume rises without adding headcount.",
-      unlocks: "authority and logging, which is what lets you hand over real work.",
-      reach: "inside",
+      line: "Agents work inside that layer, within set limits and against a log. Volume rises without headcount, and every action has an owner you can name.",
+      unlocks: "control, which is what makes handing over real work worth doing.",
+      shape: "acting",
     },
   ],
   footnote: "Virtu will tell you which stage you are at, and what the next one is worth before you commit to it.",

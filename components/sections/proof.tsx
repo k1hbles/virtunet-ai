@@ -14,6 +14,14 @@ import { TextLink } from "@/components/ui/pill-button";
  * no confidentiality problem because the client is Virtu. The credentials
  * stay, demoted to a single line, because eighteen years of delivery is the
  * reason to believe the rest.
+ *
+ * The section closes outward rather than on us. The story is only worth
+ * telling because it is the reader's problem too, so it ends on the gap every
+ * established business is now facing, and on who this is for.
+ *
+ * The pull quote is the one about the distance between an idea and a working
+ * product collapsing, rather than the one about treating Virtu as a client.
+ * It carries the same evidence and reads as the journey it was.
  */
 export function Proof() {
   const { firstClient } = company;
@@ -28,7 +36,7 @@ export function Proof() {
               <SplitWords text={firstClient.claim} />
             </h2>
             <blockquote className="reveal mt-8 max-w-lg border-l border-line pl-6 text-[1.08rem] leading-8 text-ink">
-              &ldquo;{firstClient.quote}&rdquo;
+              &ldquo;{firstClient.directed}&rdquo;
               <footer className="mt-4 text-sm not-italic text-ink-muted">
                 {company.leader.name}, {company.leader.role}
               </footer>
@@ -71,9 +79,15 @@ export function Proof() {
           </div>
         </div>
 
+        {/* the turn outward: the story is only worth telling because it is
+            the reader's problem too */}
+        <p className="reveal mt-16 max-w-4xl border-t border-line pt-10 text-[1.3rem] leading-9 text-ink">
+          {firstClient.forWhom}
+        </p>
+
         {/* the older credentials, kept but demoted: they are the reason to
             believe the story above, not the story itself */}
-        <p className="reveal mt-16 border-t border-line pt-7 text-sm leading-7 text-ink-muted">
+        <p className="reveal mt-12 border-t border-line pt-7 text-sm leading-7 text-ink-muted">
           Australian technology delivery since {company.since}. {company.organisationsHelped}{" "}
           organisations, schools and agencies. {company.recognition[0]}.
         </p>

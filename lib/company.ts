@@ -67,7 +67,12 @@ export const company = {
    * Every fact here is from Martin's own account. Nothing is estimated.
    */
   firstClient: {
-    claim: "Our first AI-native client was us.",
+    claim: "We rebuilt Virtu on it before we sold it.",
+    /**
+     * Held off the home page deliberately. It is accurate and it is his, but
+     * "our first AI-native client" reads as a shortage of clients rather than
+     * as the decision it was. Kept here because it is on the record.
+     */
     quote:
       "We realised we had been dipping our toes into AI too. So we decided to go deeper and treat Virtu as our first AI-native client.",
     built: [
@@ -82,6 +87,13 @@ export const company = {
     ],
     outcome:
       "Work that had been spread across several systems now sits in one internal platform, and some subscriptions have been retired.",
+    /**
+     * Who the story is for. Martin's framing of the stakes, in Virtu's voice
+     * rather than as a second quotation, because the section already carries
+     * one and two bylines in a row read as a shortage of material.
+     */
+    forWhom:
+      "Established businesses are now competing with companies that were designed around AI from day one. Virtu closes that gap by rebuilding how a business produces its work, not by adding another tool to it. This is for organisations that intend to evolve, not keep up.",
     directed:
       "For years, I could see a problem and imagine the solution, but there was still a gap between the idea and being able to build it myself. That changed this year. The distance between an idea and a working digital product suddenly became much smaller.",
   },
