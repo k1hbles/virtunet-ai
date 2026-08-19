@@ -201,8 +201,8 @@ export const aiWorkplace = {
     "AI-enabled is adding AI to the way your business already works. AI-native is redesigning how people, processes and technology work together around what AI now makes possible. Virtu rebuilds how a team produces its work with agentic tooling in the middle of it, and leaves behind a practice the next team can start from.",
   cta: { label: "Explore AI-native work", href: "/services/ai-native-work" },
   image: {
-    src: "/img/ai-workplace-coldplate-v2.webp",
-    alt: "A precision-machined aluminium cold plate for AI accelerators, its fins and honeycomb vent lit in cool blue",
+    src: "/img/ai-workplace-coldplate-v3.webp",
+    alt: "A precision-machined aluminium cold plate for AI accelerators, its fin stack and honeycomb vent face lit in cool blue",
   },
 } as const;
 
