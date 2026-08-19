@@ -78,30 +78,41 @@ and gets 11% cropped off top and bottom — 16:10 fixes that.
 It sits in a rounded, bordered card beside the text, with no scrim, so the
 whole frame is visible and the composition can be centred.
 
-The idea is *longevity*, not a recycling depot: one device, treated with
-care, built to outlast its first deployment.
+**Subject: serviceability at infrastructure scale, not raw compute power.**
+The headline is "Progress that lasts beyond deployment" and the pillars under
+it are Choose, Operate and Renew. A supercomputer reads as power and density,
+which says nothing about any of those — and since a supercomputer is the stock
+example of energy-hungry compute, it would argue against the sustainability
+claim it sits above. A rack designed to be opened, maintained and kept running
+says the same "serious infrastructure" thing while actually earning the
+headline.
+
+Do not make this a close-up of an opened chassis: the AI services section
+already runs a scrubbed clip of exactly that, and the hero is a close crop of
+a compute unit. This one has to work at a different scale from both.
 
 > **Prompt**
 >
-> A single slim aluminium laptop shown closed and in profile on a dark
-> brushed-steel surface, lit as a museum object rather than a product on a
-> shelf. Beside it, precisely arranged, two or three small components — a
-> memory module and a drive — laid out in a neat row like parts of a service
-> kit, suggesting a machine designed to be opened and kept running. Near-black
-> background falling away to pure black at the edges. Brushed metal and matte
-> graphite only. Lighting is one soft overhead key with a cool platinum
-> specular along every machined edge, and a single narrow blue accent light
-> (#1678FF) grazing from the left. One very faint, small trace of green
-> (#13C462) in a distant reflection, barely perceptible — a hint, not a theme.
-> Symmetrical, calm, generous negative space, everything in sharp focus.
-> Shot on a 50mm lens, top-down three-quarter view, high-end editorial product
-> photography, deep blacks.
+> A wide, calm view down a maintenance aisle between two rows of server racks
+> in a research computing hall. One rack module is drawn part-way out on its
+> rails toward the viewer, revealing precise internal structure and clean,
+> deliberate cable management — the room reads as something built to be
+> serviced and kept running, not as a showpiece. Everything is brushed
+> aluminium, matte graphite and near-black. Lighting is even and cool: a soft
+> overhead wash picking out platinum highlights along the machined rails and
+> rack edges, with a single restrained blue accent (#1678FF) running as a thin
+> line of status light down the row. Background falls away into darkness. One
+> very faint trace of green (#13C462) in a distant status indicator, barely
+> perceptible. Symmetrical one-point perspective, generous negative space
+> overhead, immaculately clean, no clutter, no cables on the floor. Shot on a
+> 35mm lens, editorial architectural photography, deep blacks, quiet and
+> expensive.
 >
-> **Negative:** logos, brand marks, HP, Dell, Lenovo, Apple, any visible
-> trademark, text, labels, barcodes, green laptops, coloured devices, warehouse,
-> conveyor belt, shelving, storage bins, cardboard boxes, clutter, recycling
-> symbols, leaves, plants, people, hands, yellow, orange, teal, rainbow,
-> oversaturated, HDR.
+> **Negative:** logos, brand marks, HP, Dell, Lenovo, any visible trademark,
+> text, labels, barcodes, screens showing interfaces, people, hands, warehouse,
+> conveyor belt, storage bins, cardboard boxes, clutter, tangled cables,
+> recycling symbols, leaves, plants, green or amber lighting, teal, rainbow,
+> heat haze, lens flare, oversaturated, HDR.
 
 ## When you hand them back
 
