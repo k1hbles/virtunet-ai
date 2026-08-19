@@ -146,40 +146,45 @@ export const aiServices = {
 } as const;
 
 /**
- * Crawl, walk, run — the founder's framing, made specific to AI.
+ * Crawl, walk, run.
  *
- * The value of the model is not that it sounds sensible; it is that the three
- * stages carry three different risk profiles. What breaks at each one differs,
- * which is why skipping a stage is what turns a pilot into an incident. Each
- * stage therefore names what it needs and what usually goes wrong, rather than
- * just describing itself.
+ * A note on attribution, because it was nearly got wrong. This framing is not
+ * MIT's — it is used across the industry, by Georgian, ScienceLogic, Microsoft
+ * and others, and no single owner can be credited for it. What MIT did publish
+ * is the finding the section now opens with: "The GenAI Divide: State of AI in
+ * Business 2025" reports that 95% of enterprise pilots produced no measurable
+ * P&L impact. That is cited as MIT's, and the staged model is not.
+ *
+ * The statistic is widely reported and also disputed in places, so it is
+ * attributed precisely rather than stated as settled fact: the report is named
+ * and the claim is the one the report actually makes.
+ *
+ * `flow` is the schematic drawn beside each stage: the four things involved,
+ * and which of them the AI is actually connected to.
  */
 export const crawlWalkRun = {
   eyebrow: "Crawl, walk, run",
-  title: "Most organisations try to run first.",
+  title: "Ninety-five percent of pilots never make it out.",
   intro:
-    "The three stages are not a maturity badge to collect. They are three different risk profiles, and the thing that breaks is different at each one. That is why the stage that gets skipped is usually the one that causes the incident.",
-  /**
-   * `flow` is the schematic drawn above each stage: the four things involved,
-   * and which of them the AI is actually connected to. It is the honest
-   * difference between the stages — at crawl nothing reaches your systems, at
-   * walk a person clears every step, at run the gate is a set of limits
-   * rather than a human. Drawing it makes the escalation legible in a way
-   * three paragraphs of text does not.
-   */
+    "MIT's 2025 report on the state of AI in business found that almost every enterprise pilot produced no measurable return. Not because the models were not good enough, but because the work of putting them into an organisation was skipped.",
+  stat: {
+    value: "95%",
+    claim: "of enterprise GenAI pilots produced no measurable P&L impact.",
+    source: "MIT, The GenAI Divide: State of AI in Business, 2025",
+  },
+  lead: "The ones that work move through three stages. Each carries a different risk, and the stage that gets skipped is the one that causes the incident.",
   stages: [
     {
       name: "Crawl",
       shape: "People use AI to draft, summarise and research. Nothing touches your systems.",
-      needs: "Permissions corrected first, because an assistant can read whatever the person using it can read.",
-      breaks: "Data exposure. The over-shared drive nobody had looked at in five years is now searchable in plain language.",
+      needs: "Permissions corrected first. An assistant reads whatever the person using it can read.",
+      breaks: "Data exposure. The over-shared drive nobody had opened in five years, now searchable in plain language.",
       flow: [
         { label: "You", state: "on" },
         { label: "AI", state: "on" },
         { label: "No gate", state: "off" },
         { label: "Systems", state: "off" },
       ],
-      note: "Nothing is written back.",
     },
     {
       name: "Walk",
@@ -192,12 +197,11 @@ export const crawlWalkRun = {
         { label: "Approval", state: "on" },
         { label: "Systems", state: "on" },
       ],
-      note: "A person clears every step.",
     },
     {
       name: "Run",
-      shape: "Agents act inside limits: reading the record, taking the step, stopping at the edge of their remit.",
-      needs: "Authority limits set per action, logging you can reconstruct months later, and a cost per run you can forecast.",
+      shape: "Agents act inside limits, stopping at the edge of what they should decide alone.",
+      needs: "Authority limits per action, logging you can reconstruct months later, and a forecastable cost per run.",
       breaks: "Authority and cost. An agent that works and cannot be afforded at volume is not a solution.",
       flow: [
         { label: "You", state: "muted" },
@@ -205,7 +209,6 @@ export const crawlWalkRun = {
         { label: "Limits", state: "on" },
         { label: "Systems", state: "on" },
       ],
-      note: "A person is called on handback.",
     },
   ],
   footnote:
